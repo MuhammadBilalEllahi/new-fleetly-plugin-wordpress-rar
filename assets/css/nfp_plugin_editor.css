@@ -1,0 +1,132 @@
+
+.plugin-file-editor-container-total {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.plugin-file-editor-container {
+    width: 70%;
+    margin: 20px auto;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.directory-tree-container {
+    width: 25%;
+    margin: 20px auto;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.directory-tree {
+    list-style-type: none;
+    padding-left: 20px;
+}
+
+.directory-tree li {
+    margin-bottom: 10px;
+}
+
+.directory-folder {
+    font-weight: bold;
+    color: #4CAF50;
+}
+
+.directory-file {
+    color: #333;
+    cursor: pointer;
+}
+
+.directory-file.selected {
+    background-color: #e0e0e0;
+}
+
+.folder-name {
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.folder-name:hover {
+    color: #45a049;
+}
+
+.plugin-file-editor-heading {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.plugin-file-editor-description {
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+.plugin-file-editor-form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.plugin-file-selector {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.plugin-file-edit-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.plugin-file-edit-button:hover {
+    background-color: #45a049;
+}
+
+.plugin-file-editor-textarea {
+    width: 100%;
+    height: 400px;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    font-family: monospace;
+    line-height: 1.5;
+}
+
+.plugin-file-save-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.plugin-file-save-button:hover {
+    background-color: #45a049;
+}
+
+.plugin-file-editor-error {
+    color: red;
+    font-size: 16px;
+}
+
+.plugin-file-editor-success {
+    color: green;
+    font-size: 16px;
+}

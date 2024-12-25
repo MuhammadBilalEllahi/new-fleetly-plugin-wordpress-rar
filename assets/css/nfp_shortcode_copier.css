@@ -1,0 +1,23 @@
+.nfp-field-label {
+    cursor: pointer;
+    color: #0073aa;
+    text-decoration: underline;
+    display: inline-flex;
+    align-items: center;
+}
+
+.nfp-field-label:hover {
+    color: #005177;
+    text-decoration: none;
+}
+
+.nfp-copy-icon {
+    font-size: 16px;
+    margin-left: 8px;
+    color: #0073aa;
+    cursor: pointer;
+}
+
+.nfp-copy-icon:hover {
+    color: #005177;
+}

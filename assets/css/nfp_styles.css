@@ -1,0 +1,91 @@
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+  }
+
+  html,
+  body {
+    overflow-x: hidden !important;
+  }
+
+  :root {
+    --var-header-color : #2c3e50;
+    --var-purple-color: #6c63ff; /* this color is good for asthetic if approved */
+    --var-purple-hover-bg-color:#e6e6ff; /* this color is good for asthetic if approved */
+    --var-body-color: #f5f5f5;
+    --var-testimonial-bg: #58b49d6f;
+    --var-primary-color: #439d87;
+    --var-primary-hover-btn-color: #56cdaf;
+    --var-primary-hover-bg-color: #58b49d6f;
+    --var-primary-box-shadow-color: #58b49d49;
+    --var-secondary-color: #bbc9c6;
+    --var-secondary-second-color: #727272;
+    --var-dark-text: #121212;
+    --var-light-text: #ffff;
+    --var-light-grey: #d2d2d2;
+    --var-dark-grey: #9a9a9a;
+    --var-cc-h3: #2c3e50;
+    --var-cc-p: #7f8c8d;
+    --var-textfield-background: #e6e6e6;
+    --var-textfield-border: #b4b4b4;
+    --var-lightiest-grey: rgba(255, 255, 255, 0.5);
+/* primary-opacity-color can be used for body */
+    --var-primary-opacity-color: rgba(10,161,123, 0.03);
+  }
+
+  .text-light {
+    color: var(--var-light-text) !important;
+  }
+
+  .text-dark {
+    color: var(--var-dark-text) !important;
+  }
+
+  .bg-secondary {
+    background: var(--var-secondary-color) !important;
+  }
+
+  .bg-primary {
+    background: var(--var-primary-color) !important;
+  }
+
+  .btn-primary {
+    background: var(--var-primary-color) !important;
+    border: none;
+  }
+
+  .text-primary {
+    color: var(--var-primary-color) !important;
+  }
+
+  p {
+    color: var(--var-primary-color);
+    margin: 0 !important;
+  }
+
+  @media (max-width: 1200px) {
+
+    p,
+    label {
+      font-size: 0.85rem;
+    }
+  }
+
+  @media (max-width: 900px) {
+
+    p,
+    label {
+      font-size: 1.1rem;
+    }
+  }
+
+  @media (max-width: 500px) {
+
+    p,
+    label {
+      font-size: 0.9rem;
+    }
+  }
