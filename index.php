@@ -28,21 +28,28 @@ if (!defined('NFP_PLUGIN_DIR_URL')) {
 // ### BELOW HOOCK IS USED TO ADD SCRIPTS AND STYLES TO THE "ADMIN PANEL"
 function enqueue_custom_plugin_assets_FOR_ADMIN()
 {
-    wp_enqueue_style('nfp_FOR_ADMIN_plugin_editor_style', NFP_PLUGIN_DIR_URL . 'assets/css/nfp_plugin_editor.css', array(), '1.0.0');
-    wp_enqueue_script('nfp_FOR_ADMIN_plugin_editor_script', NFP_PLUGIN_DIR_URL . 'assets/js/nfp_plugin_editor.js', array(), '1.0.0', true);
+    wp_enqueue_style('nfp_FOR_ADMIN_plugin_editor_style', NFP_PLUGIN_DIR_URL . 'assets/css/admin/nfp_plugin_editor.css', array(), '1.0.0');
+    wp_enqueue_script('nfp_FOR_ADMIN_plugin_editor_script', NFP_PLUGIN_DIR_URL . 'assets/js/admin/nfp_plugin_editor.js', array(), '1.0.0', true);
 
-    wp_enqueue_style('nfp_FOR_ADMIN_shortcode_copier_styles', NFP_PLUGIN_DIR_URL . 'assets/css/nfp_shortcode_copier.css', array(), '1.0.0');
-    wp_enqueue_script('nfp_FOR_ADMIN_shortcode_copier_scripts', NFP_PLUGIN_DIR_URL . 'assets/js/nfp_shortcode_copier.js', array(), '1.0.0', true);
+    wp_enqueue_style('nfp_FOR_ADMIN_shortcode_copier_styles', NFP_PLUGIN_DIR_URL . 'assets/css/admin/nfp_shortcode_copier.css', array(), '1.0.0');
+    wp_enqueue_script('nfp_FOR_ADMIN_shortcode_copier_scripts', NFP_PLUGIN_DIR_URL . 'assets/js/admin/nfp_shortcode_copier.js', array(), '1.0.0', true);
 }
 add_action('admin_enqueue_scripts', 'enqueue_custom_plugin_assets_FOR_ADMIN');
 
 // ### BELOW HOOCK IS USED TO ADD SCRIPTS AND STYLES TO THE "FRONTEND"
 function enqueue_custom_plugin_assets_FOR_FRONTEND()
 {
-    wp_enqueue_style('nfp_main_root_style', NFP_PLUGIN_DIR_URL . 'assets/css/nfp_styles.css', array(), '1.0.0');
-    wp_enqueue_script('nfp_main_root_script', NFP_PLUGIN_DIR_URL . 'assets/js/nfp_scripts.js', array(), '1.0.0', true);
+    wp_enqueue_style('nfp_main_root_style', NFP_PLUGIN_DIR_URL . 'assets/css/frontend/nfp_styles.css', array(), '1.0.0');
+    wp_enqueue_script('nfp_main_root_script', NFP_PLUGIN_DIR_URL . 'assets/js/frontend/nfp_scripts.js', array(), '1.0.0', true);
 
-}
+    wp_enqueue_style('nfp_instant_quote_style', NFP_PLUGIN_DIR_URL . 'assets/css/frontend/nfpl_instant_quote.css', array(), '1.0.0');
+    wp_enqueue_script('nfp_instant_quote_script', NFP_PLUGIN_DIR_URL . 'assets/js/frontend/nfpl_instant_quote.js', array(), '1.0.0', true);
+
+    wp_enqueue_style('nfp_quotations_widget_style', NFP_PLUGIN_DIR_URL . 'assets/css/frontend/nfpl_quotations_widget.css', array(), '1.0.0');
+    // npfl_quotations_widget.js is not imported, it is already in the quotations-widget.php file
+
+
+} 
 //UNDERSTAND MORE : https://developer.wordpress.org/reference/functions/add_action/
 add_action('wp_enqueue_scripts', 'enqueue_custom_plugin_assets_FOR_FRONTEND');
 
@@ -122,7 +129,7 @@ if (!defined('SUCCESS_WIDGET')) {
 // p1 means page-1. To be displayed on first page
 add_shortcode(INSTANT_QUOTE_WIDGET, 'display_instant_quote_widget');
 add_shortcode(QUOTATIONS_WIDGET, 'display_quotations_widget');
-add_shortcode(BOOKING_DETAILS_WIDGET, 'display_bo0king_deatils_widget');
+add_shortcode(BOOKING_DETAILS_WIDGET, 'display_booking_deatils_widget');
 add_shortcode(PAYMENT_DETAILS_WIDGET, 'display_payment_details_widget');
 add_shortcode(SUCCESS_WIDGET, 'display_success_widget');
 
@@ -376,6 +383,20 @@ if (!function_exists('nfpl_function_get_api_key')) {
         return isset($options['nfpl_data_api_key']) ? sanitize_text_field($options['nfpl_data_api_key']) : '';
     }
 }
+
+
+// Use user-selected pages for navigation
+if(!function_exists('nfpl_function_get_navigation_url')) {
+    function nfpl_function_get_navigation_url($widget_type) {
+        $options = get_option('nfp_quotation_settings_group_options');
+        $page_id = isset($options[$widget_type]) ? $options[$widget_type] : 0;
+        if ($page_id) {
+            return get_permalink($page_id);
+        }
+        return '#'; // Return a fallback if no page is selected
+    }
+}
+
 
 
 ?>

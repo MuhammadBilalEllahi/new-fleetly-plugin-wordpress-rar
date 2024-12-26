@@ -26,3 +26,10 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
+// RUNS ON SAVE BUTTON PHP
+document.querySelector('#save_button').addEventListener('click', function () {
+    showToast({
+        message: "clicked!",
+        duration: 1000
+    });
+});

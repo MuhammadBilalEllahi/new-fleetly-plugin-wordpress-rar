@@ -1,0 +1,149 @@
+.nfpl_styles_widget-container {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2% 0;
+}
+
+@media (max-width: 768px) {
+  .npfl_styles_online_booking_p {
+    color: var(--var-dark-text) !important;
+  }
+}
+
+.npfl_styles_online_booking_p {
+  font-weight: 600;
+  color: var(--var-primary-color);
+}
+
+.nfpl_styles_confirm_booking_h1 {
+  font-weight: bolder;
+  color: var(--var-secondary-second-color);
+}
+
+.nfpl_js_styles_input_container {
+  display: flex;
+  align-items: center;
+  max-width: 280px;
+  width: 100%;
+  margin: 2% 1%;
+  border-radius: 0.4rem;
+  background-color: var(--var-textfield-background);
+  border: 1px solid var(--var-textfield-border);
+  position: relative;
+}
+
+.nfpl_styles_input_label {
+  color: var(--var-primary-color);
+  font-size: 16px;
+  width: 10%;
+}
+
+.nfpl_js_styles_input_field {
+  flex: 1;
+  border: none;
+  padding: 8px 0;
+  padding-left: 2%;
+  font-size: 16px;
+  width: 80%;
+  outline: none;
+  background-color: transparent !important;
+}
+
+.nfpl_js_styles_close_btn {
+  background-color: transparent !important;
+  color: var(--var-light-grey);
+  border: none;
+  padding: 8px;
+  cursor: pointer;
+}
+
+.nfpl_js_styles_close_btn:hover {
+  color: var(--var-dark-grey);
+}
+
+#nfpl_js_styles_submit_btn_widget {
+  width: auto;
+  height: 2.5rem;
+  border: 0;
+
+  padding: 1% 2%;
+  border-radius: 0.3rem;
+  background: var(--var-primary-color);
+  color: var(--var-light-text);
+}
+
+.nfpl_styles_add_btn {
+  background-color: var(--var-primary-color);
+  color: var(--var-light-text);
+  border: 0;
+  padding: 1% 2%;
+  margin: 2px 0;
+  border-radius: 0.3rem;
+  font-size: medium;
+}
+
+/* Checked box style */
+input[type="checkbox"] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 1rem;
+  height: 1rem;
+  border: 2px solid var(--var-primary-color);
+  border-radius: 4px;
+  cursor: pointer;
+  outline: none;
+  transition: background-color 0.2s, border-color 0.2s;
+}
+
+input[type="checkbox"]:checked {
+  background-color: var(--var-primary-color);
+  border-color: var(--var-primary-color);
+}
+
+/* Checkmark style */
+input[type="checkbox"]:checked::after {
+  content: "✔";
+  font-size: 12px;
+  margin: -2px;
+  display: block;
+  text-align: start;
+}
+
+/*TEst*/
+.nfpl_js_styles_drop-set.show {
+  max-width: 500px;
+  width: inherit;
+  background-color: rgba(255, 255, 255, 0.9) !important;
+  position: absolute;
+  left: 0;
+  top: 100%;
+}
+
+.nfpl_js_styles_dropdown_item {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2) !important;
+}
+
+.nfpl_js_styles_dropdown_item {
+  display: block;
+  width: 100%;
+  clear: both;
+  font-weight: 400;
+  color: #262626;
+  text-align: inherit;
+  text-decoration: none;
+  white-space: normal !important;
+  background-color: transparent;
+  border: 0;
+}
+
+.nfpl_js_styles_d_none {
+  display: none !important;
+}
+
+.npfl_js_styles_d_flex {
+  display: flex !important;
+}
