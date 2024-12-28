@@ -47,23 +47,27 @@ add_action('wp_enqueue_scripts', 'enqueue_custom_plugin_assets_FOR_PAYMENT_DETAI
 
 <!-- Payment Container -->
 
-<div id="nfpl_style_payment_container">
-    <h1 id="nfpl_style_payment_heading">Payment Method</h1>
-    <p id="nfpl_style_payment_text">You can pay with cash to the driver or with a card</p>
-    <div id="nfpl_style_payment_price">Price: £<span id="nfpl_js_style_price">Loading...</span></div>
-    <div id="nfpl_js_style_payment_method" class="nfpl_js_style_payment_method">
-        <div class="nfpl_style_payOption_button nfpl_style_cash_button" id="nfpl_js_style_cash_option">
-            <input name="paymentMethod" value="cash" type="radio"> <span>Pay with Cash</span>
-        </div>
-        <div class="nfpl_style_payOption_button nfpl_style_card_button" id="nfpl_js_style_card_option">
-            <input name="paymentMethod" value="card" type="radio"> <span>Pay with Card</span>
+<div id="nfpl_style_payment_container" >
+    <div style="position: relative !important;">
+            <h1 id="nfpl_style_payment_heading">Payment Method</h1>
+            <p id="nfpl_style_payment_text">You can pay with cash to the driver or with a card</p>
+            <div id="nfpl_style_payment_price">Price: £<span id="nfpl_js_style_price">Loading...</span></div>
+            <div id="nfpl_js_style_payment_method" class="nfpl_js_style_payment_method">
+                <div class="nfpl_style_payOption_button nfpl_style_cash_button" id="nfpl_js_style_cash_option">
+                    <input name="paymentMethod" value="cash" type="radio"> <span>Pay with Cash</span>
+                </div>
+                <div class="nfpl_style_payOption_button nfpl_style_card_button" id="nfpl_js_style_card_option">
+                    <input name="paymentMethod" value="card" type="radio"> <span>Pay with Card</span>
+                </div>
+            </div>
+            <button id="nfpl_js_submit_button" class="btn">Continue</button>
+
+    <!-- Spinner -->
+        <div id="nfpl_js_style_loading_spinner" style="display: none;">
+            <i class="fas fa-spinner fa-spin"></i>
+            <p>Processing payment, please wait...</p>
         </div>
     </div>
-    <button id="nfpl_js_submit_button" class="btn">Continue</button>
 </div>
 
-<!-- Spinner -->
-<div id="nfpl_js_style_loading_spinner" style="display: none;">
-    <i class="fas fa-spinner fa-spin"></i>
-    <p>Processing payment, please wait...</p>
-</div>
+
