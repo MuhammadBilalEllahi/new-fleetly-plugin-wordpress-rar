@@ -1,258 +1,352 @@
-/* .nfpl_styles_widget-container {
-  width: 100%;
-  height: auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 2% 0;
-}
 
-@media (max-width: 768px) {
-  .npfl_styles_online_booking_p {
-    color: var(--var-dark-text) !important;
+  /* Base Styles */
+  :root {
+    --primary-color: #2563eb;
+    --primary-hover: #1d4ed8;
+    --background: #ffffff;
+    --text-primary: #1f2937;
+    --text-secondary: #6b7280;
+    --border-color: #e5e7eb;
+    --border-radius: 8px;
+    --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1);
+    --transition: all 0.3s ease;
+  }
+
+  .nfpl_styles_widget-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+    background: var(--background);
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+  }
+
+  /* Header Styles */
+  .booking-header {
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+
+  .booking-label {
+    color: var(--primary-color);
+    text-transform: uppercase;
+    font-size: 0.875rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.5rem;
+  }
+
+  .booking-title {
+    color: var(--text-primary);
+    font-size: 2rem;
+    font-weight: 700;
+    margin: 0;
+  }
+
+  /* Form Layout */
+  .form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  /* Input Styles */
+  .input-label {
+    color: var(--text-primary);
+    font-size: 0.875rem;
+    font-weight: 500;
+  }
+
+  .input-wrapper {
+    position: relative !important;
+    display: flex;
+    align-items: center;
+  }
+
+  .input-icon {
+    position: absolute;
+    left: 1%;
+    /* color: var(--text-secondary);
+    background-color: transparent; */
+  }
+
+  .input-icon svg {
+    background-color: transparent;
+    fill: white;
+    stroke: var(--var-primary-color);
+    margin-left: 5px;
+  }
+
+  .nfpl_js_styles_input_field {
+    width: 100%;
+    padding: 0.75rem 1rem 0.75rem 2.5rem;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+    color: var(--text-primary);
+    transition: var(--transition);
+  }
+
+  .nfpl_js_styles_input_field:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+  }
+
+  /* Dropdown Menu */
+  .dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--background);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    z-index: 10;
+    max-height: 200px;
+    overflow-y: auto;
+    display: none;
+  }
+
+  .nfpl_js_styles_dropdown_item {
+    display: flex;
+    align-items: flex-start;
+    padding: 0.75rem 1rem;
+    border: none;
+    background: none;
+    width: 100%;
+    text-align: left;
+    cursor: pointer;
+    transition: var(--transition);
+  }
+
+  .nfpl_js_styles_dropdown_item:hover {
+    background-color: #f3f4f6;
+  }
+
+  /* Button Styles */
+  .add-stop-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background: transparent;
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
+    border-radius: var(--border-radius);
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: var(--transition);
+    margin-bottom: 1rem;
+  }
+
+  .add-stop-btn:hover {
+    background: rgba(37, 99, 235, 0.1);
+  }
+
+  .submit-btn {
+    margin: 1% 0;
+    width: 100%;
+    padding: 1rem;
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: var(--transition);
+  }
+
+  .submit-btn:hover {
+    background: var(--primary-hover);
+  }
+
+  /* Toggle Switch */
+  .toggle-container {
+    margin: 1.5rem 0;
+  }
+
+  .toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    cursor: pointer;
+  }
+
+  .toggle-label {
+    color: var(--text-primary);
+    font-size: 0.875rem;
+    font-weight: 500;
+  }
+
+  .toggle-slider {
+    position: relative;
+    width: 3rem;
+    height: 1.5rem;
+    background: #e5e7eb;
+    border-radius: 9999px;
+    transition: var(--transition);
+  }
+
+  .toggle-slider:before {
+    content: "";
+    position: absolute;
+    height: 1.25rem;
+    width: 1.25rem;
+    left: 0.125rem;
+    bottom: 0.125rem;
+    background: white;
+    border-radius: 50%;
+    transition: var(--transition);
+  }
+
+  .toggle input:checked+.toggle-slider {
+    background: var(--primary-color);
+  }
+
+  .toggle input:checked+.toggle-slider:before {
+    transform: translateX(1.5rem);
+  }
+
+  /* Loading Overlay */
+  /* .loading-overlay {
+    position: absolute;
+
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.9);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  } */
+/* 
+  .loading-content {
+    background: white;
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    text-align: center;
+  }
+
+  .loading-text {
+    color: var(--primary-color);
+    margin-top: 1rem;
+  } */
+
+  /* Spinner */
+  /* .spinner-2 {
+    width: 2.5rem;
+    height: 2.5rem;
+    border: 3px solid #f3f3f3;
+    border-top: 3px solid var(--primary-color);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+  }
+
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+
+    100% {
+      transform: rotate(360deg);
+    }
+  } */
+
+  /* Utility Classes */
+  .nfpl_js_styles_d_none {
+    display: none;
+  }
+
+  /* Responsive Adjustments */
+  @media (max-width: 640px) {
+    .nfpl_styles_widget-container {
+      padding: 1rem;
+    }
+
+    .booking-title {
+      font-size: 1.5rem;
+    }
+  }
+
+  .nfpl_js_styles_close_btn {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    width: min-content;
+    padding: 0.5rem;
+    color: #1f2937;
+    background-color: transparent;
+    border: none;
+  }
+
+  .nfpl_js_styles_close_btn svg {
+    color: #1f2937;
+    background-color: transparent;
+  }
+
+  .nfpl_js_styles_input_container {
+    position: relative;
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+/* Dark Theme Styles */
+/* @media (prefers-color-scheme: dark) {
+  :root {
+    --primary-color: #4f46e5;
+    --primary-hover: #4338ca;
+    --background: #18181b;
+    --text-primary: #e5e7eb;
+    --text-secondary: #9ca3af;
+    --border-color: #374151;
+    --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.5);
   }
 }
-
-.npfl_styles_online_booking_p {
-  font-weight: 600;
-  color: var(--var-primary-color);
+:root.theme-light {
+  --primary-color: #2563eb;
+  --primary-hover: #1d4ed8;
+  --background: #ffffff;
+  --text-primary: #1f2937;
+  --text-secondary: #6b7280;
+  --border-color: #e5e7eb;
+  --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1);
 }
 
-.nfpl_styles_confirm_booking_h1 {
-  font-weight: bolder;
-  color: var(--var-secondary-second-color);
-}
-
-.nfpl_js_styles_input_container {
-  display: flex;
-  align-items: center;
-  max-width: 280px;
-  width: 100%;
-  margin: 2% 1%;
-  border-radius: 0.4rem;
-  background-color: var(--var-textfield-background);
-  border: 1px solid var(--var-textfield-border);
-  position: relative;
-}
-
-.nfpl_styles_input_label {
-  color: var(--var-primary-color);
-  font-size: 16px;
-  width: 10%;
-}
-
-.nfpl_js_styles_input_field {
-  flex: 1;
-  border: none;
-  padding: 8px 0;
-  padding-left: 2%;
-  font-size: 16px;
-  width: 80%;
-  outline: none;
-  background-color: transparent !important;
-}
-
-.nfpl_js_styles_close_btn {
-  background-color: transparent !important;
-  color: var(--var-light-grey);
-  border: none;
-  padding: 8px;
-  cursor: pointer;
-}
-
-.nfpl_js_styles_close_btn:hover {
-  color: var(--var-dark-grey);
-}
-
-#nfpl_js_styles_submit_btn_widget {
-  width: auto;
-  height: 2.5rem;
-  border: 0;
-
-  padding: 1% 2%;
-  border-radius: 0.3rem;
-  background: var(--var-primary-color);
-  color: var(--var-light-text);
-}
-
-.nfpl_styles_add_btn {
-  background-color: var(--var-primary-color);
-  color: var(--var-light-text);
-  border: 0;
-  padding: 1% 2%;
-  margin: 2px 0;
-  border-radius: 0.3rem;
-  font-size: medium;
+:root.theme-dark {
+  --primary-color: #4f46e5;
+  --primary-hover: #4338ca;
+  --background: #18181b;
+  --text-primary: #e5e7eb;
+  --text-secondary: #9ca3af;
+  --border-color: #374151;
+  --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.5);
 } */
-
-/* Checked box style */
-/* input[type="checkbox"] {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  width: 1rem;
-  height: 1rem;
-  border: 2px solid var(--var-primary-color);
-  border-radius: 4px;
-  cursor: pointer;
-  outline: none;
-  transition: background-color 0.2s, border-color 0.2s;
-}
-
-input[type="checkbox"]:checked {
-  background-color: var(--var-primary-color);
-  border-color: var(--var-primary-color);
-} */
-
-/* Checkmark style */
-/* input[type="checkbox"]:checked::after {
-  content: "✔";
-  font-size: 12px;
-  margin: -2px;
-  display: block;
-  text-align: start;
-} */
-
-/*TEst*/
-/* .nfpl_js_styles_drop-set.show {
-  max-width: 500px;
-  width: inherit;
-  background-color: rgba(255, 255, 255, 0.9) !important;
-  position: absolute;
-  left: 0;
-  top: 100%;
-}
-
-.nfpl_js_styles_dropdown_item {
-  border-bottom: 1px solid rgba(0, 0, 0, 0.2) !important;
-}
-
-.nfpl_js_styles_dropdown_item {
-  display: block;
-  width: 100%;
-  clear: both;
-  font-weight: 400;
-  color: #262626;
-  text-align: inherit;
-  text-decoration: none;
-  white-space: normal !important;
-  background-color: transparent;
-  border: 0;
-}
-
-.nfpl_js_styles_d_none {
-  display: none !important;
-}
-
-.npfl_js_styles_d_flex {
-  display: flex !important;
-} */
-
-
-
-/* 
-<div class="nfpl_styles_widget-container" style="position: relative;">
-<div id="loadingOverlay" style="display: none;">
-    <div style=" padding: 20px; border-radius: 1rem; display: flex; flex-direction: column; text-align: center; justify-content: center; align-items: center;">
-      <div id="loadingSpinner-2" class="spinner-2"></div>
-      <h2 id="overlay-message" class="loadingText" style="color: var(--var-primary-color); padding: 45px 0;">
-        Submitting Your Details ...
-      </h2>
-    </div>
-</div>
-  <div class="">
-
-    <div class="">
-      <p class="nfp_styles_text_uppercase npfl_styles_online_booking_p">online booking</p>
-      <h1 class="nfpl_styles_confirm_booking_h1">Confirm your booking now!</h1>
-
-      <div class="">
-        <!-- Input Field: From -->
-        <div class="">
-          <p style="font-size: large; font-weight:400;">From</p>
-          <div class="nfpl_js_styles_places nfpl_js_styles_input_container">
-            <div class="nfpl_styles_input_label">
-
-            </div>
-            <input id="nfpl_form_style_js_from" name="nfpl_form_start-dest" type="text"
-              class="nfpl_js_styles_input_field nfpl_js_styles_place_input" placeholder="From" required
-              autocomplete="off" />
-            <div class="nfpl_js_styles_dropdown_menu nfpl_js_styles_drop-set dropdown-m"></div>
-          </div>
-        </div>
-
-
-
-        <!-- Input Field: To -->
-        <div class="">
-          <p style="font-size: large; font-weight:400;">To</p>
-          <div class="nfpl_js_styles_places nfpl_js_styles_input_container">
-            <div class="nfpl_styles_input_label">
-
-            </div>
-            <input required id="nfpl_form_style_js_to" name="nfpl_form_end_dest" type="text"
-              class="nfpl_js_styles_input_field nfpl_js_styles_place_input" placeholder="To" autocomplete="off" />
-            <div class="nfpl_js_styles_dropdown_menu nfpl_js_styles_drop-set dropdown-m"></div>
-          </div>
-        </div>
-
-      </div>
-
-      <button id="nfpl_add_stop_btn" class="nfpl_styles_add_btn viaLocationPlus">
-        stop
-      </button>
-
-      <div id="nfpl_js_styles_ViaStop_oneWay" class="">
-        <!-- Input Field: via location -->
-      </div>
-
-      <div class="">
-        <!-- Start Date/Time -->
-        <div class="">
-          <p style="font-size: large; font-weight:400;">Forward Date/Time</p>
-          <div class="nfpl_js_styles_input_container ">
-            <div class="nfpl_styles_input_label">
-
-            </div>
-            <input required id="nfpl_form_js_StartDateTime" type="datetime-local" class="nfpl_js_styles_input_field"
-              placeholder="Pickup Date/Time" />
-          </div>
-        </div>
-
-        <!-- End Date/Time -->
-        <div id="nfpl_js_styles_end_date_two_way_parent"
-          class="nfpl_js_styles_d_none flex-column col-12 col-md-6 col-lg-6 my-2">
-          <p style="font-size:medium; font-weight: 500;">Return Date/Time</p>
-          <div id="end-date-two-way" class=" nfpl_js_styles_input_container ">
-            <div class="nfpl_styles_input_label">
-
-            </div>
-            <input required id="nfpl_form_js_EndDateTime" type="datetime-local" class="nfpl_js_styles_input_field"
-              placeholder="Return Pickup Date/Time" />
-          </div>
-        </div>
-      </div>
-
-
-      <div>
-        One way?
-        <input required type="checkbox" id="nfpl_js_styles_OneWayCheckBox" checked="checked" />
-      </div>
-
-      <button id="add-return-btn" class="nfpl_js_styles_d_none nfpl_styles_add_btn viaLocationPlus">
-
-        via return
-      </button>
-
-      <div id="nfpl_js_styles_iaRetrun_twoWay" class="">
-        <!-- Input Field: via return location -->
-      </div>
-    </div>
-
-    <div style="width: 90%; padding: 5% 0; ">
-      <div class="npfl_js_styles_d_flex justify-content-end  flex-nowrap">
-        <button id="nfpl_js_styles_submit_btn_widget">Calculate Price</button>
-      </div>
-    </div>
-  </div>
-</div> */

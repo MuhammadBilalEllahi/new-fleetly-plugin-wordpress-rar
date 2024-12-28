@@ -1,11 +1,11 @@
 <script>
 
-// Be sure to have these functions in index.php file otherwise code UI and functionality will break!
-const nfpl_var_apiUrlPrefixs = '<?php echo nfpl_function_get_api_url_prefix(); ?>';
-const nfpl_var_apiUrl = `${nfpl_var_apiUrlPrefixs}/api/public/google/autocomplete`;
-const nfpl_var_quoteUrl = `${nfpl_var_apiUrlPrefixs}/plugin/dispatcher/widget-get-quotations`;
-const nfpl_var_apikey = '<?php echo nfpl_function_get_api_key(); ?>'
-const quotationPageUrlAndPageNumber = '<?php echo esc_url( nfpl_function_get_navigation_url(QUOTATIONS_WIDGET) ); ?>';
+  // Be sure to have these functions in index.php file otherwise code UI and functionality will break!
+  const nfpl_var_apiUrlPrefixs = '<?php echo nfpl_function_get_api_url_prefix(); ?>';
+  const nfpl_var_apiUrl = `${nfpl_var_apiUrlPrefixs}/api/public/google/autocomplete`;
+  const nfpl_var_quoteUrl = `${nfpl_var_apiUrlPrefixs}/plugin/dispatcher/widget-get-quotations`;
+  const nfpl_var_apikey = '<?php echo nfpl_function_get_api_key(); ?>'
+  const quotationPageUrlAndPageNumber = '<?php echo esc_url(nfpl_function_get_navigation_url(QUOTATIONS_WIDGET)); ?>';
 
 </script>
 
@@ -14,13 +14,17 @@ const quotationPageUrlAndPageNumber = '<?php echo esc_url( nfpl_function_get_nav
 
 
 <!-- HTML -->
-<div class="nfpl_styles_widget-container">
-  <div id="loadingOverlay" class="loading-overlay" style="display: none;">
-    <div class="loading-content">
+<div class="nfpl_styles_widget-container" style="position: relative;">
+  <div id="loadingOverlay" style="display: none;">
+    <div
+      style=" padding: 20px; border-radius: 1rem; display: flex; flex-direction: column; text-align: center; justify-content: center; align-items: center;">
       <div id="loadingSpinner-2" class="spinner-2"></div>
-      <h2 id="overlay-message" class="loading-text">Submitting Your Details ...</h2>
+      <h2 id="overlay-message" class="loadingText" style="color: var(--var-primary-color); padding: 45px 0;">
+        Submitting Your Details ...
+      </h2>
     </div>
   </div>
+
 
   <div class="booking-container">
     <div class="booking-header">
@@ -34,7 +38,12 @@ const quotationPageUrlAndPageNumber = '<?php echo esc_url( nfpl_function_get_nav
         <label class="input-label">From</label>
         <div class="nfpl_js_styles_places input-wrapper">
           <div class="input-icon">
-            <i class="fa-solid fa-location-dot"></i>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" stroke="currentColor"
+              stroke-width="2" width="24" height="24">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="M12 2c3.866 0 7 3.134 7 7 0 5.25-7 13-7 13S5 14.25 5 9c0-3.866 3.134-7 7-7z" />
+              <circle cx="12" cy="9" r="2.5" fill="none" />
+            </svg>
           </div>
           <input id="nfpl_form_style_js_from" name="nfpl_form_start-dest" type="text"
             class="nfpl_js_styles_input_field nfpl_js_styles_place_input" placeholder="Enter pickup location" required
@@ -48,8 +57,14 @@ const quotationPageUrlAndPageNumber = '<?php echo esc_url( nfpl_function_get_nav
         <label class="input-label">To</label>
         <div class="nfpl_js_styles_places input-wrapper">
           <div class="input-icon">
-            <i class="fa-solid fa-location-dot"></i>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" stroke="currentColor"
+              stroke-width="2" width="24" height="24">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="M12 2c3.866 0 7 3.134 7 7 0 5.25-7 13-7 13S5 14.25 5 9c0-3.866 3.134-7 7-7z" />
+              <circle cx="12" cy="9" r="2.5" fill="none" />
+            </svg>
           </div>
+
           <input required id="nfpl_form_style_js_to" name="nfpl_form_end_dest" type="text"
             class="nfpl_js_styles_input_field nfpl_js_styles_place_input" placeholder="Enter drop-off location"
             autocomplete="off" />
@@ -58,11 +73,11 @@ const quotationPageUrlAndPageNumber = '<?php echo esc_url( nfpl_function_get_nav
       </div>
     </div>
 
-    <button id="nfpl_add_stop_btn" class="add-stop-btn">
+    <button id="nfpl_add_stop_btn" class="form-grid add-stop-btn">
       <i class="fa-solid fa-plus"></i> Add Stop
     </button>
 
-    <div id="nfpl_js_styles_ViaStop_oneWay" class="via-stops"></div>
+    <div id="nfpl_js_styles_ViaStop_oneWay" class="form-grid via-stops"></div>
 
     <div class="form-grid">
       <!-- Forward Date/Time -->
@@ -70,10 +85,35 @@ const quotationPageUrlAndPageNumber = '<?php echo esc_url( nfpl_function_get_nav
         <label class="input-label">Forward Date/Time</label>
         <div class="input-wrapper">
           <div class="input-icon">
-            <i class="fa-regular fa-calendar"></i>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" stroke="currentColor"
+              stroke-width="2" width="24" height="24">
+              <rect x="3" y="4" width="18" height="16" rx="2" />
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3 10h18M16 4v4M8 4v4" />
+            </svg>
           </div>
-          <input required id="nfpl_form_js_StartDateTime" type="datetime-local" class="nfpl_js_styles_input_field"
-            placeholder="Pickup Date/Time" />
+
+          <!-- <input required id="nfpl_form_js_StartDateTime" type="datetime-local" class="nfpl_js_styles_input_field"
+            placeholder="Pickup Date/Time" /> -->
+
+
+
+
+          <input type="text" required data-calendar="true" class="nfpl_js_styles_input_field" id="nfpl_form_js_StartDateTime"
+            placeholder="Select date and time" readonly>
+
+          <div class="_calendar_c_container" id="_calendar_c_calendarContainer">
+            <div class="_calendar_c_header">
+              <button id="_calendar_c_prevMonth">&lt;</button>
+              <h3 id="_calendar_c_currentMonth"></h3>
+              <button id="_calendar_c_nextMonth">&gt;</button>
+            </div>
+            <div class="_calendar_c_days" id="_calendar_c_calendarDays"></div>
+            <div class="_calendar_c_time-picker">
+              <label for="_calendar_c_time">Time:</label>
+              <input type="time" id="_calendar_c_time">
+            </div>
+            <button id="_calendar_c_submit">Submit</button>
+          </div>
         </div>
       </div>
 
@@ -82,10 +122,39 @@ const quotationPageUrlAndPageNumber = '<?php echo esc_url( nfpl_function_get_nav
         <label class="input-label">Return Date/Time</label>
         <div class="input-wrapper">
           <div class="input-icon">
-            <i class="fa-regular fa-calendar"></i>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" stroke="currentColor"
+              stroke-width="2" width="24" height="24">
+              <rect x="3" y="4" width="18" height="16" rx="2" />
+              <path stroke-linecap="round" stroke-linejoin="round" d="M3 10h18M16 4v4M8 4v4" />
+            </svg>
           </div>
-          <input required id="nfpl_form_js_EndDateTime" type="datetime-local" class="nfpl_js_styles_input_field"
-            placeholder="Return Pickup Date/Time" />
+          <!-- <input required id="nfpl_form_js_EndDateTime" type="datetime-local" class="nfpl_js_styles_input_field"
+            placeholder="Return Pickup Date/Time" /> -->
+
+            
+          <input type="text" required data-calendar="true" class="nfpl_js_styles_input_field" id="nfpl_form_js_EndDateTime"
+            placeholder="Select date and time" readonly>
+
+            
+            <div class="_calendar_c_container" id="_calendar_c_calendarContainer">
+            <div class="_calendar_c_header">
+              <button id="_calendar_c_prevMonth">&lt;</button>
+              <h3 id="_calendar_c_currentMonth"></h3>
+              <button id="_calendar_c_nextMonth">&gt;</button>
+            </div>
+            <div class="_calendar_c_days" id="_calendar_c_calendarDays"></div>
+            <div class="_calendar_c_time-picker">
+              <label for="_calendar_c_time">Time:</label>
+              <input type="time" id="_calendar_c_time">
+            </div>
+            <button id="_calendar_c_submit">Submit</button>
+          </div>
+
+
+        </div>
+      </div>
+
+
         </div>
       </div>
     </div>
@@ -93,7 +162,7 @@ const quotationPageUrlAndPageNumber = '<?php echo esc_url( nfpl_function_get_nav
     <div class="toggle-container">
       <label class="toggle">
         <span class="toggle-label">One way?</span>
-        <input type="checkbox" id="nfpl_js_styles_OneWayCheckBox" checked="checked" />
+        <input style="display: none;" type="checkbox" id="nfpl_js_styles_OneWayCheckBox" checked="checked" />
         <span class="toggle-slider"></span>
       </label>
     </div>
@@ -102,7 +171,7 @@ const quotationPageUrlAndPageNumber = '<?php echo esc_url( nfpl_function_get_nav
       <i class="fa-solid fa-plus"></i> Add Return Stop
     </button>
 
-    <div id="nfpl_js_styles_iaRetrun_twoWay" class="via-stops"></div>
+    <div id="nfpl_js_styles_iaRetrun_twoWay" class="form-grid via-stops"></div>
 
     <div class="submit-container">
       <button id="nfpl_js_styles_submit_btn_widget" class="submit-btn">Calculate Price</button>
@@ -110,375 +179,231 @@ const quotationPageUrlAndPageNumber = '<?php echo esc_url( nfpl_function_get_nav
   </div>
 </div>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script defer>
+
+
+  document.addEventListener('DOMContentLoaded', () => {
+    
+    const calendarContainer = document.getElementById('_calendar_c_calendarContainer');
+    const calendarDays = document.getElementById('_calendar_c_calendarDays');
+        const currentMonth = document.getElementById('_calendar_c_currentMonth');
+    const timeInput = document.getElementById('_calendar_c_time');
+    // const dateTimeInput = document.getElementById('nfpl_form_js_StartDateTime');
+    // const dateTimeInput2 = document.getElementById('_calendar_c_dateTimeInput');
+    const dateTimeInputs = document.querySelectorAll('.nfpl_js_styles_input_field[data-calendar="true"]');
+
+
+    let selectedDate = null;
+        const today = new Date();
+    let currentYear = today.getFullYear();
+    let currentMonthIndex = today.getMonth();
+
+    
+    // dateTimeInput.addEventListener('click', (e) => {
+    //   event.stopPropagation();
+    //         calendarContainer.style.display = 'block';
+    //   renderCalendar(currentYear, currentMonthIndex);
+    // });
+
+    dateTimeInputs.forEach(dateTimeInput => {
+      dateTimeInput.addEventListener('click', (e) => {
+        e.stopPropagation();
+        calendarContainer.style.display = 'block';
+        renderCalendar(currentYear, currentMonthIndex);
+        calendarContainer.dataset.targetInputId = dateTimeInput.id;
+      });
+    });
+
+    
+
+    document.addEventListener('click', (event) => {
+      if (!calendarContainer.contains(event.target) && !Array.from(dateTimeInputs).includes(event.target)) {
+        calendarContainer.style.display = 'none';
+      }
+    });
+
+    function renderCalendar(year, month) {
+      calendarDays.innerHTML = '';
+      const firstDayOfMonth = new Date(year, month, 1).getDay();
+      const lastDateOfMonth = new Date(year, month + 1, 0).getDate();
+
+      currentMonth.textContent = `${new Date(year, month).toLocaleString('default', { month: 'long' })} ${year}`;
+
+      // Empty days at the beginning of the month
+      for (let i = 0; i < firstDayOfMonth; i++) {
+        calendarDays.innerHTML += '<div></div>';
+      }
+
+      // Add days of the month
+      for (let day = 1; day <= lastDateOfMonth; day++) {
+        const dayElement = document.createElement('div');
+        dayElement.textContent = day;
+        dayElement.className = '_calendar_c_day';
+
+        // Highlight today's date
+        if (year === today.getFullYear() ) {
+          if( month === today.getMonth()){
+
+            if(day === today.getDate()){
+              dayElement.classList.add('_calendar_c_selected-date');
+
+            }
+          }
+        }
+
+        dayElement.addEventListener('click', () => {
+          selectedDate = new Date(year, month, day);
+          document.querySelectorAll('._calendar_c_day').forEach(el => el.classList.remove('_calendar_c_selected-date'));
+          dayElement.classList.add('_calendar_c_selected-date');
+        });
+
+        calendarDays.appendChild(dayElement);
+      }
+    }
+
+    document.getElementById('_calendar_c_prevMonth').addEventListener('click', () => {
+      currentMonthIndex--;
+      if (currentMonthIndex < 0) {
+        currentMonthIndex = 11;
+        currentYear--;
+      }
+      renderCalendar(currentYear, currentMonthIndex);
+    });
+
+    document.getElementById('_calendar_c_nextMonth').addEventListener('click', () => {
+      currentMonthIndex++;
+      if (currentMonthIndex > 11) {
+        currentMonthIndex = 0;
+        currentYear++;
+      }
+      renderCalendar(currentYear, currentMonthIndex);
+    });
+
+    document.getElementById('_calendar_c_submit').addEventListener('click', () => {
+      if (!selectedDate) {
+        alert('Please select a date.');
+        return;
+      }
+      const selectedTime = timeInput.value;
+      if (!selectedTime) {
+        alert('Please select a time.');
+        return;
+      }
+      const formattedDate = `${selectedDate.toLocaleDateString()} ${selectedTime}`;
+      // dateTimeInput.value = formattedDate;
+      const targetInput = document.getElementById(calendarContainer.dataset.targetInputId);
+      if (targetInput) {
+        targetInput.value = formattedDate;
+      }
+      calendarContainer.style.display = 'none';
+    });
+
+
+    renderCalendar(currentYear, currentMonthIndex);
+
+  })
+</script>
+
+
+
+
+
 <style>
-/* Base Styles */
-:root {
-  --primary-color: #2563eb;
-  --primary-hover: #1d4ed8;
-  --background: #ffffff;
-  --text-primary: #1f2937;
-  --text-secondary: #6b7280;
-  --border-color: #e5e7eb;
-  --border-radius: 8px;
-  --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1);
-  --transition: all 0.3s ease;
-}
-
-.nfpl_styles_widget-container {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 2rem;
-  background: var(--background);
-  border-radius: var(--border-radius);
-  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
-}
-
-/* Header Styles */
-.booking-header {
-  margin-bottom: 2rem;
-  text-align: center;
-}
-
-.booking-label {
-  color: var(--primary-color);
-  text-transform: uppercase;
-  font-size: 0.875rem;
-  font-weight: 600;
-  letter-spacing: 0.05em;
-  margin-bottom: 0.5rem;
-}
-
-.booking-title {
-  color: var(--text-primary);
-  font-size: 2rem;
-  font-weight: 700;
-  margin: 0;
-}
-
-/* Form Layout */
-.form-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1.5rem;
-  margin-bottom: 1.5rem;
-}
-
-.form-group {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-/* Input Styles */
-.input-label {
-  color: var(--text-primary);
-  font-size: 0.875rem;
-  font-weight: 500;
-}
-
-.input-wrapper {
-  position: relative;
-  display: flex;
-  align-items: center;
-}
-
-.input-icon {
-  position: absolute;
-  left: 1rem;
-  color: var(--text-secondary);
-}
-
-.nfpl_js_styles_input_field {
-  width: 100%;
-  padding: 0.75rem 1rem 0.75rem 2.5rem;
-  border: 1px solid var(--border-color);
-  border-radius: var(--border-radius);
-  font-size: 1rem;
-  color: var(--text-primary);
-  transition: var(--transition);
-}
-
-.nfpl_js_styles_input_field:focus {
-  outline: none;
-  border-color: var(--primary-color);
-  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
-}
-
-/* Dropdown Menu */
-.dropdown-menu {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  right: 0;
-  background: var(--background);
-  border: 1px solid var(--border-color);
-  border-radius: var(--border-radius);
-  box-shadow: var(--shadow);
-  z-index: 10;
-  max-height: 200px;
-  overflow-y: auto;
-  display: none;
-}
-
-.nfpl_js_styles_dropdown_item {
-  display: flex;
-  align-items: flex-start;
-  padding: 0.75rem 1rem;
-  border: none;
-  background: none;
-  width: 100%;
-  text-align: left;
-  cursor: pointer;
-  transition: var(--transition);
-}
-
-.nfpl_js_styles_dropdown_item:hover {
-  background-color: #f3f4f6;
-}
-
-/* Button Styles */
-.add-stop-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.5rem 1rem;
-  background: transparent;
-  border: 1px solid var(--primary-color);
-  color: var(--primary-color);
-  border-radius: var(--border-radius);
-  font-size: 0.875rem;
-  font-weight: 500;
-  cursor: pointer;
-  transition: var(--transition);
-  margin-bottom: 1rem;
-}
-
-.add-stop-btn:hover {
-  background: rgba(37, 99, 235, 0.1);
-}
-
-.submit-btn {
-  width: 100%;
-  padding: 1rem;
-  background: var(--primary-color);
-  color: white;
-  border: none;
-  border-radius: var(--border-radius);
-  font-size: 1rem;
-  font-weight: 500;
-  cursor: pointer;
-  transition: var(--transition);
-}
-
-.submit-btn:hover {
-  background: var(--primary-hover);
-}
-
-/* Toggle Switch */
-.toggle-container {
-  margin: 1.5rem 0;
-}
-
-.toggle {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.75rem;
-  cursor: pointer;
-}
-
-.toggle-label {
-  color: var(--text-primary);
-  font-size: 0.875rem;
-  font-weight: 500;
-}
-
-.toggle-slider {
-  position: relative;
-  width: 3rem;
-  height: 1.5rem;
-  background: #e5e7eb;
-  border-radius: 9999px;
-  transition: var(--transition);
-}
-
-.toggle-slider:before {
-  content: "";
-  position: absolute;
-  height: 1.25rem;
-  width: 1.25rem;
-  left: 0.125rem;
-  bottom: 0.125rem;
-  background: white;
-  border-radius: 50%;
-  transition: var(--transition);
-}
-
-.toggle input:checked + .toggle-slider {
-  background: var(--primary-color);
-}
-
-.toggle input:checked + .toggle-slider:before {
-  transform: translateX(1.5rem);
-}
-
-/* Loading Overlay */
-.loading-overlay {
-  position: fixed;
-  
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(255, 255, 255, 0.9);
-  display: none;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
-}
-
-.loading-content {
-  background: white;
-  padding: 2rem;
-  border-radius: var(--border-radius);
-  box-shadow: var(--shadow);
-  text-align: center;
-}
-
-.loading-text {
-  color: var(--primary-color);
-  margin-top: 1rem;
-}
-
-/* Spinner */
-.spinner-2 {
-  width: 2.5rem;
-  height: 2.5rem;
-  border: 3px solid #f3f3f3;
-  border-top: 3px solid var(--primary-color);
-  border-radius: 50%;
-  animation: spin 1s linear infinite;
-}
-
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
-/* Utility Classes */
-.nfpl_js_styles_d_none {
-  display: none;
-}
-
-/* Responsive Adjustments */
-@media (max-width: 640px) {
-  .nfpl_styles_widget-container {
-    padding: 1rem;
+  ._calendar_c_container {
+    /* max-width: 300px; */
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background: #fff;
+    padding: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: absolute;
+    top:100%;
+    left:0;
+    display: none;
+    z-index: 10;
+    font-size: small;
   }
 
-  .booking-title {
-    font-size: 1.5rem;
+  ._calendar_c_header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
   }
-}
+
+  ._calendar_c_header button {
+    background: #007bff;
+    color: white;
+    border: none;
+    padding: 4px 8px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  ._calendar_c_header button:hover {
+    background: #0056b3;
+  }
+
+  ._calendar_c_days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    margin-bottom: 8px;
+  }
+
+  ._calendar_c_day {
+    text-align: center;
+    padding: 8px;
+    margin: 2px;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+
+  ._calendar_c_day:hover {
+    background-color: #007bff;
+    color: white;
+  }
+
+  ._calendar_c_selected-date {
+    background-color: #007bff;
+    color: white;
+  }
+
+  ._calendar_c_time-picker {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 8px;
+  }
+
+  ._calendar_c_time-picker input {
+    padding: 4px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
 </style>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

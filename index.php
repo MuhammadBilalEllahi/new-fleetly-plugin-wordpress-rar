@@ -39,10 +39,10 @@ add_action('admin_enqueue_scripts', 'enqueue_custom_plugin_assets_FOR_ADMIN');
 // ### BELOW HOOCK IS USED TO ADD SCRIPTS AND STYLES TO THE "FRONTEND"
 function enqueue_custom_plugin_assets_FOR_FRONTEND()
 {
-    wp_enqueue_style('nfp_main_root_style', NFP_PLUGIN_DIR_URL . 'assets/css/frontend/nfp_styles.css', array(), '1.0.0');
+    wp_enqueue_style('nfp_main_root_style', NFP_PLUGIN_DIR_URL . 'assets/css/frontend/nfp_styles.css', array(), '2.0.0');
     wp_enqueue_script('nfp_main_root_script', NFP_PLUGIN_DIR_URL . 'assets/js/frontend/nfp_scripts.js', array(), '1.0.0', true);
 
-    wp_enqueue_style('nfp_instant_quote_style', NFP_PLUGIN_DIR_URL . 'assets/css/frontend/nfpl_instant_quote.css', array(), '1.0.0');
+    wp_enqueue_style('nfp_instant_quote_style', NFP_PLUGIN_DIR_URL . 'assets/css/frontend/nfpl_instant_quote.css', array(), '1.0.2');
     wp_enqueue_script('nfp_instant_quote_script', NFP_PLUGIN_DIR_URL . 'assets/js/frontend/nfpl_instant_quote.js', array(), '1.0.0', true);
 
     wp_enqueue_style('nfp_quotations_widget_style', NFP_PLUGIN_DIR_URL . 'assets/css/frontend/nfpl_quotations_widget.css', array(), '1.0.0');
