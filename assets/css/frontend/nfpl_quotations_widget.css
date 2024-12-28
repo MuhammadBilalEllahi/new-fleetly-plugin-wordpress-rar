@@ -9,10 +9,11 @@
 
 /* Improved Card Design */
 .nfpl_js_styles_quotation_card {
-  background: #222;
+  background: var(--var-quote-card-color);
+  
   border-radius: 12px;
   padding: 1.25rem;
-  border: 1px solid #333;
+  border: 1px solid var(--var-border-color);;
   display: grid;
   grid-template-areas:
     "image title price"
@@ -45,7 +46,7 @@
   grid-area: title;
   margin: 0;
   font-size: 1.1rem;
-  color: #fff;
+  color: var(--var-quote-h3-color);
 }
 
 /* Details Section */
@@ -59,7 +60,7 @@
 
 .quotation-details p {
   margin: 0;
-  color: #999;
+  color: var(--var-quote-p-color);
   font-size: 0.85rem;
   display: inline-flex;
   align-items: center;
@@ -92,7 +93,7 @@
 
 /* Button Styling */
 .nfpl_js_styles_quotation_card button {
-  background: #ff8c00;
+  background: var(--var-button-color);
   color: white;
   border: none;
   padding: 0.5rem 1rem;
@@ -101,12 +102,14 @@
   font-size: 0.9rem;
   cursor: pointer;
   transition: background 0.2s;
-  grid-area: price;
-  justify-self: end;
+  grid-area: submit;
+  justify-self:end;
+  
 }
 
 .nfpl_js_styles_quotation_card button:hover {
-  background: #e67e00;
+  background: var(--var-button-color);
+  opacity: 0.9;
 }
 
 /* Responsive Design */
@@ -148,6 +151,219 @@
 }
 
 #nfpl_js_btn_onCompelete_return {
+  background: var(--var-button-color);
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  margin: 2% 0;
+  font-weight: 500;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background 0.2s;
+  grid-area: price;
+  justify-self: end;
+}
+
+/* Container Styles */
+#npfl_style_quotation_container {
+  max-width: 100%;
+  margin: 0 auto;
+  position: relative;
+  padding: 1rem;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, sans-serif;
+  /* background-color: #1a1a1a; */
+  color: var(--var-box-bg);
+}
+#npfl_style_quotation_container_child{
+  display: none;
+  
+}
+
+/* Title Styles */
+#nfpl_styles_title_quotation,
+#nfpl_js_style_return_quotation_h1 {
+  color: var(--var-heading-color);
+  font-size: 2rem;
+  margin: 0.7rem 0;
+  font-weight: 400;
+  text-align: center;
+}
+
+#nfpl_styles_title2_quotation {
+  color: var(--var-heading-color);
+  font-size: 1.5rem;
+  margin: 2rem 0;
+  text-align: center;
+}
+
+/* Booking Details Section */
+#nfpl_styles_booking_details {
+  background: var(--var-box-bg);
+  width: max-content;
+  border-radius: 12px;
+  padding: 2rem;
+  margin-bottom: 3rem;
+  border: 1px solid var(--var-border-color);
+}
+
+.nfpl_styles_detail, .nfpl_styles_detail2 {
+  background: transparent;
+  /* padding: 0; */
+  border: none;
+  border-radius: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  
+  /* gap: 0.5rem; */
+}
+
+.nfpl_styles_detail h3 {
+  color: var(--var-quote-h3-color);
+  font-size: 1rem;
+  padding-right: 1%;
+  font-weight: 600;
+}
+
+.nfpl_styles_detail2 p {
+  color: var(--var-quote-p-color);
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+/* Via Locations Special Styling */
+#nfpl_js_styles_via_locations {
+  color: #ff8c00;
+  position: relative;
+  padding-left: 0.5rem;
+}
+
+#nfpl_js_styles_via_locations:before {
+  content: "•";
+  position: absolute;
+  left: -0rem;
+  color: #ff8c00;
+}
+
+
+.nfpl_js_styles_spinner {
+  width: 50px;
+  height: 50px;
+  border: 5px solid #f3f3f3; /* Light gray */
+  border-top: 5px solid #3498db; /* Blue */
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+
+
+
+/* DARKTHEME BELOW  **************************************************************    */
+/* Quotation Cards Container Improvements 
+#nfpl_js_style_quotation_cards,
+#nfpl_js_style_return_quotation_cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+ Improved Card Design 
+.nfpl_js_styles_quotation_card {
+  background: #222;
+  border-radius: 12px;
+  padding: 1.25rem;
+  border: 1px solid #333;
+  display: grid;
+  grid-template-areas:
+    "image title price"
+    "image details details";
+  grid-template-columns: auto 1fr auto;
+  align-items: start;
+  gap: 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-height: 120px;
+}
+
+.nfpl_js_styles_quotation_card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border-color: #ff8c00;
+}
+
+ Image Optimization 
+.nfpl_js_styles_quotation_card img {
+  grid-area: image;
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  filter: brightness(0.9) contrast(1.1);
+}
+
+ Title Styling 
+.nfpl_js_styles_quotation_card h3 {
+  grid-area: title;
+  margin: 0;
+  font-size: 1.1rem;
+  color: #fff;
+}
+
+ Details Section 
+.quotation-details {
+  grid-area: details;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 0.25rem;
+}
+
+.quotation-details p {
+  margin: 0;
+  color: #999;
+  font-size: 0.85rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.quotation-details p:before {
+  content: "•";
+  color: #ff8c00;
+  font-size: 1rem;
+}
+
+ Price Styling 
+.quotation-price {
+  grid-area: price;
+  color: #ff8c00;
+  font-size: 1.4rem;
+  font-weight: 600;
+  text-align: right;
+  margin: 0;
+}
+
+ Radio Button Styling 
+.nfpl_styles_select_radio,
+.nfpl_styles_select_return_radio {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}
+
+ Button Styling 
+.nfpl_js_styles_quotation_card button {
   background: #ff8c00;
   color: white;
   border: none;
@@ -161,7 +377,63 @@
   justify-self: end;
 }
 
-/* Container Styles */
+.nfpl_js_styles_quotation_card button:hover {
+  background: #e67e00;
+}
+
+ Responsive Design 
+@media (max-width: 768px) {
+  .nfpl_js_styles_quotation_card {
+    grid-template-areas:
+      "image title title"
+      "image details details"
+      "price price price";
+    padding: 1rem;
+    gap: 0.75rem;
+  }
+
+  .nfpl_js_styles_quotation_card img {
+    width: 60px;
+    height: 60px;
+  }
+
+  .quotation-price {
+    margin-top: 0.5rem;
+    text-align: left;
+  }
+
+  .quotation-details {
+    margin-top: 0;
+  }
+}
+
+ Compact Design for Smaller Screens 
+@media (max-width: 480px) {
+  #nfpl_js_style_quotation_cards,
+  #nfpl_js_style_return_quotation_cards {
+    grid-template-columns: 1fr;
+  }
+
+  .nfpl_js_styles_quotation_card {
+    min-height: auto;
+  }
+}
+
+#nfpl_js_btn_onCompelete_return {
+  background: #ff8c00;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-weight: 500;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background 0.2s;
+  grid-area: price;
+  justify-self: end;
+}
+
+ Container Styles 
 #npfl_style_quotation_container {
   max-width: 100%;
   margin: 0 auto;
@@ -172,7 +444,7 @@
   color: white;
 }
 
-/* Title Styles */
+ Title Styles 
 #nfpl_styles_title_quotation,
 #nfpl_js_style_return_quotation_h1 {
   color: white;
@@ -189,7 +461,7 @@
   text-align: center;
 }
 
-/* Booking Details Section */
+ Booking Details Section 
 #nfpl_styles_booking_details {
   background: #2a2a2a;
   border-radius: 12px;
@@ -200,13 +472,13 @@
 
 .nfpl_styles_detail {
   background: transparent;
-  /* padding: 0; */
+   padding: 0; 
   border: none;
   border-radius: 0;
   display: flex;
   flex-direction: row;
   align-items: center;
-  /* gap: 0.5rem; */
+   gap: 0.5rem; 
 }
 
 .nfpl_styles_detail h3 {
@@ -222,7 +494,7 @@
   font-size: 1.1rem;
 }
 
-/* Via Locations Special Styling */
+ Via Locations Special Styling 
 .nfpl_styles_detail:last-child p {
   color: #ff8c00;
   position: relative;
@@ -234,4 +506,4 @@
   position: absolute;
   left: -0rem;
   color: #ff8c00;
-}
+} */

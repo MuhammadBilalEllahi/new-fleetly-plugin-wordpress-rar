@@ -1,16 +1,4 @@
 
-  /* Base Styles */
-  :root {
-    --primary-color: #2563eb;
-    --primary-hover: #1d4ed8;
-    --background: #ffffff;
-    --text-primary: #1f2937;
-    --text-secondary: #6b7280;
-    --border-color: #e5e7eb;
-    --border-radius: 8px;
-    --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1);
-    --transition: all 0.3s ease;
-  }
 
   .nfpl_styles_widget-container {
     max-width: 800px;

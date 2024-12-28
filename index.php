@@ -39,20 +39,8 @@ add_action('admin_enqueue_scripts', 'enqueue_custom_plugin_assets_FOR_ADMIN');
 // ### BELOW HOOCK IS USED TO ADD SCRIPTS AND STYLES TO THE "FRONTEND"
 function enqueue_custom_plugin_assets_FOR_FRONTEND()
 {
-    wp_enqueue_style('nfp_main_root_style', NFP_PLUGIN_DIR_URL . 'assets/css/frontend/nfp_styles.css', array(), '2.0.0');
+    wp_enqueue_style('nfp_main_root_style', NFP_PLUGIN_DIR_URL . 'assets/css/frontend/nfp_styles.css', array(), '1.0.1');
     wp_enqueue_script('nfp_main_root_script', NFP_PLUGIN_DIR_URL . 'assets/js/frontend/nfp_scripts.js', array(), '1.0.0', true);
-
-    wp_enqueue_style('nfp_instant_quote_style', NFP_PLUGIN_DIR_URL . 'assets/css/frontend/nfpl_instant_quote.css', array(), '1.0.2');
-    wp_enqueue_script('nfp_instant_quote_script', NFP_PLUGIN_DIR_URL . 'assets/js/frontend/nfpl_instant_quote.js', array(), '1.0.0', true);
-
-
-    wp_enqueue_style('nfp_calender_time_date_style', NFP_PLUGIN_DIR_URL . 'assets/css/frontend/nfpl_calender_time_date.css', array(), '1.0.2');
-    wp_enqueue_script('nfp_calender_time_date_script', NFP_PLUGIN_DIR_URL . 'assets/js/frontend/nfpl_calender_time_date.js', array(), '1.0.0', true);
-
-
-
-    wp_enqueue_style('nfp_quotations_widget_style', NFP_PLUGIN_DIR_URL . 'assets/css/frontend/nfpl_quotations_widget.css', array(), '1.0.0');
-    // npfl_quotations_widget.js is not imported, it is already in the quotations-widget.php file
 
 
 } 
@@ -146,17 +134,7 @@ if (!defined('NFP_MAIN_QOUTE_PAGE_SLUG')) {
 
 function fleetly_main_plugin_menu()
 {
-    /**
-     * add_menu_page is a built in function in wordpress that is used to add a menu page in the admin panel
-     * parameter of add_menu_page are as follows
-     * 1. page_title: The text to be displayed in the title tags of the page when the menu is selected.
-     * 2. menu_title: The text to be used for the menu.
-     * 3. capability: The capability required for this menu to be displayed to the user.
-     * 4. menu_slug: A unique slug for this menu page.
-     * 5. function: The function to be called to output the content for this page.
-     * 6. icon_url: The URL to the icon to be used for this menu.
-     * 7. position: The position in the menu order this one should appear.
-     */
+ 
     add_menu_page(
         'Fleetly Cabs',//page title
         'Fleetly', //menu title

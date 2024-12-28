@@ -11,10 +11,43 @@
     overflow-x: hidden !important;
   }
 
-  :root {
+  :root{
+    --var-quote-card-color: #f7f7f7;
+    --var-quote-h3-color: #121212;
+    --var-quote-p-color: #121212;
+    --var-quote-border-color: #121212;
+    --var-heading-color: #121212;
+    --var-box-bg: #ffffff;
+    --var-button-color: #1380f5;
+    --var-border-color: #1380f5;
+    --var-button-text: #ffff;
+
+
+    --primary-color: #2563eb;
+    --primary-hover: #1d4ed8;
+    --background: #ffffff;
+    --text-primary: #1f2937;
+    --text-secondary: #6b7280;
+    --border-radius: 8px;
+    --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1);
+    --transition: all 0.3s ease;
+    
+
+  }
+
+  .btn{
+    color: var(--var-button-text);
+    background-color: var(--var-button-color);
+    border: none;
+    padding: 0.6rem 0.5rem;
+    width: 100%;
+    border-radius: 0.4rem;
+}
+
+  /* :root {
     --var-header-color : #2c3e50;
-    --var-purple-color: #6c63ff; /* this color is good for asthetic if approved */
-    --var-purple-hover-bg-color:#e6e6ff; /* this color is good for asthetic if approved */
+    --var-purple-color: #6c63ff;
+    --var-purple-hover-bg-color:#e6e6ff; 
     --var-body-color: #f5f5f5;
     --var-testimonial-bg: #58b49d6f;
     --var-primary-color: #439d87;
@@ -32,9 +65,8 @@
     --var-textfield-background: #e6e6e6;
     --var-textfield-border: #b4b4b4;
     --var-lightiest-grey: rgba(255, 255, 255, 0.5);
-/* primary-opacity-color can be used for body */
     --var-primary-opacity-color: rgba(10,161,123, 0.03);
-  }
+  } */
 
   .text-light {
     color: var(--var-light-text) !important;
