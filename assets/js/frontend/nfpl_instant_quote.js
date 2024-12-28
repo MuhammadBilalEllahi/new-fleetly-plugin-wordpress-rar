@@ -440,7 +440,6 @@ function submitBookingForm() {
             duration: 3000,
         });
 
-        // alert("Please provide both Pickup and Dropoff Addresses.");
         return false;
     }
 
@@ -483,7 +482,11 @@ function submitBookingForm() {
         })
         .catch((error) => {
             console.error("Submission error:", error);
-            alert("Error: " + error.message);
+
+            showToast({
+                message: "Error: " + error.message, type: "error",
+                duration: 2000,
+            });
         })
         .finally(() => {
             // Reset the submit button state after completion

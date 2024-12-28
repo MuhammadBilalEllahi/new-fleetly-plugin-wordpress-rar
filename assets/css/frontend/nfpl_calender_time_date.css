@@ -1,0 +1,72 @@
+
+._calendar_c_container {
+    /* max-width: 300px; */
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background: #fff;
+    padding: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: absolute;
+    top:100%;
+    left:0;
+    display: none;
+    z-index: 10;
+    font-size: small;
+  }
+
+  ._calendar_c_header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+  }
+
+  ._calendar_c_header button {
+    background: #007bff;
+    color: white;
+    border: none;
+    padding: 4px 8px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  ._calendar_c_header button:hover {
+    background: #0056b3;
+  }
+
+  ._calendar_c_days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    margin-bottom: 8px;
+  }
+
+  ._calendar_c_day {
+    text-align: center;
+    padding: 8px;
+    margin: 2px;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+
+  ._calendar_c_day:hover {
+    background-color: #007bff;
+    color: white;
+  }
+
+  ._calendar_c_selected-date {
+    background-color: #007bff;
+    color: white;
+  }
+
+  ._calendar_c_time-picker {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 8px;
+  }
+
+  ._calendar_c_time-picker input {
+    padding: 4px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }

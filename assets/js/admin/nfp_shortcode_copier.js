@@ -12,7 +12,6 @@ document.addEventListener('DOMContentLoaded', () => {
             // Copy to clipboard
             navigator.clipboard.writeText(shortcode).then(() => {
                 icon.title = `Shortcode copied: ${shortcode}`;
-                // alert(`Shortcode copied: ${shortcode}`);
                 showToast({ message: `ShortCode Copied  ${shortcode}`, type: 'success', duration: 1000 });
             }).catch(err => {
                 console.error('Failed to copy shortcode: ', err);

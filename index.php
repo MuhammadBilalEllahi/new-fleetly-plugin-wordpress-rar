@@ -45,6 +45,12 @@ function enqueue_custom_plugin_assets_FOR_FRONTEND()
     wp_enqueue_style('nfp_instant_quote_style', NFP_PLUGIN_DIR_URL . 'assets/css/frontend/nfpl_instant_quote.css', array(), '1.0.2');
     wp_enqueue_script('nfp_instant_quote_script', NFP_PLUGIN_DIR_URL . 'assets/js/frontend/nfpl_instant_quote.js', array(), '1.0.0', true);
 
+
+    wp_enqueue_style('nfp_calender_time_date_style', NFP_PLUGIN_DIR_URL . 'assets/css/frontend/nfpl_calender_time_date.css', array(), '1.0.2');
+    wp_enqueue_script('nfp_calender_time_date_script', NFP_PLUGIN_DIR_URL . 'assets/js/frontend/nfpl_calender_time_date.js', array(), '1.0.0', true);
+
+
+
     wp_enqueue_style('nfp_quotations_widget_style', NFP_PLUGIN_DIR_URL . 'assets/css/frontend/nfpl_quotations_widget.css', array(), '1.0.0');
     // npfl_quotations_widget.js is not imported, it is already in the quotations-widget.php file
 
