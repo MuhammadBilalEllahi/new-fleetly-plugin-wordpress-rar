@@ -86,13 +86,31 @@ async function processPayment(paymentType) {
     }
 }
 
+
+
 // Event listeners for the buttons
 document.getElementById('nfpl_js_style_cash_option').addEventListener('click', function () {
     this.closest('.nfpl_style_payOption_button').querySelector('input[type="radio"]').checked = true;
+
+    const nfpl_js_style_cash_option = document.getElementById('nfpl_js_style_cash_option')
+    const nfpl_js_style_card_option = document.getElementById('nfpl_js_style_card_option')
+
+
+    nfpl_js_style_cash_option.classList.add('active')
+    nfpl_js_style_card_option.classList.remove('active')
+
+
 });
 
 document.getElementById('nfpl_js_style_card_option').addEventListener('click', function () {
     this.closest('.nfpl_style_payOption_button').querySelector('input[type="radio"]').checked = true;
+
+    const nfpl_js_style_cash_option = document.getElementById('nfpl_js_style_cash_option')
+    const nfpl_js_style_card_option = document.getElementById('nfpl_js_style_card_option')
+
+    nfpl_js_style_card_option.classList.add('active')
+    nfpl_js_style_cash_option.classList.remove('active')
+
 });
 
 

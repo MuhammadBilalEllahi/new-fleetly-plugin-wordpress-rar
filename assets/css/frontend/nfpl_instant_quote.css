@@ -16,7 +16,7 @@
   }
 
   .booking-label {
-    color: var(--primary-color);
+    color: var(--var-primary-color);
     text-transform: uppercase;
     font-size: 0.875rem;
     font-weight: 600;
@@ -56,6 +56,9 @@
     position: relative !important;
     display: flex;
     align-items: center;
+    border: 1px solid var(--var-border-color);
+    border-radius: 0.5rem;
+    background: #fff;
   }
 
   .input-icon {
@@ -75,8 +78,8 @@
   .nfpl_js_styles_input_field {
     width: 100%;
     padding: 0.75rem 1rem 0.75rem 2.5rem;
-    border: 1px solid var(--border-color);
-    border-radius: var(--border-radius);
+    border: 1px solid var(--var-border-color);
+    border-radius: var(--var-border-radius);
     font-size: 1rem;
     color: var(--text-primary);
     transition: var(--transition);
@@ -84,9 +87,10 @@
 
   .nfpl_js_styles_input_field:focus {
     outline: none;
-    border-color: var(--primary-color);
+    border-color: var(--var-primary-color);
     box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
   }
+  
 
   /* Dropdown Menu */
   .dropdown-menu {
@@ -94,9 +98,24 @@
     top: 100%;
     left: 0;
     right: 0;
-    background: var(--background);
-    border: 1px solid var(--border-color);
-    border-radius: var(--border-radius);
+    background-color: var(--var-dropdown-background);
+    border: 1px solid var(--var-border-color);
+    border-radius: var(--var-border-radius);
+    box-shadow: var(--shadow);
+    z-index: 10;
+    max-height: 200px;
+    overflow-y: auto;
+    display: none;
+  }
+
+  .nfpl_js_styles_dropdown_menu{
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: var(--var-dropdown-background);
+    border: 1px solid var(--var-border-color);
+    border-radius: var(--var-border-radius);
     box-shadow: var(--shadow);
     z-index: 10;
     max-height: 200px;
@@ -127,9 +146,9 @@
     gap: 0.5rem;
     padding: 0.5rem 1rem;
     background: transparent;
-    border: 1px solid var(--primary-color);
-    color: var(--primary-color);
-    border-radius: var(--border-radius);
+    border: 1px solid var(--var-primary-color);
+    color: var(--var-primary-color);
+    border-radius: var(--var-border-radius);
     font-size: 0.875rem;
     font-weight: 500;
     cursor: pointer;
@@ -145,7 +164,7 @@
     margin: 1% 0;
     width: 100%;
     padding: 1rem;
-    background: var(--primary-color);
+    background: var(--var-primary-color);
     color: white;
     border: none;
     border-radius: var(--border-radius);
@@ -156,7 +175,7 @@
   }
 
   .submit-btn:hover {
-    background: var(--primary-hover);
+    background: var(--var-primary-hover);
   }
 
   /* Toggle Switch */
@@ -199,7 +218,7 @@
   }
 
   .toggle input:checked+.toggle-slider {
-    background: var(--primary-color);
+    background: var(--var-primary-color);
   }
 
   .toggle input:checked+.toggle-slider:before {
@@ -230,7 +249,7 @@
   }
 
   .loading-text {
-    color: var(--primary-color);
+    color: var(--var-primary-color);
     margin-top: 1rem;
   } */
 
@@ -239,7 +258,7 @@
     width: 2.5rem;
     height: 2.5rem;
     border: 3px solid #f3f3f3;
-    border-top: 3px solid var(--primary-color);
+    border-top: 3px solid var(--var-primary-color);
     border-radius: 50%;
     animation: spin 1s linear infinite;
   }
@@ -310,7 +329,7 @@
 /* Dark Theme Styles */
 /* @media (prefers-color-scheme: dark) {
   :root {
-    --primary-color: #4f46e5;
+    --var-primary-color: #4f46e5;
     --primary-hover: #4338ca;
     --background: #18181b;
     --text-primary: #e5e7eb;
@@ -320,7 +339,7 @@
   }
 }
 :root.theme-light {
-  --primary-color: #2563eb;
+  --var-primary-color: #2563eb;
   --primary-hover: #1d4ed8;
   --background: #ffffff;
   --text-primary: #1f2937;
@@ -330,7 +349,7 @@
 }
 
 :root.theme-dark {
-  --primary-color: #4f46e5;
+  --var-primary-color: #4f46e5;
   --primary-hover: #4338ca;
   --background: #18181b;
   --text-primary: #e5e7eb;

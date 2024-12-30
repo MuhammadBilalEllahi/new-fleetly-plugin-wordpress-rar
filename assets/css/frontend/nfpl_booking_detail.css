@@ -1,13 +1,16 @@
-
+/* General Input Styles */
 .nfpl_js_style_input_container {
     display: flex;
     align-items: center;
-    border: 1px solid #b4b4b4;
+    border: 1px solid  var(--var-border-color);
     border-radius: 0.5rem;
-    margin-bottom: 1rem;
     background: #fff;
 }
 
+.nfpl_style_js_heading{
+    font-size: x-large !important;
+    font-weight: 600;
+}
 .nfpl_js_style_input_label {
     padding: 0.5rem;
     color: #666;
@@ -22,33 +25,69 @@
     outline: none;
     font-size: 1rem;
     width: 100%;
+    border-radius: 0.5rem;
 }
 
+/* Dropdown Styles */
 .custom-dropdown {
     display: flex;
     align-items: center;
-    min-width: 90px;
-    margin-right: 10px;
+    flex-direction: row;
+    flex: 1;
+    max-width: 100px;
+    /* margin-right: 10px; */
+}
+.custom-correct {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    flex: 1;
+    max-width: 100px;
+    /* margin-right: 10px; */
 }
 
 .dropdown-list {
     position: absolute;
     top: 100%;
     left: 0;
-    width: 100%;
+    right: 0;
     max-height: 200px;
     overflow-y: auto;
-    background: #fff;
-    border: 1px solid #ddd;
-    border-radius: 0.3rem;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
     z-index: 1000;
+    display: none; /* Hidden by default */
 }
 
+.dropdown-list div {
+    padding: 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.dropdown-list div:hover {
+    background-color: #f1f1f1;
+}
+
+.flag-icon {
+    width: 20px;
+    height: 15px;
+    margin-right: 10px;
+}
+.nfpl_js_style_searchCountryCode_customer{
+    width: 50% !important;
+}
+
+/* Checkbox Styles */
 .nfpl_js_style_checkbox_label {
     display: flex;
     align-items: center;
+    font-size: medium;
     gap: 0.5rem;
     cursor: pointer;
+    margin: 2% 0;
 }
 
 .checkbox-field {
@@ -57,30 +96,7 @@
     cursor: pointer;
 }
 
-.nfpl_js_style_custom_select select {
-    appearance: none;
-    background: transparent;
-    width: 100%;
-    padding-right: 2rem;
-    cursor: pointer;
-}
-
-.nfpl_js_style_custom_select::after {
-    content: '▼';
-    position: absolute;
-    right: 1rem;
-    top: 50%;
-    transform: translateY(-50%);
-    pointer-events: none;
-}
-
-textarea {
-    width: 100%;
-    border: 1px solid #b4b4b4;
-    border-radius: 0.5rem;
-    resize: vertical;
-}
-
+/* Buttons */
 .btn-primary {
     background: #007bff;
     color: white;
@@ -97,13 +113,69 @@ textarea {
     background: #0056b3;
 }
 
-h5 {
-    margin: 1.5rem 0 1rem;
-    font-weight: 600;
+/* Text Area */
+textarea {
+    width: 100%;
+    border: 1px solid  var(--var-border-color);
+    border-radius: 0.5rem;
+    resize: vertical;
 }
 
-.nfpl_js_styles_d_none {
-    display: none;
+/* Error and Success States */
+.input-error {
+    border-color: #dc3545;
+}
+
+p[id$="Error"],
+p[id$="Success"] {
+    margin-top: -0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+/* Voucher Section */
+#nfpl_js_style_Apply_voucher_button {
+    background: var(--var-button-color);
+    color: white;
+    border: none;
+    border-radius: 0.3rem;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+}
+
+#nfpl_js_style_Apply_voucher_button:hover {
+    background: var(--var-button-color);
+}
+
+/* Booking Details Widget */
+.nfpl_booking_details_widget {
+    padding: 20px;
+    max-width: 1200px;
+    margin: auto;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.nfpl_booking_details_widget h5 {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.nfpl_booking_details_widget .row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.nfpl_booking_details_widget .col {
+    flex: 1 1 calc(33.33% - 15px); /* 3 columns in a row */
+}
+
+@media screen and (max-width: 768px) {
+    .nfpl_booking_details_widget .col {
+        flex: 1 1 100%; /* 1 column on smaller screens */
+    }
 }
 
 /* Responsive Grid Layout */
@@ -129,7 +201,7 @@ h5 {
     }
 }
 
-/* Custom scrollbar for dropdowns */
+/* Custom Scrollbar */
 .dropdown-list::-webkit-scrollbar {
     width: 6px;
 }
@@ -143,138 +215,38 @@ h5 {
     border-radius: 3px;
 }
 
-/* Error states */
-.input-error {
-    border-color: #dc3545;
-}
+/* .nfpl_js_style_form_phNumber{
+    height: min-content;
+} */
 
-p[id$="Error"] {
-    margin-top: -0.5rem;
-    margin-bottom: 0.5rem;
-}
-
-/* Success states */
-p[id$="Success"] {
-    margin-top: -0.5rem;
-    margin-bottom: 0.5rem;
-}
-
-/* Voucher section */
-#nfpl_js_style_Apply_voucher_button {
-    background: #198754;
-    color: white;
-    border: none;
-    border-radius: 0.3rem;
-    padding: 0.5rem 1rem;
-    cursor: pointer;
-}
-
-#nfpl_js_style_Apply_voucher_button:hover {
-    background: #146c43;
-}
-
-#nfpl_js_style_submitPassengerInfo{
-    color: var(--var-button-text);
-    background-color: var(--var-button-color);
-    border: none;
-    padding: 0.6rem 0.5rem;
-    width: 100%;
-    border-radius: 0.4rem;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-.custom-dropdown {
-    max-width: 100px;
-    margin-right: 5px;
-}
-
-
-#nfpl_js_style_searchCountryCode_customer {
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    width: 100%;
-    font-size: 14px;
-}
-
-#nfpl_js_style_searchCountryCode_passenger {
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    width: 100%;
-    font-size: 14px;
-}
-
-
-
-
-
-
-
-
-
-
-
-.dropdown-list {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    max-height: 200px;
-    overflow-y: auto;
-    background-color: #fff;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    z-index: 1000;
-    display: none;
-    /* Hidden by default */
-}
-
-.dropdown-list div {
-    padding: 10px;
-    cursor: pointer;
+.form-group {
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    margin-bottom: 0.5rem;
+
 }
 
-.dropdown-list div:hover {
-    background-color: #f1f1f1;
+.form-group label {
+    /* margin-bottom: 8px; */
+    /* font-weight: bold; */
+    color: #555;
+}
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 16px;
+}
+.form-container {
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
-.flag-icon {
-    width: 20px;
-    height: 15px;
-    margin-right: 10px;
-    vertical-align: middle;
-}
 
-
+.nfpl_js_styles_d_none{
+    display: none;
+  }
+  
+  
+  .form-group p{
+    font-size: medium;
+  }

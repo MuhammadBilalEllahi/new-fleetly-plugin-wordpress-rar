@@ -1,7 +1,7 @@
 <?php 
 function enqueue_custom_plugin_assets_FOR_INSTANT_QUOTE_WIDGET(){
 
-  wp_enqueue_style('nfp_instant_quote_style', NFP_PLUGIN_DIR_URL . 'assets/css/frontend/nfpl_instant_quote.css', array(), '1.0.3');
+  wp_enqueue_style('nfp_instant_quote_style', NFP_PLUGIN_DIR_URL . 'assets/css/frontend/nfpl_instant_quote.css', array(), '1.0.0');
   wp_enqueue_script('nfp_instant_quote_script', NFP_PLUGIN_DIR_URL . 'assets/js/frontend/nfpl_instant_quote.js', array(), '1.0.0', true);
 
 
@@ -134,59 +134,64 @@ add_action('wp_enqueue_scripts', 'enqueue_custom_plugin_assets_FOR_INSTANT_QUOTE
               <label for="_calendar_c_time">Time:</label>
               <input type="time" id="_calendar_c_time">
             </div>
-            <button id="_calendar_c_submit">Submit</button>
+            <button id="_calendar_c_submit" class="btn">Submit</button>
           </div>
         </div>
       </div>
 
       <!-- Return Date/Time -->
-      <div id="nfpl_js_styles_end_date_two_way_parent" class="nfpl_js_styles_d_none form-group">
-        <label class="input-label">Return Date/Time</label>
-        <div class="input-wrapper">
-          <div class="input-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" stroke="currentColor"
-              stroke-width="2" width="24" height="24">
-              <rect x="3" y="4" width="18" height="16" rx="2" />
-              <path stroke-linecap="round" stroke-linejoin="round" d="M3 10h18M16 4v4M8 4v4" />
-            </svg>
-          </div>
-          <!-- <input required id="nfpl_form_js_EndDateTime" type="datetime-local" class="nfpl_js_styles_input_field"
-            placeholder="Return Pickup Date/Time" /> -->
-
-            
-          <input type="text" required data-calendar="true" class="nfpl_js_styles_input_field" id="nfpl_form_js_EndDateTime"
-            placeholder="Select date and time" readonly>
-
-            
-            <div class="_calendar_c_container" id="_calendar_c_calendarContainer">
-            <div class="_calendar_c_header">
-              <button id="_calendar_c_prevMonth">&lt;</button>
-              <h3 id="_calendar_c_currentMonth"></h3>
-              <button id="_calendar_c_nextMonth">&gt;</button>
+      <div class="form-group">
+        <div id="nfpl_js_styles_end_date_two_way_parent" class="nfpl_js_styles_d_none form-group">
+          <label class="input-label">Return Date/Time</label>
+          <div class="input-wrapper">
+            <div class="input-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" stroke="currentColor"
+                stroke-width="2" width="24" height="24">
+                <rect x="3" y="4" width="18" height="16" rx="2" />
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3 10h18M16 4v4M8 4v4" />
+              </svg>
             </div>
-            <div class="_calendar_c_days" id="_calendar_c_calendarDays"></div>
-            <div class="_calendar_c_time-picker">
-              <label for="_calendar_c_time">Time:</label>
-              <input type="time" id="_calendar_c_time">
+            <!-- <input required id="nfpl_form_js_EndDateTime" type="datetime-local" class="nfpl_js_styles_input_field"
+              placeholder="Return Pickup Date/Time" /> -->
+
+              
+            <input type="text" required data-calendar="true" class="nfpl_js_styles_input_field" id="nfpl_form_js_EndDateTime"
+              placeholder="Select date and time" readonly>
+
+              
+              <div class="_calendar_c_container" id="_calendar_c_calendarContainer">
+              <div class="_calendar_c_header">
+                <button id="_calendar_c_prevMonth">&lt;</button>
+                <h3 id="_calendar_c_currentMonth"></h3>
+                <button id="_calendar_c_nextMonth">&gt;</button>
+              </div>
+              <div class="_calendar_c_days" id="_calendar_c_calendarDays"></div>
+              <div class="_calendar_c_time-picker">
+                <label for="_calendar_c_time">Time:</label>
+                <input type="time" id="_calendar_c_time">
+              </div>
+              <button id="_calendar_c_submit">Submit</button>
             </div>
-            <button id="_calendar_c_submit">Submit</button>
+
+
           </div>
-
-
         </div>
       </div>
 
 
-        </div>
-      </div>
     </div>
+      
 
-    <div class="toggle-container">
-      <label class="toggle">
-        <span class="toggle-label">One way?</span>
-        <input style="display: none;" type="checkbox" id="nfpl_js_styles_OneWayCheckBox" checked="checked" />
-        <span class="toggle-slider"></span>
-      </label>
+    <div class="form-grid">
+      <div class="form-group">
+          <div class="toggle-container">
+          <label class="toggle">
+            <span class="toggle-label">One way?</span>
+            <input style="display: none;" type="checkbox" id="nfpl_js_styles_OneWayCheckBox" checked="checked" />
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+      </div>
     </div>
 
     <button id="add-return-btn" class="nfpl_js_styles_d_none add-stop-btn">
@@ -195,8 +200,8 @@ add_action('wp_enqueue_scripts', 'enqueue_custom_plugin_assets_FOR_INSTANT_QUOTE
 
     <div id="nfpl_js_styles_iaRetrun_twoWay" class="form-grid via-stops"></div>
 
-    <div class="submit-container">
-      <button id="nfpl_js_styles_submit_btn_widget" class="submit-btn">Calculate Price</button>
+    <div class="">
+      <button id="nfpl_js_styles_submit_btn_widget" class="btn">Calculate Price</button>
     </div>
   </div>
 </div>

@@ -19,18 +19,20 @@
     --var-heading-color: #121212;
     --var-box-bg: #ffffff;
     --var-button-color: #1380f5;
-    --var-border-color: #1380f5;
+    /* --var-border-color: #1380f5; */
+    --var-border-color: #d1d1d1;
+
     --var-button-text: #ffff;
 
 
-    --primary-color: #2563eb;
-    --primary-hover: #1d4ed8;
-    --background: #ffffff;
-    --text-primary: #1f2937;
-    --text-secondary: #6b7280;
-    --border-radius: 8px;
-    --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1);
-    --transition: all 0.3s ease;
+    --var-primary-color: #2563eb;
+    --var-primary-hover: #e3ecff;
+    --var-dropdown-background: #ffffff;
+    --var-text-primary: #1f2937;
+    --var-text-secondary: #6b7280;
+    --var-border-radius: 0.5rem;
+    --var-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1);
+    --var-transition: all 0.3s ease;
     
 
   }
@@ -178,3 +180,8 @@
 }
 
 /* LOADING ENDS HERE */
+
+.nfpl_js_styles_d_none{
+  display: none;
+}
+

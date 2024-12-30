@@ -2,18 +2,17 @@
 
 const getAllDataFromBookingId = async () => {
     try {
-        const response = await fetch(getUserData, {
+        const response = await fetch(nfpl_GET_api_UserData, {
             method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-                'tenant-widgetapikey': `${nfpl_var_apikey}`
-            }
+            headers: headers
         });
         const data = await response.json();
         console.log("Data: ", data);
 
         document.getElementById("nfpl_js_style_form_from").value = data.from_desc;
         document.getElementById("nfpl_js_style_form_to").value = data.to_desc;
+
+        document.getElementById('')
 
 
         // document.getElementById("nfpl_js_style_form_name").value = data.name;
@@ -95,12 +94,9 @@ document.addEventListener("DOMContentLoaded", function () {
             e.target.disabled = true;
 
 
-            fetch(nfpl_api_remove_voucher, {
+            fetch(nfpl_api_POST_remove_voucher, {
                 method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                    "tenant-widgetapikey": `${nfpl_var_apikey}`,
-                },
+                headers: headers,
             })
                 .then((response) => response.json())
                 .then((data) => {
@@ -153,13 +149,9 @@ document.addEventListener("DOMContentLoaded", function () {
             console.log("Val", voucherValue);
 
             e.target.disabled = true;
-            fetch(nfpl_api_apply_voucher, {
+            fetch(nfpl_api_POST_apply_voucher, {
                 method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                    "tenant-widgetapikey": `${nfpl_var_apikey}`,
-
-                },
+                headers: headers,
                 body: JSON.stringify({
                     code: voucherValue,
                 }),
@@ -208,21 +200,16 @@ document.addEventListener("DOMContentLoaded", function () {
             const selectedAddons = Array.from(addonInputs)
                 .filter(
                     (addon) =>
-                        addon.checked &&
-                        addon.getAttribute("data-booking-id") === bookingId
+                        addon.checked && bookingId
                 )
                 .map((addon) => addon.value);
 
             addonInputs.forEach((addon) => (addon.disabled = true));
 
 
-            fetch(nfpl_api_add_addon_to_booking, {
+            fetch(nfpl_api_POST_add_addon_to_booking, {
                 method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                    "tenant-widgetapikey": `${nfpl_var_apikey}`,
-
-                },
+                headers: headers,
                 body: JSON.stringify({
                     addons: selectedAddons,
                 }),
@@ -436,14 +423,10 @@ document.addEventListener("DOMContentLoaded", function () {
         console.table(data);
 
         fetch(
-            nfpl_submit_api_WidgetPassengerDetailUrl,
+            nfpl_submit_api_POST_WidgetPassengerDetailUrl,
             {
                 method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                    "tenant-widgetapikey": `${nfpl_var_apikey}`,
-
-                },
+                headers: headers,
                 body: JSON.stringify(data),
             }
         )
@@ -530,11 +513,7 @@ document.addEventListener("input", async function (event) {
         try {
             const response = await fetch(nfpl_var_apiUrl_Google, {
                 method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                    "tenant-widgetapikey": `${nfpl_var_apikey}`,
-
-                },
+                headers: headers,
                 body: JSON.stringify({ query }), // Send the query as JSON
             });
 

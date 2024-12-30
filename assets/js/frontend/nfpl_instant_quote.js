@@ -276,7 +276,7 @@ document
         returnInputContainer.innerHTML = `
       <p class="input-label">Via Return </p>
       <div class="nfpl_js_styles_places nfpl_js_styles_input_container">
-                                                <div class="nfpl_styles_input_label input-wrapper">
+               <div class="nfpl_styles_input_label input-wrapper">
 
                                                                         <div class="input-icon" style="top: 7; bottom: 0;">
                                                                             <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" stroke="currentColor"
@@ -287,25 +287,26 @@ document
                                                                             </svg>
                                                                         </div>
                                             
-                                            </div>
-                                        <input 
-                                        required
-                                        type="text"
-                                        name="nfpl_js_styles_ViaReturn-${nfpl_js_styles_ViaReturn}"
-                                        class="nfpl_js_styles_input_field nfpl_js_styles_place_input"
-                                        placeholder="via return location"
-                                        autocomplete="off"
-                                        />
+                                           
+                                                                    <input 
+                                                                    required
+                                                                    type="text"
+                                                                    name="nfpl_js_styles_ViaReturn-${nfpl_js_styles_ViaReturn}"
+                                                                    class="nfpl_js_styles_input_field nfpl_js_styles_place_input"
+                                                                    placeholder="via return location"
+                                                                    autocomplete="off"
+                                                                    />
             
             
-            <button class="nfpl_js_styles_close_btn">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" width="24" height="24">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-                </svg>
-            </button>
+                                                                    <button class="nfpl_js_styles_close_btn">
+                                                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" width="24" height="24">
+                                                                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                                                                        </svg>
+                                                                    </button>
 
 
-            <div class="nfpl_js_styles_dropdown_menu nfpl_js_styles_drop-set dropdown-m"></div>
+                                                                    <div class="nfpl_js_styles_dropdown_menu nfpl_js_styles_drop-set dropdown-m">
+                                                                    </div>
 
 
             </div>

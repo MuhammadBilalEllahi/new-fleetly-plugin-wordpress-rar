@@ -24,7 +24,7 @@
 #nfpl_js_style_payment_method {
     display: flex;
     flex-direction: column;
-    row-gap: 0.4rem;
+    /* row-gap: 0.4rem; */
     width: 100%;
 }
 
@@ -33,6 +33,7 @@
     flex-direction: row;
     align-items: center;
     border: 0.7px solid var(--var-primary-color);
+    margin: 1% 0;
     width: 100%;
     padding:  0.5rem;
     background-color: transparent;
@@ -43,14 +44,17 @@
     font-size: 0.9rem;
 }
 
-.nfpl_style_cash_button {}
-
-.nfpl_style_card_button {}
+.nfpl_style_cash_button.active ,
+.nfpl_style_card_button.active {
+    background-color: var(--var-primary-hover) !important;
+}
 
 .nfpl_style_cash_button:hover,
 .nfpl_style_card_button:hover {
     opacity: 0.9;
+    background-color: var(--var-primary-hover);
 }
+
 
 /* #nfpl_js_submit_button{
     border: none;

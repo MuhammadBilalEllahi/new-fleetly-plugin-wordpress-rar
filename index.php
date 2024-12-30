@@ -257,7 +257,8 @@ function nfpl_function_quotation_plugin_settings_init()
     $data_fields = array(
         array('id' => 'nfpl_data_tenant_owner_id', 'label' => 'Tenant Owner ID'),
         array('id' => 'nfpl_data_api_url_prefix', 'label' => 'API URL Prefix'),
-        array('id' => 'nfpl_data_api_key', 'label' => 'API Key')
+        array('id' => 'nfpl_data_api_key', 'label' => 'API Key'),
+        array('id' => 'nfpl_data_terms_conditions', 'label' => 'Your Terms & Condition Link'),
     );
 
     foreach ($data_fields as $field) {
@@ -381,6 +382,17 @@ if(!function_exists('nfpl_function_get_navigation_url')) {
     }
 }
 
+
+
+// Function to get API URL prefix from settings
+if (!function_exists('nfpl_function_get_terms_and_conditions_url')) {
+    function nfpl_function_get_terms_and_conditions_url()
+    {
+        $options = get_option('nfp_quotation_settings_group_options');
+        return isset($options['nfpl_data_terms_conditions']) ? esc_url($options['nfpl_data_terms_conditions']) : '';
+    }
+
+}
 
 
 ?>
