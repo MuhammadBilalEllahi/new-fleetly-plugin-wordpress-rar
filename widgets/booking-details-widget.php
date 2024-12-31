@@ -25,12 +25,14 @@ add_action('wp_enqueue_scripts', 'enqueue_custom_plugin_assets_FOR_BOOKING_DETAI
     // console.log("Booking ID:", bookingId);
 
 
+    // let nfpl_var_getFrom_UserData_returnBooking='';
     const nfpl_var_apiUrl_Google = `${nfpl_var_apiUrlPrefixs}/api/public/google/autocomplete`;
     const nfpl_GET_api_UserData = `${nfpl_var_apiUrlPrefixs}/plugin/dispatcher/widget-quotations/${bookingId}`;
     const nfpl_submit_api_POST_WidgetPassengerDetailUrl = `${nfpl_var_apiUrlPrefixs}/plugin/dispatcher/widget-passenger-details/${bookingId}`;
     const nfpl_api_POST_remove_voucher = `/dispatcher/widget-remove-voucher/${bookingId}`
     const nfpl_api_POST_apply_voucher = `/dispatcher/widget-apply-voucher/${bookingId}`
-    const nfpl_api_POST_add_addon_to_booking = `/dispatcher/widget-add-addon-to-booking/${bookingId}`
+    const nfpl_api_POST_add_addon_to_booking = `${nfpl_var_apiUrlPrefixs}/plugin/dispatcher/widget-add-addon-to-booking/`
+    // let nfpl_api_POST_add_addon_to_Return_booking = `/dispatcher/widget-add-addon-to-booking/${bookingId}`
 
 
     const paymentPageUrlAndPageNumber = '<?php echo esc_url(nfpl_function_get_navigation_url(PAYMENT_DETAILS_WIDGET)); ?>';
@@ -332,11 +334,7 @@ add_action('wp_enqueue_scripts', 'enqueue_custom_plugin_assets_FOR_BOOKING_DETAI
                 <div class="" >
                     <h5>Select Add-Ons</h5>
                     <div id="nfpl_js_style_journeyAddons" >
-                        <div>
-                            <label class="nfpl_js_style_checkbox_label">
-                                <input class="checkbox-field nfpl_js_style_addon_input" value="" type="checkbox"/>
-                            </label>
-                        </div>
+                        
                     </div>
 
                 </div>
@@ -346,17 +344,15 @@ add_action('wp_enqueue_scripts', 'enqueue_custom_plugin_assets_FOR_BOOKING_DETAI
                 <div class="">
                     <h5>Return Add Ons</h5>
                     <div id="nfpl_js_style_returnJourneyAddons">
-                        <div>
-                            <label class="nfpl_js_style_checkbox_label">
-                                <input type="checkbox" class="checkbox-field nfpl_js_style_addon_input" />
-
-                            </label>
-                        </div>
+                       
                     </div>
                 </div>
 
                 <hr />
 
+                <div id="bookingPricingWrapper">
+
+                </div>
                 <div class=" my-2">
                     <h5 class="">Comment?</h5>
                     <textarea id="nfpl_js_style_comment" class=" p-1"

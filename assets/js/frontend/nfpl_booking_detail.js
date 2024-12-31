@@ -12,7 +12,116 @@ const getAllDataFromBookingId = async () => {
         document.getElementById("nfpl_js_style_form_from").value = data.from_desc;
         document.getElementById("nfpl_js_style_form_to").value = data.to_desc;
 
-        document.getElementById('')
+        const forwardAddonList = document.getElementById('nfpl_js_style_journeyAddons')
+        const returnAddonList = document.getElementById('nfpl_js_style_returnJourneyAddons')
+
+        if (data.addonsDefaultList.length != 0) {
+            data.addonsDefaultList.map(addon => {
+                console.log("ADDONS", addon)
+
+                const isCheckedForward =
+                    data.forwardAddons.some((forwardAddon) => forwardAddon._id === addon._id);
+                const isCheckedReturn =
+                    data.returnAddons.some((returnAddon) => returnAddon._id === addon._id);
+
+
+                const addonDiv = document.createElement('div');
+
+                // Add HTML content to the div
+                addonDiv.innerHTML = `
+                                    <label class="nfpl_js_style_checkbox_label">
+                                        ${addon.title} <span>${addon.amount}</span>
+                                        <input type="checkbox"  
+                                        value="${addon._id}" 
+                                        ${isCheckedForward && "checked"}
+                                        class="checkbox-field nfpl_js_style_addon_input" 
+                                        data-bookingid="${data.bookingId}" 
+                                        data-isreturn="false" />
+                                    </label>
+                                `;
+
+                // Append the div to the forwardAddonList
+                forwardAddonList.appendChild(addonDiv);
+
+
+                if (data.returnQuotation === 1) {
+                    const returnAddonDiv = document.createElement('div');
+
+                    // Add HTML content to the div
+                    returnAddonDiv.innerHTML = `
+                                                <label class="nfpl_js_style_checkbox_label">
+                                                    ${addon.title} <span>${addon.amount}</span>
+                                                    <input type="checkbox"
+                                                     value="${addon._id}" 
+                                                     ${isCheckedReturn && "checked"}
+
+                                                     class="checkbox-field nfpl_js_style_addon_input"
+                                                      data-bookingid="${data.returnQuotationId}"
+                                                       data-isreturn="true" />
+                                                </label>
+                                            `;
+
+                    // Append the div to the forwardAddonList
+                    returnAddonList.appendChild(returnAddonDiv);
+                }
+
+            })
+        }
+
+
+        const addonInputs = document.querySelectorAll(".nfpl_js_style_addon_input");
+        addonInputs.forEach((input) => {
+            input.addEventListener("click", function (e) {
+
+                const isReturn = e.target.dataset.isreturn
+                console.log("ISRETUR", isReturn)
+
+                const selectedAddons = Array.from(addonInputs)
+                    .filter(
+                        (addon) => {
+                            console.log("here", addon)
+                            return addon.checked && addon.dataset.bookingid && addon.dataset.isreturn === String(isReturn)
+                        }
+                    )
+                    .map((addon) => addon.value);
+
+                console.log("sel", selectedAddons)
+                addonInputs.forEach((addon) => (addon.disabled = true));
+
+                const nfpl_var_from_addon_bookingId = e.target.dataset.bookingid;
+                console.log("log", nfpl_var_from_addon_bookingId, e.target, selectedAddons)
+
+                // data-bookindId
+                fetch(nfpl_api_POST_add_addon_to_booking + nfpl_var_from_addon_bookingId, {
+                    method: "POST",
+                    headers: headers,
+                    body: JSON.stringify({
+                        addons: selectedAddons,
+                    }),
+                })
+                    .then((response) => response.json())
+                    .then((data) => {
+                        console.log(data)
+                        addonInputs.forEach((addon) => (addon.disabled = false));
+                        document.getElementById("bookingPricingWrapper").innerHTML =
+                            data.booking.priceToCharge;
+                        console.log(data.booking.priceToCharge);
+
+
+                        showToast({
+                            message: "Add-on processed  successfully!",
+                            type: "success",
+                            duration: 2000,
+                        });
+                    })
+                    .catch((err) => {
+                        addonInputs.forEach((addon) => (addon.disabled = false));
+                        console.error(err);
+                    });
+            });
+        });
+
+
 
 
         // document.getElementById("nfpl_js_style_form_name").value = data.name;
@@ -46,6 +155,7 @@ document.addEventListener("DOMContentLoaded", (e) => {
 
     getAllDataFromBookingId()
 })
+
 document.addEventListener("DOMContentLoaded", function () {
 
 
@@ -193,47 +303,6 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    const addonInputs = document.querySelectorAll(".nfpl_js_style_addon_input");
-    addonInputs.forEach((input) => {
-        input.addEventListener("click", function (e) {
-
-            const selectedAddons = Array.from(addonInputs)
-                .filter(
-                    (addon) =>
-                        addon.checked && bookingId
-                )
-                .map((addon) => addon.value);
-
-            addonInputs.forEach((addon) => (addon.disabled = true));
-
-
-            fetch(nfpl_api_POST_add_addon_to_booking, {
-                method: "POST",
-                headers: headers,
-                body: JSON.stringify({
-                    addons: selectedAddons,
-                }),
-            })
-                .then((response) => response.json())
-                .then((data) => {
-                    addonInputs.forEach((addon) => (addon.disabled = false));
-                    document.getElementById("bookingPricingWrapper").innerHTML =
-                        data.pricingContent;
-                    console.log(data.pricingContent);
-
-
-                    showToast({
-                        message: "Add-on processed  successfully!",
-                        type: "success",
-                        duration: 2000,
-                    });
-                })
-                .catch((err) => {
-                    addonInputs.forEach((addon) => (addon.disabled = false));
-                    console.error(err);
-                });
-        });
-    });
 
     document
         .getElementById("nfpl_js_style_bookingForSomeoneElse_Checkbox")
