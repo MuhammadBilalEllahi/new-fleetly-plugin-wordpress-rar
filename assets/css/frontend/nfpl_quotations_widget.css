@@ -201,7 +201,7 @@
 /* Booking Details Section */
 #nfpl_styles_booking_details {
   background: var(--var-box-bg);
-  width: max-content;
+  width: 100%;
   border-radius: 12px;
   padding: 2rem;
   margin-bottom: 3rem;

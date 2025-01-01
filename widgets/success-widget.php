@@ -1,11 +1,12 @@
-<?php 
-function enqueue_custom_plugin_assets_FOR_INSTANT_QUOTE_WIDGET(){
+<?php
+function enqueue_custom_plugin_assets_FOR_INSTANT_QUOTE_WIDGET()
+{
 
-//   wp_enqueue_style('nfp_success_widget_style', NFP_PLUGIN_DIR_URL . 'assets/css/frontend/nfpl_success_widget.css', array(), '1.0.3');
-  wp_enqueue_script('nfp_success_widget_script', NFP_PLUGIN_DIR_URL . 'assets/js/frontend/nfpl_success_widget.js', array(), '1.0.0', true);
+    //   wp_enqueue_style('nfp_success_widget_style', NFP_PLUGIN_DIR_URL . 'assets/css/frontend/nfpl_success_widget.css', array(), '1.0.3');
+    wp_enqueue_script('nfp_success_widget_script', NFP_PLUGIN_DIR_URL . 'assets/js/frontend/nfpl_success_widget.js', array(), '1.0.0', true);
 
 
-} 
+}
 //UNDERSTAND MORE : https://developer.wordpress.org/reference/functions/add_action/
 add_action('wp_enqueue_scripts', 'enqueue_custom_plugin_assets_FOR_INSTANT_QUOTE_WIDGET');
 
@@ -94,11 +95,16 @@ add_action('wp_enqueue_scripts', 'enqueue_custom_plugin_assets_FOR_INSTANT_QUOTE
                     <h6 style="margin-bottom: 5px;">Payment Mode:</h6>
                     <h6 style="margin-bottom: 5px;">Total Due:</h6>
                     <h6 style="margin-bottom: 5px;">Date:</h6>
+                    <h6 style="margin-bottom: 5px;">Payment Status:</h6>
+                    <h6 style="margin-bottom: 5px;">Payment Paid:</h6>
                 </div>
                 <div style="flex: 1;">
                     <p id="nfpl_js_style_payment_mode" style="margin-bottom: 5px; font-weight: bold;">CASH</p>
                     <p id="nfpl_js_style_total_due" style="margin-bottom: 5px;"></p>
                     <p id="nfpl_js_style_date" style="margin-bottom: 5px;"></p>
+                    
+                    <p id="nfpl_js_style_payment_status" style="margin-bottom: 5px;"></p>
+                    <p id="nfpl_js_style_payment_paid" style="margin-bottom: 5px;"></p>
                 </div>
             </div>
 
@@ -125,4 +131,122 @@ add_action('wp_enqueue_scripts', 'enqueue_custom_plugin_assets_FOR_INSTANT_QUOTE
             <h2 style="font-size: 1.8rem; margin-bottom: 10px;">No booking to show</h2>
         </div>
     </div>
+
+
+
+    <div id="nfpl_styles_booking_details">
+        <h2 style="text-align:center;">Passenger Booking Details</h2>
+        <div id="nfpl_styles_sub_booking_details">
+
+
+
+            <div style="display: flex; flex-direction: row; width: 100%;">
+                <div class="nfpl_styles_detail">
+                    <div class="nfpl_styles_detail_sub">
+                        <h3>Reference #:</h3>
+                        <p id="nfpl_js_styles_reference">Loading...</p>
+                    </div>
+                    <div class="nfpl_styles_detail_sub">
+                        <h3>Pickup Location:</h3>
+                        <p id="nfpl_js_styles_pickup_location">Loading...</p>
+                    </div>
+                    <div class="nfpl_styles_detail_sub">
+                        <h3>Dropoff Location:</h3>
+                        <p id="nfpl_js_styles_dropoff_location">Loading...</p>
+                    </div>
+
+                    <div class="nfpl_styles_detail_sub">
+                        <h3>Pickup Time:</h3>
+                        <p id="nfpl_js_styles_pickup_time">Loading...</p>
+                    </div>
+                    
+                    <div class="nfpl_styles_detail_sub">
+                        <h3>Booked At:</h3>
+                        <p id="nfpl_js_styles_booked_at">Loading...</p>
+                    </div>
+                    <div class="nfpl_styles_detail_sub">
+                        <h3>Duration:</h3>
+                        <p id="nfpl_js_styles_duration">Loading...</p>
+                    </div>
+                    <div class="nfpl_styles_detail_sub">
+                        <h3>Via:</h3>
+                        <p id="nfpl_js_styles_via_locations">Loading...</p>
+                    </div>
+                </div>
+
+               
+            </div>
+        </div>
+    </div>
 </section>
+
+
+
+
+<style>
+    /* Booking Details Section */
+    #nfpl_styles_booking_details {
+        background: var(--var-box-bg);
+        width: 100%;
+        border-radius: 12px;
+        padding: 2rem;
+        margin-bottom: 3rem;
+        border: 1px solid var(--var-border-color);
+    }
+
+    .nfpl_styles_detail,
+    .nfpl_styles_detail2 {
+        background: transparent;
+        /* padding: 0; */
+        border: none;
+        border-radius: 0;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+
+        /* gap: 0.5rem; */
+    }
+
+    .nfpl_styles_detail h3 {
+        color: var(--var-quote-h3-color);
+        font-size: 1rem;
+        padding-right: 1%;
+        font-weight: 600;
+        
+    }
+
+    .nfpl_styles_detail2 p {
+        color: var(--var-quote-p-color);
+        margin: 0;
+        font-size: 1.1rem;
+    }
+
+    /* Via Locations Special Styling */
+    #nfpl_js_styles_via_locations {
+        color: #ff8c00;
+        position: relative;
+        padding-left: 0.5rem;
+    }
+
+    #nfpl_js_styles_via_locations:before {
+        content: "•";
+        position: absolute;
+        left: -0rem;
+        color: #ff8c00;
+    }
+    .nfpl_styles_detail_sub {
+        display: flex;
+        flex-direction: column;
+
+align-items: start;
+        gap: 1rem;
+    }
+    @media (min-width: 768px) {
+        .nfpl_styles_detail_sub {
+            display: flex;
+            flex-direction: row;
+            gap: 2rem;
+        }
+        
+    }
+</style>

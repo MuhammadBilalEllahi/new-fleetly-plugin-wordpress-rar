@@ -2,15 +2,21 @@
 
 const getAllDataFromBookingId = async () => {
     try {
-        const response = await fetch(nfpl_GET_api_UserData, {
+        const response = await fetch(nfpl_api_GET_WidgetPassengerDetailUrl, {
             method: 'GET',
             headers: headers
         });
         const data = await response.json();
         console.log("Data: ", data);
 
-        document.getElementById("nfpl_js_style_form_from").value = data.from_desc;
-        document.getElementById("nfpl_js_style_form_to").value = data.to_desc;
+        const booking = data.booking;
+        const returnBooking = data.returnBooking;
+
+        displayBookingDetails(booking, returnBooking)
+
+
+        document.getElementById("nfpl_js_style_form_from").value = data.booking.from_desc;
+        document.getElementById("nfpl_js_style_form_to").value = data.booking.to_desc;
 
         const forwardAddonList = document.getElementById('nfpl_js_style_journeyAddons')
         const returnAddonList = document.getElementById('nfpl_js_style_returnJourneyAddons')
@@ -20,9 +26,9 @@ const getAllDataFromBookingId = async () => {
                 console.log("ADDONS", addon)
 
                 const isCheckedForward =
-                    data.forwardAddons.some((forwardAddon) => forwardAddon._id === addon._id);
+                    data.booking.addons.some((forwardAddon) => forwardAddon._id === addon._id);
                 const isCheckedReturn =
-                    data.returnAddons.some((returnAddon) => returnAddon._id === addon._id);
+                    data.returnBooking.addons.some((returnAddon) => returnAddon._id === addon._id);
 
 
                 const addonDiv = document.createElement('div');
@@ -35,7 +41,7 @@ const getAllDataFromBookingId = async () => {
                                         value="${addon._id}" 
                                         ${isCheckedForward && "checked"}
                                         class="checkbox-field nfpl_js_style_addon_input" 
-                                        data-bookingid="${data.bookingId}" 
+                                        data-bookingid="${data.booking._id}" 
                                         data-isreturn="false" />
                                     </label>
                                 `;
@@ -44,7 +50,7 @@ const getAllDataFromBookingId = async () => {
                 forwardAddonList.appendChild(addonDiv);
 
 
-                if (data.returnQuotation === 1) {
+                if (data.returnBooking) {
                     const returnAddonDiv = document.createElement('div');
 
                     // Add HTML content to the div
@@ -56,7 +62,7 @@ const getAllDataFromBookingId = async () => {
                                                      ${isCheckedReturn && "checked"}
 
                                                      class="checkbox-field nfpl_js_style_addon_input"
-                                                      data-bookingid="${data.returnQuotationId}"
+                                                      data-bookingid="${data.returnBooking._id}"
                                                        data-isreturn="true" />
                                                 </label>
                                             `;
@@ -89,7 +95,9 @@ const getAllDataFromBookingId = async () => {
                 addonInputs.forEach((addon) => (addon.disabled = true));
 
                 const nfpl_var_from_addon_bookingId = e.target.dataset.bookingid;
-                console.log("log", nfpl_var_from_addon_bookingId, e.target, selectedAddons)
+                // console.log("LO", nfpl_var_from_addon_bookingId, e.target, e.target.dataset.bookingid)
+                console.log("log", selectedAddons)
+                console.log("URL", nfpl_api_POST_add_addon_to_booking + nfpl_var_from_addon_bookingId)
 
                 // data-bookindId
                 fetch(nfpl_api_POST_add_addon_to_booking + nfpl_var_from_addon_bookingId, {
@@ -103,9 +111,12 @@ const getAllDataFromBookingId = async () => {
                     .then((data) => {
                         console.log(data)
                         addonInputs.forEach((addon) => (addon.disabled = false));
-                        document.getElementById("bookingPricingWrapper").innerHTML =
-                            data.booking.priceToCharge;
-                        console.log(data.booking.priceToCharge);
+
+
+                        const booking = data.booking;
+                        const returnBooking = data.returnBooking
+                        displayBookingDetails(booking, returnBooking)
+                        console.log(data);
 
 
                         showToast({
@@ -124,23 +135,36 @@ const getAllDataFromBookingId = async () => {
 
 
 
-        // document.getElementById("nfpl_js_style_form_name").value = data.name;
-        // document.getElementById("nfpl_js_style_form_email").value = data.email;
-        // document.getElementById("nfpl_js_style_form_phNumber").value = data.phone;
-        // document.getElementById("nfpl_js_style_form_from").value = data.complete_going_address;
-        // document.getElementById("nfpl_js_style_form_to").value = data.complete_return_address;
-        // document.getElementById("nfpl_js_style_no_of_passangers").value = data.numPassengers;
-        // document.getElementById("nfpl_js_style_no_of_suitcases").value = data.numSuitcases;
-        // document.getElementById("nfpl_js_style_flightNumber").value = data.flightIdNumber;
-        // document.getElementById("waitingTimeAfterLanding").value = data.waitingTimeAfterLanding;
-        // document.getElementById("nfpl_js_style_comment").value = data.comment;
-        // document.getElementById("voucher").value = data.voucher;
-        // document.getElementById("nfpl_js_style_bookingForSomeoneElse_Name").value = data.custName;
-        // document.getElementById("nfpl_js_style_bookingForSomeoneElse_Email").value = data.custEmail;
-        // document.getElementById("nfpl_js_style_bookingForSomeoneElse_PhNumber").value = data.custPhone;
-        // document.getElementById("nfpl_js_style_searchCountryCode_customer").value = data.phone.slice(0, 3);
-        // document.getElementById("nfpl_js_style_searchCountryCode_passenger").value = data.custPhone.slice(0, 3);
 
+
+
+
+
+
+
+
+
+
+        // Populate booking details
+        document.getElementById("referenceNumber").textContent = data.booking.reference;
+
+        const pickupDetails = `
+  <h3>Pickup</h3>
+  <p>Pickup Time: ${data.booking.startDate}</p>
+  <p>Pickup Location: ${data.booking.from_desc}</p>
+  <p>Dropoff Location: ${data.booking.to_desc}</p>
+`;
+
+        document.getElementById("pickupDetails").innerHTML = pickupDetails;
+
+        const returnDetails = `
+  <h3>Return</h3>
+  <p>Return Pickup Time: ${data.returnBooking.startDate}</p>
+  <p>Return Pickup Location: ${data.returnBooking.from_desc}</p>
+  <p>Return Dropoff Location: ${data.returnBooking.to_desc}</p>
+`;
+
+        document.getElementById("returnDetails").innerHTML = returnDetails;
 
 
 
@@ -150,6 +174,124 @@ const getAllDataFromBookingId = async () => {
     }
 
 }
+
+
+
+/**
+ * Display booking details in a compact table format.
+ *
+ * @param {Object} booking - Forward booking details.
+ * @param {Object} returnBooking - Return booking details.
+ */
+function displayBookingDetails(booking, returnBooking) {
+    const forwardBookingDetails = document.getElementById('forwardBookingDetails');
+    const returnBookingDetails = document.getElementById('returnBookingDetails');
+    const totalPriceDiv = document.getElementById('totalPriceBookingDetails');
+
+
+    console.log("displayBookingDetails", booking, returnBooking);
+
+    const totalPrice = booking.priceToCharge + (returnBooking ? returnBooking.priceToCharge : 0);
+
+
+    // Helper function to generate rows for booking details
+    const generateBookingRows = (data) => {
+        const rows = `
+            <tr >
+                <th class="booking-table-th-td">Price to Charge</th>
+                <td class="booking-table-th-td">${data.priceToCharge || 'N/A'}</td>
+            </tr>
+            
+            ${data.voucherDiscount
+                ? `<tr>
+                    <th class="booking-table-th-td">Voucher Discount</th>
+                    <td class="booking-table-th-td">${data.voucherDiscount}</td>
+                   </tr>`
+                : ''}
+            ${data.addons && data.addons.length > 0
+                ? data.addons.map(addon => `
+                    <tr>
+                        <th class="booking-table-th-td">Add-on</th>
+                        <td class="booking-table-th-td">${addon.title} - ${addon.amount}</td>
+                    </tr>`).join('')
+                : ''}
+        `;
+        return rows;
+    };
+
+    // Populate forward booking details
+    forwardBookingDetails.innerHTML = `
+        <tr><th colspan="2">Forward Booking</th></tr>
+        ${generateBookingRows(booking)}
+    `;
+
+    // Populate return booking details if present
+    if (returnBooking) {
+        returnBookingDetails.style.display = 'table';
+        returnBookingDetails.innerHTML = `
+            <tr><th colspan="2">Return Booking</th></tr>
+            ${generateBookingRows(returnBooking)}
+        `;
+    }
+
+    totalPriceDiv.innerHTML = `
+    <tr>
+    <th class="booking-table-th-td">Total Price</th>
+    <td class="booking-table-th-td">${totalPrice || 'N/A'}</td>
+</tr>`
+}
+
+// function displayBookingDetails(booking, returnBooking) {
+//     const forwardBookingDetails = document.getElementById('forwardBookingDetails');
+//     const returnBookingDetails = document.getElementById('returnBookingDetails');
+
+//     console.log("displayBookingDetails", booking, returnBooking)
+//     const voucherDiscount =
+//         booking.voucherDiscount
+//             ? `<p>Voucher Discount: ${booking.voucherDiscount}</p>`
+//             : '';
+
+//     const addonsList =
+//         booking.addons && booking.addons.length > 0
+//             ? booking.addons.map(addon =>
+//                 `<p>Add-on: ${addon.title} - ${addon.amount}</p>`
+//             ).join('')
+//             : '';
+
+//     // Display forward booking details
+//     forwardBookingDetails.innerHTML = `
+//       <p>Price to Charge: ${booking.priceToCharge || 'N/A'}</p>
+//       <p>Total Price: ${booking.totalPrice || 'N/A'}</p>
+//       ${voucherDiscount}               
+//       ${addonsList} 
+//     `;
+
+//     if (returnBooking) {
+//         returnBookingDetails.style.display = 'block';
+
+//         const voucherDiscountR =
+//             returnBooking.voucherDiscount
+//                 ? `<p>Voucher Discount: ${returnBooking.voucherDiscount}</p>`
+//                 : '';
+
+//         const addonsListR =
+//             returnBooking.addons && returnBooking.addons.length > 0
+//                 ? returnBooking.addons.map(addon =>
+//                     `<p>Add-on: ${addon.title} - ${addon.amount}</p>`
+//                 ).join('')
+//                 : '';
+//         // Display return booking details
+//         returnBookingDetails.innerHTML = `
+//                 <p>Price to Charge: ${returnBooking.priceToCharge || 'N/A'}</p>
+//                 <p>Total Price: ${returnBooking.totalPrice || 'N/A'}</p>
+//                 ${voucherDiscountR}               
+//                 ${addonsListR}   
+
+
+//     `;
+//     }
+// }
+
 
 document.addEventListener("DOMContentLoaded", (e) => {
 

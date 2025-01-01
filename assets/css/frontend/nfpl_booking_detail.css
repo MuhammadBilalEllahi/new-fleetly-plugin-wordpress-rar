@@ -296,3 +296,91 @@ p[id$="Success"] {
   .form-group p{
     font-size: medium;
   }
+
+
+
+
+
+
+
+
+
+
+  .booking-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 10px 0;
+    font-size: 14px;
+  }
+  
+  .booking-table th, .booking-table td {
+    border: 1px solid #ccc;
+    padding: 8px 10px;
+    text-align: left; /* Ensure left alignment */
+    vertical-align: top; /* Optional: Align text at the top for multi-line content */
+  }
+  
+  .booking-table th {
+    background-color: #f4f4f4;
+    font-weight: bold;
+  }
+  
+  .booking-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+
+  
+
+
+
+
+
+
+
+
+
+  .nfpl_booking_container {
+    font-family: Arial, sans-serif;
+    color: #333;
+    margin: 20px auto;
+    max-width: 700px;
+    border: 1px solid var(--var-border-color);
+    background-color: var(--var-dropdown-background);
+    display: flex;
+    flex-direction: column;
+    font-size: medium;
+  }
+  
+  .map-image {
+    width: 100%;
+    max-height: 20rem;
+    /* border-radius: 8px; */
+  }
+  
+  .nfpl_booking_container h2 {
+    text-align: center;
+    margin: 10px 0;
+  }
+  
+  .nfpl_booking_container p {
+    margin: 5px 0;
+  }
+  
+  .booking_details_div{
+    display: flex;
+    flex-direction: row;
+  }
+  @media screen and (max-width: 768px) {
+    .booking_details_div{
+      flex-direction: column;
+    }
+    
+  }
+
+  #pickupDetails, #returnDetails {
+    border-top: 1px solid #ddd;
+    padding: 0.6rem 0.3rem;
+    margin-top: 10px;
+  }
+  
+  
