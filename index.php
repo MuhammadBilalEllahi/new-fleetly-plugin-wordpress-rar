@@ -104,21 +104,50 @@ function display_success_widget()
     return $content; // Return the content.
 }
 
+function display_login_widget()
+{
+    ob_start();
+    include(NFP_PLUGIN_DIR_PATH . 'widgets/auth/nfpl_login_widget.php');
+    $content = ob_get_clean(); // store buffered output content.
+
+    return $content; // Return the content.
+}
+
+function display_register_widget()
+{
+    ob_start();
+    include(NFP_PLUGIN_DIR_PATH . 'widgets/auth/nfpl_register_widget.php');
+    $content = ob_get_clean(); // store buffered output content.
+
+    return $content; // Return the content.
+}
+
 if (!defined('INSTANT_QUOTE_WIDGET')) {
-    define('INSTANT_QUOTE_WIDGET', 'instant_quote_widget');
+    define('INSTANT_QUOTE_WIDGET', 'nfpl_instant_quote_widget');
 }
 if (!defined('QUOTATIONS_WIDGET')) {
-    define('QUOTATIONS_WIDGET', 'quotations_widget');
+    define('QUOTATIONS_WIDGET', 'nfpl_quotations_widget');
 }
 if (!defined('BOOKING_DETAILS_WIDGET')) {
-    define('BOOKING_DETAILS_WIDGET', 'booking_details_widget');
+    define('BOOKING_DETAILS_WIDGET', 'nfpl_booking_details_widget');
 }
 if (!defined('PAYMENT_DETAILS_WIDGET')) {
-    define('PAYMENT_DETAILS_WIDGET', 'payment_details_widget');
+    define('PAYMENT_DETAILS_WIDGET', 'nfpl_payment_details_widget');
 }
 if (!defined('SUCCESS_WIDGET')) {
-    define('SUCCESS_WIDGET', 'success_widget');
+    define('SUCCESS_WIDGET', 'nfpl_success_widget');
 }
+
+if (!defined('LOGIN_WIDGET')) {
+    define('LOGIN_WIDGET', 'nfpl_login_widget');
+}
+
+if (!defined('REGISTER_WIDGET')) {
+    define('REGISTER_WIDGET', 'nfpl_register_widget');
+}
+
+
+
 
 // p1 means page-1. To be displayed on first page
 add_shortcode(INSTANT_QUOTE_WIDGET, 'display_instant_quote_widget');
@@ -126,6 +155,9 @@ add_shortcode(QUOTATIONS_WIDGET, 'display_quotations_widget');
 add_shortcode(BOOKING_DETAILS_WIDGET, 'display_booking_deatils_widget');
 add_shortcode(PAYMENT_DETAILS_WIDGET, 'display_payment_details_widget');
 add_shortcode(SUCCESS_WIDGET, 'display_success_widget');
+
+add_shortcode(LOGIN_WIDGET, 'display_login_widget');
+add_shortcode(REGISTER_WIDGET, 'display_register_widget');
 
 
 if (!defined('NFP_MAIN_QOUTE_PAGE_SLUG')) {
@@ -237,7 +269,9 @@ function nfpl_function_quotation_plugin_settings_init()
         array('id' => BOOKING_DETAILS_WIDGET, 'label' => 'Booking Details Widget'),
         array('id' => PAYMENT_DETAILS_WIDGET, 'label' => 'Payment Widget'),
         array('id' => SUCCESS_WIDGET, 'label' => 'Success Widget'),
-    );
+        array('id' => LOGIN_WIDGET, 'label' => 'Login Widget'),
+        array('id' => REGISTER_WIDGET, 'label' => 'Register Widget'), 
+       );
 
     // Add fields for each widget page
 

@@ -63,7 +63,7 @@ const fetchInfo = async () => {
 
 
 
-        const realTotalPrice = data2.booking.totalPrice + (data2.booking?.linkedBooking?.totalPrice || 0);
+        const realTotalPrice = data2.booking.totalPrice + (data2.booking?.linkedBooking?.totalPrice ? data2.booking.linkedBooking.totalPrice : 0);
         // console.log("REAL TOTAL PRICE", realTotalPrice, data2.booking.totalPrice, data2.booking.linkedBooking.totalPrice)
         nfpl_var_paymentMode.innerText = data2.booking.paymentMethod
         nfpl_var_paymentStatus.innerText = data2.booking.paid
