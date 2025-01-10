@@ -168,12 +168,14 @@
     const apikey = "<?php echo nfpl_function_get_api_key(); ?>";
     const req_POST_login = `${apiUrlPrefixs}/plugin/dispatcher/login`;
     const tenantId = "<?php echo nfpl_function_get_tenant_owner_id(); ?>";
+    const nfpl_quotationPageUrlAndPageNumber = '<?php echo esc_url(nfpl_function_get_navigation_url(INSTANT_QUOTE_WIDGET)); ?>';
+    const nfpl_loginPageURlAndNumber = '<?php echo esc_url(nfpl_function_get_navigation_url(LOGIN_WIDGET)); ?>';
+
 
     const headers = {
         'Content-Type': 'application/json',
         'tenant-widgetapikey': apikey,
         'tenant': tenantId
-
     }
 </script>
 
@@ -224,10 +226,8 @@ function showSignOutButton() {
 function signOut() {
     // Clear the JWT cookie
     document.cookie = 'nfpl_jt_tok=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT; SameSite=Lax; secure=true;';
-    // alert("You have been logged out.");
+    window.location.href = nfpl_loginPageURlAndNumber; // Redirect to the Login Page
 
-    // Redirect to login page or reload the page
-    // window.location.href = '/login'; // Adjust this URL as needed
 }
 
 // Check if user is already logged in on page load
@@ -294,10 +294,12 @@ document.querySelector('.nfpl_styles_auth_submit_btn').addEventListener('click',
       
 
 
-            alert("Login successful!");
+            // alert("Login successful!");
 
             // Redirect to the dashboard or another page
             // window.location.href = '/dashboard';
+            window.location.href = nfpl_quotationPageUrlAndPageNumber; // Redirect to the Main Page
+
         } else {
             throw new Error("No token received.");
         }

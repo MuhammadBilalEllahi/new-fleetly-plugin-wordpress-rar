@@ -5,7 +5,7 @@ async function fetchPrice() {
 
         const response = await fetch(req_GET_price, {
             method: 'GET',
-            headers: headers
+            headers: nfpl_headers
         });
         if (response.ok) {
             const data = await response.json();
@@ -47,7 +47,7 @@ async function processPayment(paymentType) {
 
             response = await fetch(req_POST_payment_cash, {
                 method: 'POST',
-                headers: headers,
+                headers: nfpl_headers,
                 body: JSON.stringify({
                     bookingPageUrl
                 })
@@ -56,7 +56,7 @@ async function processPayment(paymentType) {
             // Card payment with cancel URL
             response = await fetch(req_POST_payment_card, {
                 method: 'POST',
-                headers: headers,
+                headers: nfpl_headers,
                 body: JSON.stringify({
                     bookingPageUrl,
                     cancelPageUrl // Send cancel page URL as part of the request body

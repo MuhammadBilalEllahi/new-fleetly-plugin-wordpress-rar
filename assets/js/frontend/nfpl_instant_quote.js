@@ -1,3 +1,4 @@
+
 let nfpl_js_styles_ViaReturn = 1;
 let nfpl_js_styles_ViaStop = 1;
 
@@ -121,10 +122,7 @@ document.addEventListener("input", async function (event) {
 
             const response = await fetch(nfpl_var_apiUrl, {
                 method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                    "tenant-widgetapikey": `${nfpl_var_apikey}`,
-                },
+                headers: nfpl_headers,
                 body: JSON.stringify({ query }), // Send the query as JSON
             });
 
@@ -459,10 +457,7 @@ function submitBookingForm() {
     // "/api/public/cabify/get-quotations"
     fetch(nfpl_var_quoteUrl, {
         method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-            "tenant-widgetapikey": `${nfpl_var_apikey}`,
-        },
+        headers: nfpl_headers,
         body: JSON.stringify(data),
     })
         .then((response) => {

@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             ,
             {
                 method: "GET",
-                headers: headers,
+                headers: nfpl_headers,
             }
         );
 
@@ -218,7 +218,7 @@ async function runQuery(data, bookingId) {
             ,
             {
                 method: "POST",
-                headers: headers,
+                headers: nfpl_headers,
                 body: JSON.stringify(data),
             }
         );

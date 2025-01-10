@@ -21,15 +21,20 @@ add_action('wp_enqueue_scripts', 'enqueue_custom_plugin_assets_FOR_INSTANT_QUOTE
     console.log("Cleaned search string:", cleanedSearch);
     const urlParams = new URLSearchParams(cleanedSearch);
     const bookingId = urlParams.get("id");
-    const apikey = "<?php echo nfpl_function_get_api_key(); ?>";
+    const nfpl_var_apikey = "<?php echo nfpl_function_get_api_key(); ?>";
     console.log("Booking ID:", bookingId);
     const req_GET_success_InfoOnLoadUrl = `${apiUrlPrefixs}/plugin/dispatcher/widget-quotations/${bookingId}`;
-    const req_GET_price = `${apiUrlPrefixs}/plugin/dispatcher/widget-booking/${bookingId}/price`
+    const req_GET_price = `${apiUrlPrefixs}/plugin/dispatcher/widget-booking/${bookingId}/price`;
 
 
-    const headers = {
-        'Content-Type': 'application/json',
-        'tenant-widgetapikey': `${apikey}`
+    const tenantId = "<?php echo nfpl_function_get_tenant_owner_id(); ?>";
+
+    const nfpl_headers = {
+        ...getNFPLAuthHeaders(),
+        "Content-Type": "application/json",
+        "tenant-widgetapikey": `${nfpl_var_apikey}`,
+        'tenant': tenantId,
+
     }
 
 </script>

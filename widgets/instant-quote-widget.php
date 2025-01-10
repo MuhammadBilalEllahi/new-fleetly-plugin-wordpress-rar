@@ -29,7 +29,40 @@ add_action('wp_enqueue_scripts', 'enqueue_custom_plugin_assets_FOR_INSTANT_QUOTE
   const nfpl_var_apikey = '<?php echo nfpl_function_get_api_key(); ?>'
   const quotationPageUrlAndPageNumber = '<?php echo esc_url(nfpl_function_get_navigation_url(QUOTATIONS_WIDGET)); ?>';
 
+
+  const tenantId = "<?php echo nfpl_function_get_tenant_owner_id(); ?>";
+
+  
+// // Function to get a cookie value by its name
+// function getCookie(name) {
+//     const value = `; ${document.cookie}`;
+//     const parts = value.split(`; ${name}=`);
+//     if (parts.length === 2) return parts.pop().split(';').shift();
+//     return null;
+// }
+
+// // Function to add JWT token to headers
+// function getAuthHeaders() {
+//     const token = getCookie('nfpl_jt_tok'); // Retrieve JWT from cookie
+//     return token ? { 'Authorization': `Bearer ${token}` } : {}; // Attach token in Authorization header if it exists
+// }
+
+
+
+
+
+  console.log(getNFPLAuthHeaders())
+
+  const nfpl_headers = {
+    ...getNFPLAuthHeaders(),
+    "Content-Type": "application/json",
+    "tenant-widgetapikey": `${nfpl_var_apikey}`,
+    'tenant': tenantId,
+    
+}
 </script>
+
+
 
 
 

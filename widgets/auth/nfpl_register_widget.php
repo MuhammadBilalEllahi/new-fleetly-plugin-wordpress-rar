@@ -170,6 +170,9 @@
     const apikey = "<?php echo nfpl_function_get_api_key(); ?>";
     const tenantId = "<?php echo nfpl_function_get_tenant_owner_id(); ?>";
     const req_POST_register = `${apiUrlPrefixs}/plugin/dispatcher/register`;
+    const nfpl_quotationPageUrlAndPageNumber = '<?php echo esc_url(nfpl_function_get_navigation_url(INSTANT_QUOTE_WIDGET)); ?>';
+    const nfpl_registerPageURlAndNumber = '<?php echo esc_url(nfpl_function_get_navigation_url(REGISTER_WIDGET)); ?>';
+
     const headers = {
         'Content-Type': 'application/json',
         'tenant-widgetapikey': apikey,
@@ -225,9 +228,8 @@ function signOut() {
     // Clear the JWT cookie
     document.cookie = 'nfpl_jt_tok=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT; SameSite=Lax; secure=true;';
     // alert("You have been logged out.");
+    window.location.href = nfpl_registerPageURlAndNumber; // Redirect to the Register Page
 
-    // Redirect to login page or reload the page
-    // window.location.href = '/login'; // Adjust this URL as needed
 }
 
 // Check if user is already logged in on page load
@@ -276,8 +278,9 @@ window.onload = checkIfLoggedIn;
 
             const token =nfpl_auth_response_data.token;
             document.cookie = `nfpl_jt_tok=${token}; path=/; SameSite=Lax; secure=true;`;
+            
 
-            // window.location.href = '/login'; // Redirect to the login page
+            window.location.href = nfpl_quotationPageUrlAndPageNumber; // Redirect to the Main Page
         } else {
             const errorData = await nfpl_auth_response.json();
             alert(errorData.message || 'An error occurred.');

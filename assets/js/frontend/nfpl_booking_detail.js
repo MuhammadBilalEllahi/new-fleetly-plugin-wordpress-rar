@@ -4,7 +4,7 @@ const getAllDataFromBookingId = async () => {
     try {
         const response = await fetch(nfpl_api_GET_WidgetPassengerDetailUrl, {
             method: 'GET',
-            headers: headers
+            headers: nfpl_headers
         });
         const data = await response.json();
         console.log("Data: ", data);
@@ -21,6 +21,19 @@ const getAllDataFromBookingId = async () => {
         const forwardAddonList = document.getElementById('nfpl_js_style_journeyAddons')
         const returnAddonList = document.getElementById('nfpl_js_style_returnJourneyAddons')
 
+        const nfpl_js_style_form_name = document.getElementById('nfpl_js_style_form_name')
+        const nfpl_js_style_form_email = document.getElementById('nfpl_js_style_form_email')
+        const nfpl_js_style_form_phNumber = document.getElementById('nfpl_js_style_form_phNumber')
+
+
+        console.log(data.customer.name,
+            data.customer.email,
+            data.customer.phone)
+
+        nfpl_js_style_form_name.value = data.customer.name
+        nfpl_js_style_form_email.value = data.customer.email
+        nfpl_js_style_form_phNumber.value = data.customer.phone
+
         if (data.addonsDefaultList.length != 0) {
             data.addonsDefaultList.map(addon => {
                 console.log("ADDONS", addon)
@@ -28,7 +41,7 @@ const getAllDataFromBookingId = async () => {
                 const isCheckedForward =
                     data.booking.addons.some((forwardAddon) => forwardAddon._id === addon._id);
                 const isCheckedReturn =
-                    data.returnBooking.addons.some((returnAddon) => returnAddon._id === addon._id);
+                    data?.returnBooking.addons.some((returnAddon) => returnAddon._id === addon._id);
 
 
                 const addonDiv = document.createElement('div');
@@ -102,7 +115,7 @@ const getAllDataFromBookingId = async () => {
                 // data-bookindId
                 fetch(nfpl_api_POST_add_addon_to_booking + nfpl_var_from_addon_bookingId, {
                     method: "POST",
-                    headers: headers,
+                    headers: nfpl_headers,
                     body: JSON.stringify({
                         addons: selectedAddons,
                     }),
@@ -348,7 +361,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             fetch(nfpl_api_POST_remove_voucher, {
                 method: "POST",
-                headers: headers,
+                headers: nfpl_headers,
             })
                 .then((response) => response.json())
                 .then((data) => {
@@ -403,7 +416,7 @@ document.addEventListener("DOMContentLoaded", function () {
             e.target.disabled = true;
             fetch(nfpl_api_POST_apply_voucher, {
                 method: "POST",
-                headers: headers,
+                headers: nfpl_headers,
                 body: JSON.stringify({
                     code: voucherValue,
                 }),
@@ -637,7 +650,7 @@ document.addEventListener("DOMContentLoaded", function () {
             nfpl_submit_api_POST_WidgetPassengerDetailUrl,
             {
                 method: "POST",
-                headers: headers,
+                headers: nfpl_headers,
                 body: JSON.stringify(data),
             }
         )
@@ -724,7 +737,7 @@ document.addEventListener("input", async function (event) {
         try {
             const response = await fetch(nfpl_var_apiUrl_Google, {
                 method: "POST",
-                headers: headers,
+                headers: nfpl_headers,
                 body: JSON.stringify({ query }), // Send the query as JSON
             });
 

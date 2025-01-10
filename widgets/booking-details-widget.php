@@ -38,13 +38,16 @@ add_action('wp_enqueue_scripts', 'enqueue_custom_plugin_assets_FOR_BOOKING_DETAI
 
 
     const paymentPageUrlAndPageNumber = '<?php echo esc_url(nfpl_function_get_navigation_url(PAYMENT_DETAILS_WIDGET)); ?>';
+    const tenantId = "<?php echo nfpl_function_get_tenant_owner_id(); ?>";
 
-    headers = {
-        "Content-Type": "application/json",
-        "tenant-widgetapikey": `${nfpl_var_apikey}`,
-
-    }
-</script>
+    const nfpl_headers = {
+    ...getNFPLAuthHeaders(),
+    "Content-Type": "application/json",
+    "tenant-widgetapikey": `${nfpl_var_apikey}`,
+    'tenant': tenantId,
+    
+}
+</script> 
 
 
 <section class="nfpl_booking_details_widget">

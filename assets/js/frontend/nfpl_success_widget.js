@@ -54,7 +54,7 @@ const fetchInfo = async () => {
         const response2 = await fetch(req_GET_price,
             {
                 method: 'GET',
-                headers: headers
+                headers: nfpl_headers
             }
         )
         const data2 = await response2.json()

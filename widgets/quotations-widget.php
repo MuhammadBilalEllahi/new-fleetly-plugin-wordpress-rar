@@ -20,7 +20,7 @@ add_action('wp_enqueue_scripts', 'enqueue_custom_plugin_assets_FOR_QUOTATIONS_WI
     // console.log("Cleaned search string:", cleanedSearch);
     const urlParams = new URLSearchParams(cleanedSearch);
     const bookingId = urlParams.get("id");
-    const apikey = "<?php echo nfpl_function_get_api_key(); ?>";
+    const nfpl_var_apikey = "<?php echo nfpl_function_get_api_key(); ?>";
     console.log("Booking ID:", bookingId);
 
 
@@ -29,9 +29,14 @@ add_action('wp_enqueue_scripts', 'enqueue_custom_plugin_assets_FOR_QUOTATIONS_WI
     const req_POST_quotations = `${apiUrlPrefixs}/plugin/dispatcher/widget-passenger-information/${bookingId}`;
     const bookingPageUrl = "<?php echo esc_url(nfpl_function_get_navigation_url(BOOKING_DETAILS_WIDGET)); ?>";
 
-    const headers = {
+    const tenantId = "<?php echo nfpl_function_get_tenant_owner_id(); ?>";
+
+    const nfpl_headers = {
+        ...getNFPLAuthHeaders(),
         "Content-Type": "application/json",
-        "tenant-widgetapikey": `${apikey}`,
+        "tenant-widgetapikey": `${nfpl_var_apikey}`,
+        'tenant': tenantId,
+
     }
 
 </script>
