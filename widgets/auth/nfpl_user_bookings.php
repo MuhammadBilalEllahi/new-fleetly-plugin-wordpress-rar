@@ -77,7 +77,7 @@
 
     }
 
-    const nfpl_var_GET_MyBooking = `${nfpl_var_apiUrlPrefixs}/plugin/dispatcher/widget-my-bookings`;
+    const nfpl_var_GET_MyBooking = `${nfpl_var_apiUrlPrefixs}/plugin/dispatcher/widget/my-bookings`;
 
 </script>
 

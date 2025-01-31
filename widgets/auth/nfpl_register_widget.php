@@ -169,7 +169,7 @@
     const apiUrlPrefixs = "<?php echo nfpl_function_get_api_url_prefix(); ?>";
     const apikey = "<?php echo nfpl_function_get_api_key(); ?>";
     const tenantId = "<?php echo nfpl_function_get_tenant_owner_id(); ?>";
-    const req_POST_register = `${apiUrlPrefixs}/plugin/dispatcher/register`;
+    const req_POST_register = `${apiUrlPrefixs}/plugin/dispatcher/widget/register`;
     const nfpl_quotationPageUrlAndPageNumber = '<?php echo esc_url(nfpl_function_get_navigation_url(INSTANT_QUOTE_WIDGET)); ?>';
     const nfpl_registerPageURlAndNumber = '<?php echo esc_url(nfpl_function_get_navigation_url(REGISTER_WIDGET)); ?>';
 

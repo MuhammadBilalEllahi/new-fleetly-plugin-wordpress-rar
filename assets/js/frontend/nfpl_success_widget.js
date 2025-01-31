@@ -12,7 +12,7 @@ const fetchInfo = async () => {
 
 
     const nfpl_var_paymentStatus = document.getElementById('nfpl_js_style_payment_status')
-    const nfpl_var_paymentPaid = document.getElementById('nfpl_js_style_payment_paid')
+    // const nfpl_var_paymentPaid = document.getElementById('nfpl_js_style_payment_paid')
 
     console.log(nfpl_var_paymentBox, nfpl_var_NoPaymentToShowBox)
 
@@ -63,11 +63,11 @@ const fetchInfo = async () => {
 
 
 
-        const realTotalPrice = data2.booking.totalPrice + (data2.booking?.linkedBooking?.totalPrice ? data2.booking.linkedBooking.totalPrice : 0);
+        const realTotalPrice = data2.booking.priceToCharge + (data2.booking?.linkedBooking?.priceToCharge ? data2.booking.linkedBooking.priceToCharge : 0);
         // console.log("REAL TOTAL PRICE", realTotalPrice, data2.booking.totalPrice, data2.booking.linkedBooking.totalPrice)
-        nfpl_var_paymentMode.innerText = data2.booking.paymentMethod
+        nfpl_var_paymentMode.innerText = data2.booking.paymentMethod;
         nfpl_var_paymentStatus.innerText = data2.booking.paid
-        nfpl_var_paymentPaid.innerText = data2.booking.payment_status
+        // nfpl_var_paymentPaid.innerText = data2.booking.payment_status
         nfpl_var_paymentDue.innerText = realTotalPrice;
 
         nfpl_var_paymentDate.innerText = data2.booking.booked_at;
@@ -85,7 +85,9 @@ const fetchInfo = async () => {
         document.getElementById("nfpl_js_styles_booked_at").textContent =
             data2.booking.booked_at;
         document.getElementById("nfpl_js_styles_duration").textContent =
-            data2.booking.duration;
+            data2.booking.durationText;
+        document.getElementById("nfpl_map").src = data2.booking.staticmap;
+
         // return data2
     } catch (error) {
         console.error(error)

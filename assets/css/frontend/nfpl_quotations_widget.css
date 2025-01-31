@@ -136,6 +136,15 @@
   .quotation-details {
     margin-top: 0;
   }
+
+  #nfpl_styles_sub_booking_details{
+    display: flex;
+    flex-direction: column !important;
+  }
+  /* #nfpl_styles_booking_details {
+    display: flex !important;
+    flex-direction: column !important;
+  } */
 }
 
 /* Compact Design for Smaller Screens */
@@ -206,6 +215,13 @@
   padding: 2rem;
   margin-bottom: 3rem;
   border: 1px solid var(--var-border-color);
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+#nfpl_styles_sub_booking_details{
+  display: flex;
+  flex-direction: row;
 }
 
 .nfpl_styles_detail, .nfpl_styles_detail2 {

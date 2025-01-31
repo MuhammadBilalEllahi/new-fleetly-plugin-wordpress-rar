@@ -74,3 +74,88 @@ add_action('wp_enqueue_scripts', 'enqueue_custom_plugin_assets_FOR_PAYMENT_DETAI
         </div>
     </div>
 </div>
+
+
+<div>
+    <div style="
+        border-radius: 10px; 
+        overflow: hidden; 
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        max-height: 300px;
+        border: 2px solid #ddd;
+    ">
+        <img id="nfpl_map" src="" alt="Map Image" style="width: 100%; height: 100%; object-fit: cover;">
+    </div>
+
+    <div style="display: flex; flex-direction: row; width: 100%;">
+        <div class="nfpl_styles_detail">
+            <div class="nfpl_details">
+
+                <h3>Reference #:</h3>
+                <p id="nfpl_js_styles_reference">Loading...</p>
+
+            </div>
+
+            <div class="nfpl_details">
+                <h3>Pickup Location:</h3>
+                <p id="nfpl_js_styles_pickup_location">Loading...</p>
+            </div>
+            <div class="nfpl_details">
+
+                <h3>Dropoff Location:</h3>
+                <p id="nfpl_js_styles_dropoff_location">Loading...</p>
+
+            </div>
+
+            <div class="nfpl_details">
+                <h3>Pickup Time:</h3>
+                <p id="nfpl_js_styles_pickup_time">Loading...</p>
+
+            </div>
+            <div class="nfpl_details">
+                <h3>Pickup Location:</h3>
+                <p id="nfpl_js_styles_pickup_location">Loading...</p>
+
+            </div>
+            <div class="nfpl_details">
+                <h3>Dropoff Location:</h3>
+                <p id="nfpl_js_styles_dropoff_location">Loading...</p>
+
+            </div>
+            <div class="nfpl_details">
+                <h3>Booked At:</h3>
+                <p id="nfpl_js_styles_booked_at">Loading...</p>
+
+            </div>
+            <div class="nfpl_details">
+                <h3>Duration:</h3>
+                <p id="nfpl_js_styles_duration">Loading...</p>
+
+            </div>
+            <div class="nfpl_details">
+                <h3>Via:</h3>
+                <p id="nfpl_js_styles_via_locations">Loading...</p>
+
+            </div>
+        </div>
+
+    </div>
+
+
+</div>
+
+
+<style>
+    .nfpl_details{
+        display: flex;
+        flex-direction: row;
+    }
+
+    @media (max-width: 768px) {
+        
+    .nfpl_details{
+        display: flex;
+        flex-direction: column;
+    }
+    }
+</style>

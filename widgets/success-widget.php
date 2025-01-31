@@ -95,21 +95,21 @@ add_action('wp_enqueue_scripts', 'enqueue_custom_plugin_assets_FOR_INSTANT_QUOTE
                 Booking Ref: <span id="nfpl_js_style_booking_ref" style="color: #007bff;"></span>
             </h5>
 
-            <div style="display: flex; flex-direction: row; gap: 20px; margin-bottom: 20px;">
+            <div style="display: flex; flex-direction: row; gap: 20px; ">
                 <div style="flex: 1;">
-                    <h6 style="margin-bottom: 5px;">Payment Mode:</h6>
-                    <h6 style="margin-bottom: 5px;">Total Due:</h6>
-                    <h6 style="margin-bottom: 5px;">Date:</h6>
-                    <h6 style="margin-bottom: 5px;">Payment Status:</h6>
-                    <h6 style="margin-bottom: 5px;">Payment Paid:</h6>
+                    <h6 >Payment Mode:</h6>
+                    <h6 >Total Due:</h6>
+                    <h6 >Date:</h6>
+                    <h6 >Payment Status:</h6>
+                    <!-- <h6 >Payment Paid:</h6> -->
                 </div>
                 <div style="flex: 1;">
-                    <p id="nfpl_js_style_payment_mode" style="margin-bottom: 5px; font-weight: bold;">CASH</p>
-                    <p id="nfpl_js_style_total_due" style="margin-bottom: 5px;"></p>
-                    <p id="nfpl_js_style_date" style="margin-bottom: 5px;"></p>
+                    <h6 id="nfpl_js_style_payment_mode" >CASH</h6>
+                    <h6 id="nfpl_js_style_total_due" ></h6>
+                    <h6 id="nfpl_js_style_date" ></h6>
                     
-                    <p id="nfpl_js_style_payment_status" style="margin-bottom: 5px;"></p>
-                    <p id="nfpl_js_style_payment_paid" style="margin-bottom: 5px;"></p>
+                    <h6 id="nfpl_js_style_payment_status" ></h6>
+                    <!-- <p id="nfpl_js_style_payment_paid" ></p> -->
                 </div>
             </div>
 
@@ -179,9 +179,18 @@ add_action('wp_enqueue_scripts', 'enqueue_custom_plugin_assets_FOR_INSTANT_QUOTE
                     </div>
                 </div>
 
-               
+
             </div>
         </div>
+    </div>
+    <div style="
+        border-radius: 10px; 
+        overflow: hidden; 
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        max-height: 300px;
+        border: 2px solid #ddd;
+    ">
+        <img id="nfpl_map" src="" alt="Map Image" style="width: 100%; height: 100%; object-fit: cover;">
     </div>
 </section>
 
@@ -223,7 +232,7 @@ add_action('wp_enqueue_scripts', 'enqueue_custom_plugin_assets_FOR_INSTANT_QUOTE
     .nfpl_styles_detail2 p {
         color: var(--var-quote-p-color);
         margin: 0;
-        font-size: 1.1rem;
+        font-size: 1rem;
     }
 
     /* Via Locations Special Styling */

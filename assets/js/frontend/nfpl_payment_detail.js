@@ -10,7 +10,42 @@ async function fetchPrice() {
         if (response.ok) {
             const data = await response.json();
             console.log('Price:', data);
-            document.getElementById('nfpl_js_style_price').textContent = data.price;
+            document.getElementById('nfpl_js_style_price').textContent = data.booking.priceToCharge;
+
+            // const returnBookingExists = data?.booking?.returnQuotations?.length > 0;
+            const returnBookingExists = data?.booking?.returnQuotation;
+            // Set booking details
+            document.getElementById("nfpl_js_styles_reference").textContent =
+                data.booking.reference;
+            document.getElementById("nfpl_js_styles_pickup_time").textContent =
+                data.booking.startDate;
+            document.getElementById("nfpl_js_styles_pickup_location").textContent =
+                data.booking.from_desc;
+            document.getElementById("nfpl_js_styles_dropoff_location").textContent =
+                data.booking.to_desc;
+            document.getElementById("nfpl_js_styles_booked_at").textContent =
+                data.booking.booked_at;
+            document.getElementById("nfpl_js_styles_duration").textContent =
+                data.booking.durationText;
+            document.getElementById("nfpl_map").src = data.booking.staticmap;
+
+            // Via locations handling
+            const viaLocationsDiv = document.getElementById("nfpl_js_styles_via_locations");
+            viaLocationsDiv.innerHTML = "";
+
+            console.log("WHAT", data.booking)
+            if (data.booking.via && data.booking.via.length > 0) {
+                data.booking.via.forEach((viaLocation) => {
+                    const viaLocationP = document.createElement("p");
+                    viaLocationP.innerHTML = `${viaLocation.desc}`;
+                    viaLocationsDiv.appendChild(viaLocationP);
+                });
+            } else {
+                viaLocationsDiv.innerHTML = "<p>N/A</p>";
+            }
+
+
+
         } else {
             document.getElementById('nfpl_js_style_price').textContent = 'Error fetching price';
         }

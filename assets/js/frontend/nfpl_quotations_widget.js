@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
         if (response.ok) {
             const bookingData = await response.json();
-            console.log("Booking Details:", bookingData);
+            console.log("Booking Details:", bookingData, bookingData.staticMap);
 
             const returnBookingExists = bookingData?.returnQuotations.length > 0;
             // Set booking details
@@ -39,11 +39,12 @@ document.addEventListener("DOMContentLoaded", async () => {
                 bookingData.bookedAt;
             document.getElementById("nfpl_js_styles_duration").textContent =
                 bookingData.duration;
+            document.getElementById("nfpl_map").src = bookingData.staticMap;
+
+            const realTotalPrice = data2.booking.priceToCharge + (data2.booking?.linkedBooking?.priceToCharge ? data2.booking.linkedBooking.priceToCharge : 0);
 
             // Via locations handling
-            const viaLocationsDiv = document.getElementById(
-                "nfpl_js_styles_via_locations"
-            );
+            const viaLocationsDiv = document.getElementById("nfpl_js_styles_via_locations");
             viaLocationsDiv.innerHTML = "";
 
             if (bookingData.via && bookingData.via.length > 0) {
@@ -75,7 +76,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                     <p>Small Luggage: x${quotation.vehicle_type_small_luggage
                     }</p>
                 </div>
-                <div class="quotation-price">£${quotation.totalPrice}</div>
+                <div class="quotation-price">£${realTotalPrice}</div>
                  ${!returnBookingExists
                         ? "<button>Book Now</button>"
                         : `<input type="radio" style="width: 15px; height: 15px" name="nfpl_js_style_radio_select_quotation"
@@ -273,7 +274,7 @@ function addEventToRadio() {
     function handleCardClick(card, radioInput) {
         // Unhighlight all cards
         quotationCards.forEach((card) => {
-            card.style.borderColor = "#333";
+            card.style.borderColor = "var(--var-border-color)";
         });
 
         // Select the radio input and highlight the clicked card
@@ -283,7 +284,7 @@ function addEventToRadio() {
     function handleCardClickReturn(card, radioInput) {
         // Unhighlight all cards
         returnQuotationCards.forEach((card) => {
-            card.style.borderColor = "#333";
+            card.style.borderColor = "var(--var-border-color)";
         });
 
         // Select the radio input and highlight the clicked card

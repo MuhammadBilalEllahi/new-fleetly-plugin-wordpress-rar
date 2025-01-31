@@ -30,18 +30,18 @@ const getAllDataFromBookingId = async () => {
             data.customer.email,
             data.customer.phone)
 
-        nfpl_js_style_form_name.value = data.customer.name
-        nfpl_js_style_form_email.value = data.customer.email
-        nfpl_js_style_form_phNumber.value = data.customer.phone
+        nfpl_js_style_form_name.value = data?.customer?.name ?? '';
+        nfpl_js_style_form_email.value = data?.customer?.email ?? '';
+        nfpl_js_style_form_phNumber.value = data?.customer?.phone ?? '';
 
-        if (data.addonsDefaultList.length != 0) {
+        if (data?.addonsDefaultList.length != 0) {
             data.addonsDefaultList.map(addon => {
                 console.log("ADDONS", addon)
 
                 const isCheckedForward =
                     data.booking.addons.some((forwardAddon) => forwardAddon._id === addon._id);
                 const isCheckedReturn =
-                    data?.returnBooking.addons.some((returnAddon) => returnAddon._id === addon._id);
+                    data?.returnBooking?.addons.some((returnAddon) => returnAddon._id === addon._id);
 
 
                 const addonDiv = document.createElement('div');
@@ -89,7 +89,7 @@ const getAllDataFromBookingId = async () => {
 
 
         const addonInputs = document.querySelectorAll(".nfpl_js_style_addon_input");
-        addonInputs.forEach((input) => {
+        addonInputs && addonInputs.forEach((input) => {
             input.addEventListener("click", function (e) {
 
                 const isReturn = e.target.dataset.isreturn
@@ -156,6 +156,7 @@ const getAllDataFromBookingId = async () => {
 
 
 
+        console.log("sett", data.booking)
 
 
         // Populate booking details
@@ -170,14 +171,17 @@ const getAllDataFromBookingId = async () => {
 
         document.getElementById("pickupDetails").innerHTML = pickupDetails;
 
-        const returnDetails = `
-  <h3>Return</h3>
-  <p>Return Pickup Time: ${data.returnBooking.startDate}</p>
-  <p>Return Pickup Location: ${data.returnBooking.from_desc}</p>
-  <p>Return Dropoff Location: ${data.returnBooking.to_desc}</p>
-`;
+        if (data.returnBooking) {
 
-        document.getElementById("returnDetails").innerHTML = returnDetails;
+            const returnDetails = `
+        <h3>Return</h3>
+        <p>Return Pickup Time: ${data.returnBooking.startDate}</p>
+        <p>Return Pickup Location: ${data.returnBooking.from_desc}</p>
+        <p>Return Dropoff Location: ${data.returnBooking.to_desc}</p>
+      `;
+
+            document.getElementById("returnDetails").innerHTML = returnDetails;
+        }
 
 
 
