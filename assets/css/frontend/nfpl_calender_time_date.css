@@ -1,18 +1,4 @@
 
-._calendar_c_container {
-    /* max-width: 300px; */
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    background: #fff;
-    padding: 15px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    position: absolute;
-    top:100%;
-    left:0;
-    display: none;
-    z-index: 10;
-    font-size: small;
-  }
 
   ._calendar_c_header {
     display: flex;
@@ -34,39 +20,88 @@
     background: #0056b3;
   }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  ._calendar_c_calendarContainer {
+    position: fixed; /* Ensure it appears above all elements */
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background: #fff;
+    padding: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: none;
+    z-index: 1000; /* Ensure it's above other elements */
+    font-size: small;
+    min-width: 250px; /* Adjust width to match input fields */
+  }
+  
   ._calendar_c_days {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
-    margin-bottom: 8px;
+    gap: 5px;
   }
-
+  
   ._calendar_c_day {
     text-align: center;
-    padding: 8px;
+    padding: 4px;
     margin: 2px;
     cursor: pointer;
     border-radius: 4px;
+    transition: background-color 0.2s;
   }
-
+  
   ._calendar_c_day:hover {
     background-color: #007bff;
     color: white;
   }
-
+  
   ._calendar_c_selected-date {
     background-color: #007bff;
     color: white;
   }
-
-  ._calendar_c_time-picker {
-    display: flex;
-    gap: 10px;
-    align-items: center;
-    margin-bottom: 8px;
-  }
-
-  ._calendar_c_time-picker input {
-    padding: 4px;
+  
+  ._calendar_c_time {
+    width: 100%;
+    padding: 6px;
     border: 1px solid #ccc;
     border-radius: 4px;
+    margin-top: 10px;
   }
+  
+  ._calendar_c_submit {
+    width: 100%;
+    padding: 6px;
+    border: none;
+    background: #007bff;
+    color: white;
+    cursor: pointer;
+    border-radius: 4px;
+    margin-top: 10px;
+  }
+  
+  ._calendar_c_submit:hover {
+    background: #0056b3;
+  }
+  

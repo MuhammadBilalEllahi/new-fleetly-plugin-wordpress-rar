@@ -41,7 +41,8 @@ document.addEventListener("DOMContentLoaded", async () => {
                 bookingData.duration;
             document.getElementById("nfpl_map").src = bookingData.staticMap;
 
-            const realTotalPrice = data2.booking.priceToCharge + (data2.booking?.linkedBooking?.priceToCharge ? data2.booking.linkedBooking.priceToCharge : 0);
+            const realTotalPrice = 0;
+            // bookingData.booking.priceToCharge + (bookingData.booking?.linkedBooking?.priceToCharge ? bookingData.booking.linkedBooking.priceToCharge : 0);
 
             // Via locations handling
             const viaLocationsDiv = document.getElementById("nfpl_js_styles_via_locations");
@@ -76,7 +77,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                     <p>Small Luggage: x${quotation.vehicle_type_small_luggage
                     }</p>
                 </div>
-                <div class="quotation-price">£${realTotalPrice}</div>
+                <div class="quotation-price">£${quotation.priceToCharge}</div>
                  ${!returnBookingExists
                         ? "<button>Book Now</button>"
                         : `<input type="radio" style="width: 15px; height: 15px" name="nfpl_js_style_radio_select_quotation"
