@@ -38,17 +38,51 @@ document
     });
 
 // Format the date in the desired format: "October 16, 2024 08:00"
+// function formatDateTime(date) {
+//     const options = {
+//         year: "numeric",
+//         month: "long",
+//         day: "numeric",
+//         hour: "2-digit",
+//         minute: "2-digit",
+//         hour12: false,
+//     };
+//     return new Intl.DateTimeFormat("en-US", options).format(date);
+// }
+
 function formatDateTime(date) {
-    const options = {
-        year: "numeric",
-        month: "long",
-        day: "numeric",
-        hour: "2-digit",
-        minute: "2-digit",
-        hour12: false,
-    };
-    return new Intl.DateTimeFormat("en-US", options).format(date);
+    try {
+        if (!date) {
+            showToast({
+                message: "Invalid date.",
+                type: "error",
+                duration: 3000,
+            });
+            return false;
+        };
+
+        const options = {
+            year: "numeric",
+            month: "long",
+            day: "numeric",
+            hour: "2-digit",
+            minute: "2-digit",
+            hour12: false,
+        };
+
+        return new Intl.DateTimeFormat("en-US", options).format(date);
+    } catch (error) {
+
+        showToast({
+            message: `Invalid date. Reason: \n ${error?.message || "No Date/Time"}`,
+            type: "error",
+            duration: 3000,
+        });
+        return false;
+    }
 }
+
+
 
 // Set the formatted current date and time on page load
 function setCurrentDateTime() {
@@ -402,7 +436,10 @@ function getDataToSubmit() {
             addons: [],
             //    special_instructions:"",
             via: [],
+            // returnBooking: true,
+            isReturn: true
         };
+        // booking.returnBooking = true
 
         const viaReturnInputs = document.querySelectorAll(
             "#nfpl_js_styles_iaRetrun_twoWay .nfpl_js_styles_input_field"
@@ -410,7 +447,7 @@ function getDataToSubmit() {
         console.log(viaReturnInputs);
         if (viaReturnInputs.length > 0) {
             returnBooking.via = Array.from(viaReturnInputs).map((input) => ({
-                nfpl_js_place_id: input.getAttribute("nfpl_js_place_id"),
+                place_id: input.getAttribute("nfpl_js_place_id"),
                 desc: input.value,
             }));
         }

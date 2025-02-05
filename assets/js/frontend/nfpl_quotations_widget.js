@@ -25,10 +25,39 @@ document.addEventListener("DOMContentLoaded", async () => {
             const bookingData = await response.json();
             console.log("Booking Details:", bookingData, bookingData.staticMap);
 
-            const returnBookingExists = bookingData?.returnQuotations.length > 0;
+            const returnBookingExists = bookingData?.isReturn;
+
+            if (returnBookingExists) {
+                document.getElementById("nfpl_js_styles_isReturn").style.display = 'flex';
+
+                document.getElementById("nfpl_js_styles_pickup_time_return").textContent =
+                    bookingData.returnBooking.startDate;
+                document.getElementById("nfpl_js_styles_pickup_location_return").textContent =
+                    bookingData.returnBooking.from_desc;
+                document.getElementById("nfpl_js_styles_dropoff_location_return").textContent =
+                    bookingData.returnBooking.to_desc;
+
+
+
+                // Via locations handling
+                const viaLocationsDiv = document.getElementById("nfpl_js_styles_via_locations_return");
+                viaLocationsDiv.innerHTML = "";
+
+                if (bookingData.returnBooking.via && bookingData.returnBooking.via.length > 0) {
+                    bookingData.returnBooking.via.forEach((viaLocation) => {
+                        const viaLocationP = document.createElement("p");
+                        viaLocationP.innerHTML = `${viaLocation.desc}`;
+                        viaLocationsDiv.appendChild(viaLocationP);
+                    });
+                } else {
+                    viaLocationsDiv.innerHTML = "<p>N/A</p>";
+                }
+
+            }
+
             // Set booking details
-            document.getElementById("nfpl_js_styles_reference").textContent =
-                bookingData.reference;
+            // document.getElementById("nfpl_js_styles_reference").textContent =
+            //     bookingData.reference !== "" ? bookingData.reference : 'Nil';
             document.getElementById("nfpl_js_styles_pickup_time").textContent =
                 bookingData.startDate;
             document.getElementById("nfpl_js_styles_pickup_location").textContent =
@@ -79,7 +108,11 @@ document.addEventListener("DOMContentLoaded", async () => {
                 </div>
                 <div class="quotation-price">£${quotation.priceToCharge}</div>
                  ${!returnBookingExists
-                        ? "<button>Book Now</button>"
+                        ? `<button >   
+                          <p class="nfpl_book_now_button" data-quotation-index="${index}">  Book Now</p>
+                            <div  id="nfpl_completeButton_spinner" style="display: none; height: 5px; width: 5px;" class="nfpl_js_styles_spinner nfpl_bookNowButton_spinner">
+                            </div>
+                            </button>`
                         : `<input type="radio" style="width: 15px; height: 15px" name="nfpl_js_style_radio_select_quotation"
                         id="nfpl_js_styles_select_${index}" class="nfpl_styles_select_radio"
                         data-quotation-index="${index}" />`
@@ -88,7 +121,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
                 if (!returnBookingExists) {
                     quotationCard.addEventListener("click", () =>
-                        selectQuotation(index, bookingId)
+                        selectQuotation(index, bookingId, false)
                     );
                 }
                 quotationsDiv.appendChild(quotationCard);
@@ -178,7 +211,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                     };
 
                     // console.log("Sending data for next step:", data);
-                    runQuery(data, bookingId);
+                    runQuery(data, bookingId, true);
                 });
             }
         } else {
@@ -195,25 +228,65 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 });
 
-async function selectQuotation(index, bookingId) {
+async function selectQuotation(index, bookingId, returnBookingExists) {
     const data = {
         returnQuotation: "",
         quotation: index.toString(),
         hasReturnQuotation: "0",
     };
 
-    runQuery(data, bookingId);
+    runQuery(data, bookingId, returnBookingExists, index);
 }
 
-async function runQuery(data, bookingId) {
+async function runQuery(data, bookingId, returnBookingExists, index) {
 
 
-    // Show the spinner while selecting quotation
-    const spinner = document.getElementById("nfpl_completeButton_spinner");
-    spinner.style.display = "block"; // Show spinner
+    if (returnBookingExists) {
+        // Show the spinner while selecting quotation
+        const spinner = document.getElementById("nfpl_completeButton_spinner");
+        spinner.style.display = "block"; // Show spinner
 
-    const completeButton = document.getElementById("nfpl_completeButton");
-    completeButton.style.display = "none"; // Show spinner
+        const completeButton = document.getElementById("nfpl_completeButton");
+        completeButton.style.display = "none"; // Show spinner
+
+        const nfpl_js_style_quotation_cards = document.getElementById("nfpl_js_style_quotation_cards")
+        const nfpl_js_style_return_quotation_cards = document.getElementById("nfpl_js_style_return_quotation_cards")
+
+        nfpl_js_style_quotation_cards.style.opacity = "0.7";
+        nfpl_js_style_return_quotation_cards.style.opacity = "0.7";
+
+        nfpl_js_style_quotation_cards.style.pointerEvents = "none";
+        nfpl_js_style_return_quotation_cards.style.pointerEvents = "none";
+    } else {
+
+        const nfpl_book_now_buttons = document.querySelectorAll('.nfpl_book_now_button');
+
+        nfpl_book_now_buttons.forEach(button => {
+            // console.log("data set", button.dataset.quotationIndex, index, button.dataset.quotationIndex === index.toString(), button.dataset.quotationIndex === index)
+            if (button.dataset.quotationIndex === index.toString()) {
+                button.textContent = 'Selected'
+
+            } else {
+                button.style.display = 'none'
+
+            }
+        })
+
+        const spinners = document.querySelectorAll(".nfpl_bookNowButton_spinner");
+        spinners.forEach(spinner => spinner.style.display = 'block');
+        const nfpl_js_style_quotation_cards = document.getElementById("nfpl_js_style_quotation_cards")
+        nfpl_js_style_quotation_cards.style.opacity = "0.7";
+        nfpl_js_style_quotation_cards.style.pointerEvents = "none";
+
+        const nfpl_js_styles_quotation_card = document.querySelectorAll('.nfpl_js_styles_quotation_card')
+        nfpl_js_styles_quotation_card.forEach(card => console.log(card))
+
+
+    }
+
+
+    // console.log(nfpl_js_style_quotation_cards)
+
 
     try {
         const response = await fetch(req_POST_quotations
@@ -251,8 +324,37 @@ async function runQuery(data, bookingId) {
             duration: 2000,
         });
     } finally {
-        spinner.style.display = "none"; // Hide spinner after the process is complete
-        completeButton.style.display = "block"; // Show spinner
+        if (returnBookingExists) {
+
+            const spinner = document.getElementById("nfpl_completeButton_spinner");
+            const completeButton = document.getElementById("nfpl_completeButton");
+            const nfpl_js_style_quotation_cards = document.getElementById("nfpl_js_style_quotation_cards")
+            const nfpl_js_style_return_quotation_cards = document.getElementById("nfpl_js_style_return_quotation_cards")
+
+
+            spinner.style.display = "none"; // Hide spinner after the process is complete
+            completeButton.style.display = "block"; // Show spinner
+
+            nfpl_js_style_quotation_cards.style.opacity = "1";
+            nfpl_js_style_return_quotation_cards.style.opacity = "1";
+
+            nfpl_js_style_quotation_cards.style.pointerEvents = "unset";
+            nfpl_js_style_return_quotation_cards.style.pointerEvents = "unset";
+        } else {
+            const nfpl_book_now_buttons = document.querySelectorAll('.nfpl_book_now_button');
+
+            nfpl_book_now_buttons.forEach(button => {
+                button.textContent = 'Book Now';
+
+                button.style.display = 'block'
+            })
+
+            const spinners = document.querySelectorAll(".nfpl_bookNowButton_spinner");
+            spinners.forEach(spinner => spinner.style.display = 'none');
+            const nfpl_js_style_quotation_cards = document.getElementById("nfpl_js_style_quotation_cards")
+            nfpl_js_style_quotation_cards.style.opacity = "1";
+            nfpl_js_style_quotation_cards.style.pointerEvents = "unset";
+        }
 
     }
 }
@@ -276,21 +378,25 @@ function addEventToRadio() {
         // Unhighlight all cards
         quotationCards.forEach((card) => {
             card.style.borderColor = "var(--var-border-color)";
+            card.classList.remove("selected");
         });
 
         // Select the radio input and highlight the clicked card
         radioInput.checked = true;
         card.style.borderColor = "gold";
+        card.classList.add("selected");
     }
     function handleCardClickReturn(card, radioInput) {
         // Unhighlight all cards
         returnQuotationCards.forEach((card) => {
             card.style.borderColor = "var(--var-border-color)";
+            card.classList.remove("selected");
         });
 
         // Select the radio input and highlight the clicked card
         radioInput.checked = true;
         card.style.borderColor = "gold";
+        card.classList.add("selected");
     }
 
     quotationCards.forEach((card) => {
