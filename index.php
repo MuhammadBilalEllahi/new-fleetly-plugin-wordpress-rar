@@ -67,7 +67,7 @@ function display_instant_quote_widget()
 {
     ob_start();
 
-    include(NFP_PLUGIN_DIR_PATH . 'widgets/instant-quote-widget.php');
+    include(NFP_PLUGIN_DIR_PATH . 'widgets/nfpl_instant-quote-widget.php');
 
     $content = ob_get_clean(); // store buffered output content.
 
@@ -77,7 +77,7 @@ function display_instant_quote_widget()
 function display_quotations_widget()
 {
     ob_start();
-    include(NFP_PLUGIN_DIR_PATH . 'widgets/quotations-widget.php');
+    include(NFP_PLUGIN_DIR_PATH . 'widgets/nfpl_quotations-widget.php');
     $content = ob_get_clean(); // store buffered output content.
 
     return $content; // Return the content.
@@ -86,7 +86,7 @@ function display_quotations_widget()
 function display_booking_deatils_widget()
 {
     ob_start();
-    include(NFP_PLUGIN_DIR_PATH . 'widgets/booking-details-widget.php');
+    include(NFP_PLUGIN_DIR_PATH . 'widgets/nfpl_booking-details-widget.php');
     $content = ob_get_clean(); // store buffered output content.
     return $content; // Return the content.
 }
@@ -94,7 +94,7 @@ function display_booking_deatils_widget()
 function display_payment_details_widget()
 {
     ob_start();
-    include(NFP_PLUGIN_DIR_PATH . 'widgets/payment-details-widget.php');
+    include(NFP_PLUGIN_DIR_PATH . 'widgets/nfpl_payment-details-widget.php');
     $content = ob_get_clean(); // store buffered output content.
 
     return $content; // Return the content.
@@ -103,7 +103,7 @@ function display_payment_details_widget()
 function display_success_widget()
 {
     ob_start();
-    include(NFP_PLUGIN_DIR_PATH . 'widgets/success-widget.php');
+    include(NFP_PLUGIN_DIR_PATH . 'widgets/nfpl_success-widget.php');
     $content = ob_get_clean(); // store buffered output content.
 
     return $content; // Return the content.
@@ -457,7 +457,7 @@ if (!function_exists('nfpl_function_get_terms_and_conditions_url')) {
 // // Function to render the custom plugin file editor page
 function fleetly_plugin_file_editor()
 {
-    include(NFP_PLUGIN_DIR_PATH . 'plugi-editor.php');
+    include(NFP_PLUGIN_DIR_PATH . 'nfpl_plugi-editor.php');
 }
 
 
