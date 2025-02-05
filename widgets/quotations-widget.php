@@ -48,7 +48,7 @@ add_action('wp_enqueue_scripts', 'enqueue_custom_plugin_assets_FOR_QUOTATIONS_WI
 
 
 
-                <div style=" width: 100%; border: 1px solid #b5b5b5">
+                <div id="nfpl_js_styles_forward_booking_id" style=" width: 100%; border: 1px solid #b5b5b5">
                     <h4 style="width: 100%; text-align: center; font-size: 1.5rem;">Forward Booking</h4>
                    <div style="display: flex; flex-direction: row; border-top: 1px solid #b5b5b5;">
                    <div class="nfpl_styles_detail2">

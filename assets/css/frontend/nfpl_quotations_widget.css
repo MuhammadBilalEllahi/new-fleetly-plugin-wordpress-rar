@@ -302,6 +302,27 @@
 }
 
 
+/* Default styles */
+#nfpl_styles_booking_details {
+  width: 70%;
+}
+
+/* When screen width is below 900px */
+@media screen and (max-width: 900px) {
+  #nfpl_styles_booking_details {
+      width: 100%;
+  }
+}
+
+/* Adjusting the width of #nfpl_styles_booking_details based on visibility of #nfpl_js_styles_isReturn */
+#nfpl_js_styles_isReturn[style*="display: none"] ~ #nfpl_styles_booking_details {
+  width: 70%;
+}
+
+#nfpl_js_styles_isReturn[style*="display: block"] ~ #nfpl_styles_booking_details {
+  width: 100%;
+}
+
 
 
 /* DARKTHEME BELOW  **************************************************************    */

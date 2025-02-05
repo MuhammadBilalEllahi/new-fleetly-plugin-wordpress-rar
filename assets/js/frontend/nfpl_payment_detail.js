@@ -10,7 +10,7 @@ async function fetchPrice() {
         if (response.ok) {
             const data = await response.json();
             console.log('Price:', data);
-            document.getElementById('nfpl_js_style_price').textContent = data.booking.priceToCharge;
+            document.getElementById('nfpl_js_style_price').textContent = data.booking.priceToCharge + (data.booking?.linkedBooking?.priceToCharge ?? 0);
 
             // const returnBookingExists = data?.booking?.returnQuotations?.length > 0;
             const returnBookingExists = data?.booking?.returnQuotation;

@@ -176,6 +176,13 @@ p[id$="Success"] {
     .nfpl_booking_details_widget .col {
         flex: 1 1 100%; /* 1 column on smaller screens */
     }
+    #pickupDetails, #returnDetails {
+        
+        border-left: none !important;
+        border-top: 1px solid #b5b5b5 !important;
+        border-right: none !important;
+        border-bottom: none !important;
+    }
 }
 
 /* Responsive Grid Layout */
@@ -367,6 +374,10 @@ p[id$="Success"] {
   }
   
   .booking_details_div{
+    border-top: 1px solid #ddd;
+
+    width: 100%;
+    justify-content: space-between;
     display: flex;
     flex-direction: row;
   }
@@ -378,9 +389,13 @@ p[id$="Success"] {
   }
 
   #pickupDetails, #returnDetails {
-    border-top: 1px solid #ddd;
+    width: 100%;
+    border: 1px solid #b5b5b5;
     padding: 0.6rem 0.3rem;
     margin-top: 10px;
   }
   
+.nfpl_styles_booking_h3{
+    border-bottom: 1px solid #b5b5b5;
+}
   

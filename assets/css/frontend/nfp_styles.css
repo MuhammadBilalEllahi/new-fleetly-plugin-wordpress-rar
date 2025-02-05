@@ -96,7 +96,7 @@
   }
 
   p {
-    color: var(--var-primary-color);
+    color: var(--var-text-primary);
     margin: 0 !important;
   }
 

@@ -163,10 +163,10 @@ const getAllDataFromBookingId = async () => {
         document.getElementById("referenceNumber").textContent = data.booking.reference;
 
         const pickupDetails = `
-  <h3>Pickup</h3>
-  <p>Pickup Time: ${data.booking.startDate}</p>
-  <p>Pickup Location: ${data.booking.from_desc}</p>
-  <p>Dropoff Location: ${data.booking.to_desc}</p>
+  <h3 class="nfpl_styles_booking_h3">Pickup Booking</h3>
+  <p> <strong>Pickup Time:</strong> ${data.booking.startDate}</p>
+  <p> <strong>Pickup Location:</strong> ${data.booking.from_desc}</p>
+  <p> <strong>Dropoff Location:</strong> ${data.booking.to_desc}</p>
 `;
 
         document.getElementById("pickupDetails").innerHTML = pickupDetails;
@@ -174,10 +174,10 @@ const getAllDataFromBookingId = async () => {
         if (data.returnBooking) {
 
             const returnDetails = `
-        <h3>Return</h3>
-        <p>Return Pickup Time: ${data.returnBooking.startDate}</p>
-        <p>Return Pickup Location: ${data.returnBooking.from_desc}</p>
-        <p>Return Dropoff Location: ${data.returnBooking.to_desc}</p>
+        <h3 class="nfpl_styles_booking_h3">Return Booking</h3>
+        <p> <strong> Return Pickup Time: </strong> ${data.returnBooking.startDate}</p>
+        <p> <strong> Return Pickup Location: </strong> ${data.returnBooking.from_desc}</p>
+        <p> <strong> Return Dropoff Location: </strong> ${data.returnBooking.to_desc}</p>
       `;
 
             document.getElementById("returnDetails").innerHTML = returnDetails;

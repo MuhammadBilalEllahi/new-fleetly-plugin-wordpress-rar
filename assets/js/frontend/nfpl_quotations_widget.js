@@ -26,6 +26,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             console.log("Booking Details:", bookingData, bookingData.staticMap);
 
             const returnBookingExists = bookingData?.isReturn;
+            console.log("AYO", returnBookingExists)
 
             if (returnBookingExists) {
                 document.getElementById("nfpl_js_styles_isReturn").style.display = 'flex';

@@ -399,10 +399,13 @@ add_action('wp_enqueue_scripts', 'enqueue_custom_plugin_assets_FOR_BOOKING_DETAI
   <img src="https://maps.googleapis.com/maps/api/staticmap?key=AIzaSyBxlCPMKTJnAEuy43rjvfhkZ8twF0Wumdo&size=500x400&markers=color%3Ablue%7Csize%3Amid%7Cscale%3A4%7C51.764391%2C-1.2188774%7C51.5098597%2C-0.1342809&path=weight%3A3%7Ccolor%3Ablue%7Cenc%3Ay~%7CzHlamFT%60%40t%40%3FPNe%40xAyC%7CFeDfJKzAtDjJV~AnBwBlOqMzKwKdDyDiJqa%40qIsc%40kCoPcCkX%7D%40iNoAyIi%40%7BAXw%40zAuX~%40qZkBqd%40_C%7D%5ELkm%40j%40iLlByLvOos%40tOot%40hCyIvIyQnVsZvFoMbE%7DOlB%7BNx%40aNxAcWzEi%60%40fHgZxGsQzWwk%40bKuWlEiQlL%7Br%40fCsVKqY%60%40kPdCcMp%5Bu_A%60Sem%40zKwf%40jEy%5CbBkTjH%7Bs%40pHia%40hN%7Df%40zRod%40vPsZrNw%5EnQqn%40%7CNga%40bS%7Ba%40nLsRbXg%5D%7COwO~YcXvUu%5BvTg%5ElFsGxQ%7DOpOaI%7CPaNnMyQlJoTxIm%5EpCaU%7CAac%40ImNkBs%5EaAi%5DdAy%5BtBwQrPk%7D%40~C%7BO~Je%5BzGwMfKeNnG%7BFdRuK%60b%40qV%60QoMpP%7DOrJkMdLuRvQmd%40dHsWzDmSrCe%5DJ%7BWq%40m%5D%5EgNbBkP~D%7BTtAcQJyPw%40wYd%40%7BSfDqVbTsq%40jx%40geC~DuRbBaPp%40sQEaRwIyhAyEej%40wH_%7C%40e%40wONcPlCyY~EgTjHk%5ChDab%40RoRa%40aTaAm%5Bh%40eV%7CBmUnCsMhBuGvHmQrIyOlDgKfCqNfAcSb%40gUrAgPpHo%5CxRmw%40fBaOj%40gPaAoj%40sAyn%40Uqv%40hDcn%40jHqg%40%7CNqt%40t%5CkcBzVqoArJ_g%40nCgLhG_O~D%7BFnIoH%7COyJvLwMjIsO~EsNtJwf%40jKsd%40%7CPwj%40~AqKpA%7BL%7C%40qOl%40%7BVHqTpAiF~C%7BEpHsK%7CDsIvHcX%60BmDrDmCfF%7B%40hFyBtHwGlHsKlHsO%60DiKbCyJbCcNvDwWdCyJhJyRlFkGnF%7BDn%5CqL%60ReEbUyC%7CWmA%60%5Df%40nOvBnUfJjNfDvKJtGu%40fJ%7DCbQgMvNcLpJgG%60HiGtF%7BG~I%7BOzAiG%5CyJ%5CiY%3FgX%7BF_xAWck%40%60Aci%40pEabAnFibBhEyuAzAaRjFg%5ClIye%40%60DaY%7C%40mZI%7DMoBw%5CyDyg%40eDkd%40%7DGo%5DeMqd%40iDwVyDgfAm%40iZ%60AoWpCwOhNsd%40bLg_%40rDcRf%40sRgAqOyF_WkBiQ%3Fu%7B%40q%40wMyF%7BUDcGxCcRdKeZxFuUrBoRb%40iLvAqSFut%40tBe%5Dg%40eEmDcMqLw%60%40aEoWY%7DUnAga%40i%40%7B%5DWih%40nAqOVqLH_Mj%40gLIyK_BwPmBsS%7DBoIcDsF%7BCsLwBaJ%7B%40_KLwc%40oAwa%40iCoz%40qAgNwBaJyEeKgJ%7DSmKsNeAqGs%40wGsAsRkAoQMoB_AqBeBf%40k%40bCg%40d%40%7BB_%40aEJw%40%60%40Ys%40n%40_CSi%40s%40mJeAeMmD%7C%40cEkJ%7DE~Fy%40Bk%40qDf%40oAcCuG%7BAgEwDiFT%7BA%60B%7DAkAcEEwArFyEtBcCh%40kCO%7BI%40iF" 
        alt="Map Preview" class="map-image">
   <h2>PASSENGER BOOKING DETAILS</h2>
-  <p><strong>Reference #:</strong> <span id="referenceNumber"></span></p>
+  <p style="text-align: center;"><strong>Reference #:</strong> <span id="referenceNumber"></span></p>
   
   <div class="booking_details_div">
     <div id="pickupDetails"></div>
     <div id="returnDetails"></div>
   </div>
 </div>
+
+
+
