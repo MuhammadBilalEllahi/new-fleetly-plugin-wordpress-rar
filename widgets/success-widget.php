@@ -145,52 +145,80 @@ add_action('wp_enqueue_scripts', 'enqueue_custom_plugin_assets_FOR_INSTANT_QUOTE
 
 
 
-            <div style="display: flex; flex-direction: row; width: 100%;">
+            <div style="display: flex; flex-direction: column; width: 100%;">
                 <div class="nfpl_styles_detail">
                     <div class="nfpl_styles_detail_sub">
-                        <h3>Reference #:</h3>
+                        <p><strong>Reference #</strong>:</p>
                         <p id="nfpl_js_styles_reference">Loading...</p>
                     </div>
+
+                    <h4 style="border-bottom: 1px solid #b5b5b5; border-top: 1px solid #b5b5b5">Forward Booking</h4>
+
                     <div class="nfpl_styles_detail_sub">
-                        <h3>Pickup Location:</h3>
+                        <p><strong>Pickup Location:</strong></p>
                         <p id="nfpl_js_styles_pickup_location">Loading...</p>
                     </div>
                     <div class="nfpl_styles_detail_sub">
-                        <h3>Dropoff Location:</h3>
+                        <p><strong>Dropoff Location:</strong></p>
                         <p id="nfpl_js_styles_dropoff_location">Loading...</p>
                     </div>
 
                     <div class="nfpl_styles_detail_sub">
-                        <h3>Pickup Time:</h3>
+                        <p><strong>Pickup Time:</strong></p>
                         <p id="nfpl_js_styles_pickup_time">Loading...</p>
                     </div>
                     
                     <div class="nfpl_styles_detail_sub">
-                        <h3>Booked At:</h3>
+                        <p><strong>Booked At:</strong></p>
                         <p id="nfpl_js_styles_booked_at">Loading...</p>
                     </div>
                     <div class="nfpl_styles_detail_sub">
-                        <h3>Duration:</h3>
+                        <p><strong>Duration:</strong></p>
                         <p id="nfpl_js_styles_duration">Loading...</p>
                     </div>
                     <div class="nfpl_styles_detail_sub">
-                        <h3>Via:</h3>
+                        <p><strong>Via:</strong></p>
                         <p id="nfpl_js_styles_via_locations">Loading...</p>
                     </div>
                 </div>
 
 
+                <div  id="nfpl_js_styles_isReturn" class="nfpl_styles_detail" style="display: none; flex-direction:column;">
+            <h4 style="border-bottom: 1px solid #b5b5b5; border-top: 1px solid #b5b5b5">Return Booking</h4>
+            
+
+            <div class="nfpl_styles_detail_sub">
+                <p><strong>Pickup Location:</strong></p>
+                <p id="nfpl_js_styles_pickup_location_return">Loading...</p>
+            </div>
+            <div class="nfpl_styles_detail_sub">
+
+                <p><strong>Dropoff Location:</strong></p>
+                <p id="nfpl_js_styles_dropoff_location_return">Loading...</p>
+
+            </div>
+
+            <div class="nfpl_styles_detail_sub">
+                <p><strong>Pickup Time:</strong></p>
+                <p id="nfpl_js_styles_pickup_time_return">Loading...</p>
+
+            </div>
+            <div class="nfpl_styles_detail_sub">
+                <p><strong>Via:</strong></p>
+                <p id="nfpl_js_styles_via_locations_return">Loading...</p>
+
+            </div>
+                </div>
+
             </div>
         </div>
     </div>
     <div style="
-        border-radius: 10px; 
-        overflow: hidden; 
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        max-height: 300px;
-        border: 2px solid #ddd;
+    max-width: 70%;
+    max-height: 30%;
+    display:flex;
     ">
-        <img id="nfpl_map" src="" alt="Map Image" style="width: 100%; height: 100%; object-fit: cover;">
+        <img id="nfpl_map" src="" alt="Map Image" style="width: 100%; height: 100%; object-fit: contain;">
     </div>
 </section>
 
@@ -261,6 +289,9 @@ align-items: start;
             flex-direction: row;
             gap: 2rem;
         }
+        /* #nfpl_js_styles_isReturn{
+            flex-direction: column;
+        } */
         
     }
 </style>

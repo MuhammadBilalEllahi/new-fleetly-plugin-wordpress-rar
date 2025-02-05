@@ -10,10 +10,10 @@ async function fetchPrice() {
         if (response.ok) {
             const data = await response.json();
             console.log('Price:', data);
-            document.getElementById('nfpl_js_style_price').textContent = data.booking.priceToCharge + (data.booking?.linkedBooking?.priceToCharge ?? 0);
+            document.getElementById('nfpl_js_style_price').textContent = data.booking.priceToCharge + (data.returnBooking.priceToCharge ?? 0);
 
             // const returnBookingExists = data?.booking?.returnQuotations?.length > 0;
-            const returnBookingExists = data?.booking?.returnQuotation;
+            const returnBookingExists = data?.returnBooking?.isReturn;
             // Set booking details
             document.getElementById("nfpl_js_styles_reference").textContent =
                 data.booking.reference;
@@ -28,6 +28,31 @@ async function fetchPrice() {
             document.getElementById("nfpl_js_styles_duration").textContent =
                 data.booking.durationText;
             document.getElementById("nfpl_map").src = data.booking.staticmap;
+
+            console.log(returnBookingExists)
+            if (returnBookingExists) {
+                document.getElementById("nfpl_js_styles_pickup_time_return").textContent =
+                    data.returnBooking?.startDate;
+                document.getElementById("nfpl_js_styles_pickup_location_return").textContent =
+                    data.returnBooking?.from_desc;
+                document.getElementById("nfpl_js_styles_dropoff_location_return").textContent =
+                    data.returnBooking?.to_desc;
+
+
+                const viaLocationsDiv = document.getElementById("nfpl_js_styles_via_locations_return");
+                viaLocationsDiv.innerHTML = "";
+
+                console.log("WHAT", data.returnBooking)
+                if (data.returnBooking.via && data.returnBooking.via.length > 0) {
+                    data.returnBooking.via.forEach((viaLocation) => {
+                        const viaLocationP = document.createElement("p");
+                        viaLocationP.innerHTML = `${viaLocation.desc}`;
+                        viaLocationsDiv.appendChild(viaLocationP);
+                    });
+                } else {
+                    viaLocationsDiv.innerHTML = "<p>N/A</p>";
+                }
+            }
 
             // Via locations handling
             const viaLocationsDiv = document.getElementById("nfpl_js_styles_via_locations");

@@ -52,8 +52,11 @@ add_action('wp_enqueue_scripts', 'enqueue_custom_plugin_assets_FOR_PAYMENT_DETAI
 
 <!-- Payment Container -->
 
+<div id="nfpl_style_payment_container_parent">
+
+
 <div id="nfpl_style_payment_container">
-    <div style="position: relative !important;">
+    <div id="nfpl_style_payment_container_child" style="position: relative !important;">
         <h1 id="nfpl_style_payment_heading">Payment Method</h1>
         <p id="nfpl_style_payment_text">You can pay with cash to the driver or with a card</p>
         <div id="nfpl_style_payment_price">Price: £<span id="nfpl_js_style_price">Loading...</span></div>
@@ -76,52 +79,85 @@ add_action('wp_enqueue_scripts', 'enqueue_custom_plugin_assets_FOR_PAYMENT_DETAI
 </div>
 
 
-<div style="width: 100%; display: flex; flex-direction: row; ">
-    <div style="
-                                   min-width: 33%;
-
-    ">
+<div id="nfpl_stlyes_details_with_map" >
+    
+<div style="min-width: fit-content; height: fit-content;">
         <img id="nfpl_map" src="" alt="Map Image" style="width: 100%; height: 100%; object-fit: contain;">
     </div>
 
-    <div style="display: flex; flex-direction: row; width: 100%;">
-        <div class="nfpl_styles_detail">
+
+    <div class="nfpl_styles_detail" style="display: flex; flex-direction: row; width: 100%;">
+        <div >
+            <h4 style="border-bottom: 1px solid #b5b5b5;">Forward Booking</h4>
             <div class="nfpl_details">
 
-                <p>Reference #:</p>
+                <p><strong>Reference #:</strong></p>
                 <p id="nfpl_js_styles_reference">Loading...</p>
 
             </div>
 
             <div class="nfpl_details">
-                <p>Pickup Location:</p>
+                <p><strong>Pickup Location:</strong></p>
                 <p id="nfpl_js_styles_pickup_location">Loading...</p>
             </div>
             <div class="nfpl_details">
 
-                <p>Dropoff Location:</p>
+                <p><strong>Dropoff Location:</strong></p>
                 <p id="nfpl_js_styles_dropoff_location">Loading...</p>
 
             </div>
 
             <div class="nfpl_details">
-                <p>Pickup Time:</p>
+                <p><strong>Pickup Time:</strong></p>
                 <p id="nfpl_js_styles_pickup_time">Loading...</p>
 
             </div>
             <div class="nfpl_details">
-                <p>Booked At:</p>
+                <p><strong>Booked At:</strong></p>
                 <p id="nfpl_js_styles_booked_at">Loading...</p>
 
             </div>
             <div class="nfpl_details">
-                <p>Duration:</p>
+                <p><strong>Duration:</strong></p>
                 <p id="nfpl_js_styles_duration">Loading...</p>
 
             </div>
             <div class="nfpl_details">
-                <p>Via:</p>
+                <p><strong>Via:</strong></p>
                 <p id="nfpl_js_styles_via_locations">Loading...</p>
+
+            </div>
+        </div>
+
+    </div>
+
+   
+
+
+     <div class="nfpl_styles_detail" style="display: flex; flex-direction: row; width: 100%;">
+        <div >
+            <h4 style="border-bottom: 1px solid #b5b5b5;">Return Booking</h4>
+            
+
+            <div class="nfpl_details">
+                <p><strong>Pickup Location:</strong></p>
+                <p id="nfpl_js_styles_pickup_location_return">Loading...</p>
+            </div>
+            <div class="nfpl_details">
+
+                <p><strong>Dropoff Location:</strong></p>
+                <p id="nfpl_js_styles_dropoff_location_return">Loading...</p>
+
+            </div>
+
+            <div class="nfpl_details">
+                <p><strong>Pickup Time:</strong></p>
+                <p id="nfpl_js_styles_pickup_time_return">Loading...</p>
+
+            </div>
+            <div class="nfpl_details">
+                <p><strong>Via:</strong></p>
+                <p id="nfpl_js_styles_via_locations_return">Loading...</p>
 
             </div>
         </div>
@@ -132,17 +168,57 @@ add_action('wp_enqueue_scripts', 'enqueue_custom_plugin_assets_FOR_PAYMENT_DETAI
 </div>
 
 
+</div>
+
+
 <style>
+    
+    #nfpl_style_payment_container_child{
+        width: 100%;
+    }
+    #nfpl_stlyes_details_with_map{
+        width: 55%;  display: flex; flex-direction: column;
+        margin: 0 5%
+    }
+
+    #nfpl_style_payment_container_parent{
+        display: flex !important;
+        flex-direction: row !important;
+        width: 100%;
+    }
     .nfpl_details{
         display: flex;
         flex-direction: row;
     }
-
+.nfpl_details{
+    font-size:medium;
+}
     @media (max-width: 768px) {
         
-    .nfpl_details{
+   
+    #nfpl_style_payment_container_parent{
+        display: flex !important;
+        flex-direction: column !important;
+        width: 100%;
+    }
+    #nfpl_stlyes_details_with_map{
+        width: 100%;
+        padding: 5%;
+        margin: 0;
+    }
+
+    }
+
+
+    @media (max-width: 500px) {
+        .nfpl_details{
         display: flex;
         flex-direction: column;
     }
+    }
+
+    .nfpl_styles_detail{
+        border: 1px solid #b5b5b5;
+        padding: 2%;
     }
 </style>

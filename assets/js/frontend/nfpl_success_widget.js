@@ -57,36 +57,80 @@ const fetchInfo = async () => {
                 headers: nfpl_headers
             }
         )
-        const data2 = await response2.json()
-        console.log("DATA HERE2", data2)
+        const data = await response2.json()
+        console.log("DATA HERE2", data)
 
 
 
 
-        const realTotalPrice = data2.booking.priceToCharge + (data2.booking?.linkedBooking?.priceToCharge ? data2.booking.linkedBooking.priceToCharge : 0);
-        // console.log("REAL TOTAL PRICE", realTotalPrice, data2.booking.totalPrice, data2.booking.linkedBooking.totalPrice)
-        nfpl_var_paymentMode.innerText = data2.booking.paymentMethod;
-        nfpl_var_paymentStatus.innerText = data2.booking.paid
-        // nfpl_var_paymentPaid.innerText = data2.booking.payment_status
+        const realTotalPrice = data.booking.priceToCharge + (data.returnBooking.priceToCharge ? data.returnBooking.priceToCharge : 0);
+        // console.log("REAL TOTAL PRICE", realTotalPrice, data.booking.totalPrice, data.returnBooking.totalPrice)
+        nfpl_var_paymentMode.innerText = data.booking.paymentMethod;
+        nfpl_var_paymentStatus.innerText = data.booking.paid
+        // nfpl_var_paymentPaid.innerText = data.booking.payment_status
         nfpl_var_paymentDue.innerText = realTotalPrice;
 
-        nfpl_var_paymentDate.innerText = data2.booking.booked_at;
-        nfpl_var_bookingRef.innerText = data2.booking.reference;
+        nfpl_var_paymentDate.innerText = data.booking.booked_at;
+        nfpl_var_bookingRef.innerText = data.booking.reference;
 
 
+        const returnBookingExists = data?.returnBooking?.isReturn;
+        // Set booking details
         document.getElementById("nfpl_js_styles_reference").textContent =
-            data2.booking.reference;
+            data.booking.reference;
         document.getElementById("nfpl_js_styles_pickup_time").textContent =
-            data2.booking.startTime;
+            data.booking.startDate;
         document.getElementById("nfpl_js_styles_pickup_location").textContent =
-            data2.booking.from_desc;
+            data.booking.from_desc;
         document.getElementById("nfpl_js_styles_dropoff_location").textContent =
-            data2.booking.to_desc;
+            data.booking.to_desc;
         document.getElementById("nfpl_js_styles_booked_at").textContent =
-            data2.booking.booked_at;
+            data.booking.booked_at;
         document.getElementById("nfpl_js_styles_duration").textContent =
-            data2.booking.durationText;
-        document.getElementById("nfpl_map").src = data2.booking.staticmap;
+            data.booking.durationText;
+        document.getElementById("nfpl_map").src = data.booking.staticmap;
+
+
+        console.log(returnBookingExists)
+        if (returnBookingExists) {
+            document.getElementById("nfpl_js_styles_isReturn").style.display = 'flex'
+            document.getElementById("nfpl_js_styles_pickup_time_return").textContent =
+                data.returnBooking?.startDate;
+            document.getElementById("nfpl_js_styles_pickup_location_return").textContent =
+                data.returnBooking?.from_desc;
+            document.getElementById("nfpl_js_styles_dropoff_location_return").textContent =
+                data.returnBooking?.to_desc;
+
+
+            const viaLocationsDiv = document.getElementById("nfpl_js_styles_via_locations_return");
+            viaLocationsDiv.innerHTML = "";
+
+            console.log("WHAT", data.returnBooking)
+            if (data.returnBooking.via && data.returnBooking.via.length > 0) {
+                data.returnBooking.via.forEach((viaLocation) => {
+                    const viaLocationP = document.createElement("p");
+                    viaLocationP.innerHTML = `${viaLocation.desc}`;
+                    viaLocationsDiv.appendChild(viaLocationP);
+                });
+            } else {
+                viaLocationsDiv.innerHTML = "<p>N/A</p>";
+            }
+        }
+
+        // Via locations handling
+        const viaLocationsDiv = document.getElementById("nfpl_js_styles_via_locations");
+        viaLocationsDiv.innerHTML = "";
+
+        console.log("WHAT", data.booking)
+        if (data.booking.via && data.booking.via.length > 0) {
+            data.booking.via.forEach((viaLocation) => {
+                const viaLocationP = document.createElement("p");
+                viaLocationP.innerHTML = `${viaLocation.desc}`;
+                viaLocationsDiv.appendChild(viaLocationP);
+            });
+        } else {
+            viaLocationsDiv.innerHTML = "<p>N/A</p>";
+        }
 
         // return data2
     } catch (error) {
