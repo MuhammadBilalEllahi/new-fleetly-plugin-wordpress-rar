@@ -10,7 +10,7 @@ async function fetchPrice() {
         if (response.ok) {
             const data = await response.json();
             console.log('Price:', data);
-            document.getElementById('nfpl_js_style_price').textContent = data.booking.priceToCharge + (data.returnBooking.priceToCharge ?? 0);
+            document.getElementById('nfpl_js_style_price').textContent = data.booking.priceToCharge + (data?.returnBooking?.priceToCharge ?? 0);
 
             // const returnBookingExists = data?.booking?.returnQuotations?.length > 0;
             const returnBookingExists = data?.returnBooking?.isReturn;
@@ -31,6 +31,7 @@ async function fetchPrice() {
 
             console.log(returnBookingExists)
             if (returnBookingExists) {
+                document.getElementById('nfpl_js_style_isReturn').style.display = 'flex';
                 document.getElementById("nfpl_js_styles_pickup_time_return").textContent =
                     data.returnBooking?.startDate;
                 document.getElementById("nfpl_js_styles_pickup_location_return").textContent =

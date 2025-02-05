@@ -63,7 +63,7 @@ const fetchInfo = async () => {
 
 
 
-        const realTotalPrice = data.booking.priceToCharge + (data.returnBooking.priceToCharge ? data.returnBooking.priceToCharge : 0);
+        const realTotalPrice = data.booking.priceToCharge + (data?.returnBooking?.priceToCharge ? data.returnBooking.priceToCharge : 0);
         // console.log("REAL TOTAL PRICE", realTotalPrice, data.booking.totalPrice, data.returnBooking.totalPrice)
         nfpl_var_paymentMode.innerText = data.booking.paymentMethod;
         nfpl_var_paymentStatus.innerText = data.booking.paid

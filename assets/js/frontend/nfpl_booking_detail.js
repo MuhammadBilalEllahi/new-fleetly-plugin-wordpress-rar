@@ -258,58 +258,6 @@ function displayBookingDetails(booking, returnBooking) {
 </tr>`
 }
 
-// function displayBookingDetails(booking, returnBooking) {
-//     const forwardBookingDetails = document.getElementById('forwardBookingDetails');
-//     const returnBookingDetails = document.getElementById('returnBookingDetails');
-
-//     console.log("displayBookingDetails", booking, returnBooking)
-//     const voucherDiscount =
-//         booking.voucherDiscount
-//             ? `<p>Voucher Discount: ${booking.voucherDiscount}</p>`
-//             : '';
-
-//     const addonsList =
-//         booking.addons && booking.addons.length > 0
-//             ? booking.addons.map(addon =>
-//                 `<p>Add-on: ${addon.title} - ${addon.amount}</p>`
-//             ).join('')
-//             : '';
-
-//     // Display forward booking details
-//     forwardBookingDetails.innerHTML = `
-//       <p>Price to Charge: ${booking.priceToCharge || 'N/A'}</p>
-//       <p>Total Price: ${booking.totalPrice || 'N/A'}</p>
-//       ${voucherDiscount}               
-//       ${addonsList} 
-//     `;
-
-//     if (returnBooking) {
-//         returnBookingDetails.style.display = 'block';
-
-//         const voucherDiscountR =
-//             returnBooking.voucherDiscount
-//                 ? `<p>Voucher Discount: ${returnBooking.voucherDiscount}</p>`
-//                 : '';
-
-//         const addonsListR =
-//             returnBooking.addons && returnBooking.addons.length > 0
-//                 ? returnBooking.addons.map(addon =>
-//                     `<p>Add-on: ${addon.title} - ${addon.amount}</p>`
-//                 ).join('')
-//                 : '';
-//         // Display return booking details
-//         returnBookingDetails.innerHTML = `
-//                 <p>Price to Charge: ${returnBooking.priceToCharge || 'N/A'}</p>
-//                 <p>Total Price: ${returnBooking.totalPrice || 'N/A'}</p>
-//                 ${voucherDiscountR}               
-//                 ${addonsListR}   
-
-
-//     `;
-//     }
-// }
-
-
 document.addEventListener("DOMContentLoaded", (e) => {
 
     getAllDataFromBookingId()

@@ -134,7 +134,7 @@ add_action('wp_enqueue_scripts', 'enqueue_custom_plugin_assets_FOR_PAYMENT_DETAI
    
 
 
-     <div class="nfpl_styles_detail" style="display: flex; flex-direction: row; width: 100%;">
+     <div id="nfpl_js_style_isReturn" class="nfpl_styles_detail" style="display: none; flex-direction: row; width: 100%;">
         <div >
             <h4 style="border-bottom: 1px solid #b5b5b5;">Return Booking</h4>
             
