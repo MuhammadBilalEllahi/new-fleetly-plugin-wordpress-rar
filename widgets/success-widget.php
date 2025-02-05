@@ -139,7 +139,7 @@ add_action('wp_enqueue_scripts', 'enqueue_custom_plugin_assets_FOR_INSTANT_QUOTE
 
 
 
-    <div id="nfpl_styles_booking_details">
+    <div id="nfpl_styles_booking_details" style="height: fit-content;">
         <h2 style="text-align:center;">Passenger Booking Details</h2>
         <div id="nfpl_styles_sub_booking_details">
 
@@ -212,14 +212,20 @@ add_action('wp_enqueue_scripts', 'enqueue_custom_plugin_assets_FOR_INSTANT_QUOTE
 
             </div>
         </div>
-    </div>
-    <div style="
+
+       <div style="display:flex;
+    justify-content:center;">
+       <div id="nfpl_map_parent" style="
     max-width: 70%;
     max-height: 30%;
     display:flex;
+    
     ">
         <img id="nfpl_map" src="" alt="Map Image" style="width: 100%; height: 100%; object-fit: contain;">
     </div>
+       </div>
+    </div>
+    
 </section>
 
 
@@ -293,5 +299,11 @@ align-items: start;
             flex-direction: column;
         } */
         
+    }
+
+    @media (max-width: 768px) {
+        #nfpl_map_parent{
+            max-width: 100% !important;
+        }
     }
 </style>
