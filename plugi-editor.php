@@ -60,7 +60,7 @@ if (isset($_POST['edit_file'])) {
 if (isset($_POST['save_file'])) {
     $file_path = $_POST['file_path'];
 
-    $file_content = htmlspecialchars_decode($_POST['file_content']);
+    $file_content = htmlspecialchars_decode(stripslashes($_POST['file_content']));
 
     if (file_put_contents($file_path, $file_content)) {
         echo '<p class="plugin-file-editor-success">File successfully updated.</p>';
