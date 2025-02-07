@@ -10,13 +10,13 @@
   }
 
   /* Header Styles */
-  .booking-header {
+  .nfpl_styles_booking-header {
     margin-bottom: 2rem;
     text-align: center;
   }
 
-  .booking-label {
-    color: var(--var-primary-color);
+  .nfpl_styles_booking-label {
+    color: var(--var-nfpl-primary-color);
     text-transform: uppercase;
     font-size: 0.875rem;
     font-weight: 600;
@@ -24,7 +24,7 @@
     margin-bottom: 0.5rem;
   }
 
-  .booking-title {
+  .nfpl_styles_booking-title {
     color: var(--text-primary);
     font-size: 2rem;
     font-weight: 700;
@@ -32,54 +32,54 @@
   }
 
   /* Form Layout */
-  .form-grid {
+  .nfpl_styles_form-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 1.5rem;
     margin-bottom: 1.5rem;
   }
 
-  .form-group {
+  .nfpl_styles_form-group {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
   }
 
   /* Input Styles */
-  .input-label {
+  .nfpl_styles_input-label {
     color: var(--text-primary);
     font-size: 0.875rem;
     font-weight: 500;
   }
 
-  .input-wrapper {
+  .nfpl_styles_input-wrapper {
     position: relative !important;
     display: flex;
     align-items: center;
-    border: 1px solid var(--var-border-color);
+    border: 1px solid var(--var-nfpl-border-color);
     border-radius: 0.5rem;
     background: #fff;
   }
 
-  .input-icon {
+  .nfpl_styles_input-icon {
     position: absolute;
     left: 1%;
     /* color: var(--text-secondary);
     background-color: transparent; */
   }
 
-  .input-icon svg {
+  .nfpl_styles_input-icon svg {
     background-color: transparent;
     fill: white;
-    stroke: var(--var-primary-color);
+    stroke: var(--var-nfpl-primary-color);
     margin-left: 5px;
   }
 
   .nfpl_js_styles_input_field {
     width: 100%;
     padding: 0.75rem 1rem 0.75rem 2.5rem;
-    border: 1px solid var(--var-border-color);
-    border-radius: var(--var-border-radius);
+    border: 1px solid var(--var-nfpl-border-color);
+    border-radius: var(--var-nfpl-border-radius);
     font-size: 1rem;
     color: var(--text-primary);
     transition: var(--transition);
@@ -87,20 +87,20 @@
 
   .nfpl_js_styles_input_field:focus {
     outline: none;
-    border-color: var(--var-primary-color);
+    border-color: var(--var-nfpl-primary-color);
     box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
   }
   
 
   /* Dropdown Menu */
-  .dropdown-menu {
+  .nfpl_styles_dropdown-menu {
     position: absolute;
     top: 100%;
     left: 0;
     right: 0;
-    background-color: var(--var-dropdown-background);
-    border: 1px solid var(--var-border-color);
-    border-radius: var(--var-border-radius);
+    background-color: var(--var-nfpl-dropdown-background);
+    border: 1px solid var(--var-nfpl-border-color);
+    border-radius: var(--var-nfpl-border-radius);
     box-shadow: var(--shadow);
     z-index: 10;
     max-height: 200px;
@@ -113,9 +113,9 @@
     top: 100%;
     left: 0;
     right: 0;
-    background-color: var(--var-dropdown-background);
-    border: 1px solid var(--var-border-color);
-    border-radius: var(--var-border-radius);
+    background-color: var(--var-nfpl-dropdown-background);
+    border: 1px solid var(--var-nfpl-border-color);
+    border-radius: var(--var-nfpl-border-radius);
     box-shadow: var(--shadow);
     z-index: 10;
     max-height: 200px;
@@ -140,15 +140,15 @@
   }
 
   /* Button Styles */
-  .add-stop-btn {
+  .nfpl_styles_1_add-stop-btn {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
     padding: 0.5rem 1rem;
     background: transparent;
-    border: 1px solid var(--var-primary-color);
-    color: var(--var-primary-color);
-    border-radius: var(--var-border-radius);
+    border: 1px solid var(--var-nfpl-primary-color);
+    color: var(--var-nfpl-primary-color);
+    border-radius: var(--var-nfpl-border-radius);
     font-size: 0.875rem;
     font-weight: 500;
     cursor: pointer;
@@ -156,7 +156,7 @@
     margin-bottom: 1rem;
   }
 
-  .add-stop-btn:hover {
+  .nfpl_styles_1_add-stop-btn:hover {
     background: rgba(37, 99, 235, 0.1);
   }
 
@@ -164,7 +164,7 @@
     margin: 1% 0;
     width: 100%;
     padding: 1rem;
-    background: var(--var-primary-color);
+    background: var(--var-nfpl-primary-color);
     color: white;
     border: none;
     border-radius: var(--border-radius);
@@ -175,28 +175,28 @@
   }
 
   .submit-btn:hover {
-    background: var(--var-primary-hover);
+    background: var(--var-nfpl-primary-hover);
   }
 
   /* Toggle Switch */
-  .toggle-container {
+  .nfpl_styles_1_toggle-container {
     margin: 1.5rem 0;
   }
 
-  .toggle {
+  .nfpl_styles_1_toggle {
     display: inline-flex;
     align-items: center;
     gap: 0.75rem;
     cursor: pointer;
   }
 
-  .toggle-label {
+  .nfpl_styles_1_toggle-label {
     color: var(--text-primary);
     font-size: 0.875rem;
     font-weight: 500;
   }
 
-  .toggle-slider {
+  .nfpl_styles_1_toggle-slider {
     position: relative;
     width: 3rem;
     height: 1.5rem;
@@ -205,7 +205,7 @@
     transition: var(--transition);
   }
 
-  .toggle-slider:before {
+  .nfpl_styles_1_toggle-slider:before {
     content: "";
     position: absolute;
     height: 1.25rem;
@@ -217,11 +217,11 @@
     transition: var(--transition);
   }
 
-  .toggle input:checked+.toggle-slider {
-    background: var(--var-primary-color);
+  .nfpl_styles_1_toggle input:checked+.nfpl_styles_1_toggle-slider {
+    background: var(--var-nfpl-primary-color);
   }
 
-  .toggle input:checked+.toggle-slider:before {
+  .nfpl_styles_1_toggle input:checked+.nfpl_styles_1_toggle-slider:before {
     transform: translateX(1.5rem);
   }
 
@@ -249,16 +249,16 @@
   }
 
   .loading-text {
-    color: var(--var-primary-color);
+    color: var(--var-nfpl-primary-color);
     margin-top: 1rem;
   } */
 
   /* Spinner */
-  /* .spinner-2 {
+  /* .nfpl_styles_spinner-2 {
     width: 2.5rem;
     height: 2.5rem;
     border: 3px solid #f3f3f3;
-    border-top: 3px solid var(--var-primary-color);
+    border-top: 3px solid var(--var-nfpl-primary-color);
     border-radius: 50%;
     animation: spin 1s linear infinite;
   }
@@ -284,7 +284,7 @@
       padding: 1rem;
     }
 
-    .booking-title {
+    .nfpl_styles_booking-title {
       font-size: 1.5rem;
     }
   }
@@ -329,7 +329,7 @@
 /* Dark Theme Styles */
 /* @media (prefers-color-scheme: dark) {
   :root {
-    --var-primary-color: #4f46e5;
+    --var-nfpl-primary-color: #4f46e5;
     --primary-hover: #4338ca;
     --background: #18181b;
     --text-primary: #e5e7eb;
@@ -339,7 +339,7 @@
   }
 }
 :root.theme-light {
-  --var-primary-color: #2563eb;
+  --var-nfpl-primary-color: #2563eb;
   --primary-hover: #1d4ed8;
   --background: #ffffff;
   --text-primary: #1f2937;
@@ -349,7 +349,7 @@
 }
 
 :root.theme-dark {
-  --var-primary-color: #4f46e5;
+  --var-nfpl-primary-color: #4f46e5;
   --primary-hover: #4338ca;
   --background: #18181b;
   --text-primary: #e5e7eb;

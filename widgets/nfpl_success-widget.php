@@ -14,7 +14,7 @@ add_action('wp_enqueue_scripts', 'enqueue_custom_plugin_assets_FOR_INSTANT_QUOTE
 
 
 <script>
-    const apiUrlPrefixs = "<?php echo nfpl_function_get_api_url_prefix(); ?>";
+    const nfpl_API_apiUrlPrefixs = "<?php echo nfpl_function_get_api_url_prefix(); ?>";
     const rawSearch = window.location.search;
     console.log("Raw search string:", rawSearch);
     const cleanedSearch = rawSearch.replace(/\?([^?]*)\?/, "?$1&");
@@ -23,8 +23,8 @@ add_action('wp_enqueue_scripts', 'enqueue_custom_plugin_assets_FOR_INSTANT_QUOTE
     const bookingId = urlParams.get("id");
     const nfpl_var_apikey = "<?php echo nfpl_function_get_api_key(); ?>";
     console.log("Booking ID:", bookingId);
-    const req_GET_success_InfoOnLoadUrl = `${apiUrlPrefixs}/plugin/dispatcher/widget-quotations/${bookingId}`;
-    const req_GET_price = `${apiUrlPrefixs}/plugin/dispatcher/widget-booking/${bookingId}/price`;
+    const req_GET_success_InfoOnLoadUrl = `${nfpl_API_apiUrlPrefixs}/plugin/dispatcher/widget-quotations/${bookingId}`;
+    const req_GET_price = `${nfpl_API_apiUrlPrefixs}/plugin/dispatcher/widget-booking/${bookingId}/price`;
 
 
     const tenantId = "<?php echo nfpl_function_get_tenant_owner_id(); ?>";
@@ -39,40 +39,6 @@ add_action('wp_enqueue_scripts', 'enqueue_custom_plugin_assets_FOR_INSTANT_QUOTE
 
 </script>
 
-
-<!-- 
-<section>
-    <div>
-        <div id="nfpl_js_style_main_payment_box" style="display: none;">
-            <h6>Great!</h6>
-            <h5>Booking Ref: <span id="nfpl_js_style_booking_ref"></span> </h5>
-
-            <div class="" style="display:flex; flex-direction:row;">
-                <div>
-                    <h6>Payment Mode: </h6>
-                    <h6>Total Due: </h6>
-                    <h6>Date: </h6>
-                </div>
-                <div>
-                    <p id="nfpl_js_style_payment_mode">CASH</p>
-                    <p id="nfpl_js_style_total_due"></p>
-                    <p id="nfpl_js_style_date"></p>
-                </div>
-            </div>
-
-            <p>
-                A "Booking Received" email has been sent to your inbox. If it&apos;s not there, please check your junk
-                or spam folder. Once one of our agents reviews your booking, we&apos;ll send a confirmation email. Thank
-                you for booking with us, and we wish you a pleasant journey!
-            </p>
-
-        </div>
-
-        <div id="nfpl_js_style_no_booking_to_show" style="display:none;">
-            <h2>No booking to show</h2>
-        </div>
-    </div>
-</section> -->
 
 
 
@@ -234,12 +200,12 @@ add_action('wp_enqueue_scripts', 'enqueue_custom_plugin_assets_FOR_INSTANT_QUOTE
 <style>
     /* Booking Details Section */
     #nfpl_styles_booking_details {
-        background: var(--var-box-bg);
+        background: var(--var-nfpl-box-bg);
         width: 100%;
         border-radius: 12px;
         padding: 2rem;
         margin-bottom: 3rem;
-        border: 1px solid var(--var-border-color);
+        border: 1px solid var(--var-nfpl-border-color);
     }
 
     .nfpl_styles_detail,
@@ -256,7 +222,7 @@ add_action('wp_enqueue_scripts', 'enqueue_custom_plugin_assets_FOR_INSTANT_QUOTE
     }
 
     .nfpl_styles_detail h3 {
-        color: var(--var-quote-h3-color);
+        color: var(--var-nfpl-quote-h3-color);
         font-size: 1rem;
         padding-right: 1%;
         font-weight: 600;
@@ -264,7 +230,7 @@ add_action('wp_enqueue_scripts', 'enqueue_custom_plugin_assets_FOR_INSTANT_QUOTE
     }
 
     .nfpl_styles_detail2 p {
-        color: var(--var-quote-p-color);
+        color: var(--var-nfpl-quote-p-color);
         margin: 0;
         font-size: 1rem;
     }

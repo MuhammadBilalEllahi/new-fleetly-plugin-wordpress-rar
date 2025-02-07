@@ -66,7 +66,7 @@
 <script>
     const tenantId = "<?php echo nfpl_function_get_tenant_owner_id(); ?>";
     const nfpl_var_apikey = '<?php echo nfpl_function_get_api_key(); ?>';
-    const nfpl_var_apiUrlPrefixs = '<?php echo nfpl_function_get_api_url_prefix(); ?>';
+    const nfpl_var_nfpl_API_apiUrlPrefixs = '<?php echo nfpl_function_get_api_url_prefix(); ?>';
 
 
     const nfpl_headers = {
@@ -77,7 +77,7 @@
 
     }
 
-    const nfpl_var_GET_MyBooking = `${nfpl_var_apiUrlPrefixs}/plugin/dispatcher/widget/my-bookings`;
+    const nfpl_var_GET_MyBooking = `${nfpl_var_nfpl_API_apiUrlPrefixs}/plugin/dispatcher/widget/my-bookings`;
 
 </script>
 

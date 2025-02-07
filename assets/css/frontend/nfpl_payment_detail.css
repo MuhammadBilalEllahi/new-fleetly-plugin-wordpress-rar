@@ -32,7 +32,7 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    border: 0.7px solid var(--var-primary-color);
+    border: 0.7px solid var(--var-nfpl-primary-color);
     margin: 1% 0;
     width: 100%;
     padding:  0.5rem;
@@ -46,13 +46,13 @@
 
 .nfpl_style_cash_button.active ,
 .nfpl_style_card_button.active {
-    background-color: var(--var-primary-hover) !important;
+    background-color: var(--var-nfpl-primary-hover) !important;
 }
 
 .nfpl_style_cash_button:hover,
 .nfpl_style_card_button:hover {
     opacity: 0.9;
-    background-color: var(--var-primary-hover);
+    background-color: var(--var-nfpl-primary-hover);
 }
 
 

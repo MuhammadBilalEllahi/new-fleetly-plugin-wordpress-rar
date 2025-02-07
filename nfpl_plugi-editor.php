@@ -22,12 +22,12 @@ $plugin_files = get_all_files($plugin_dir);
 
 
 // File editor UI
-echo '<div class="plugin-file-editor-container-total">';
-echo '<div class="plugin-file-editor-container">';
-echo '<h1 class="plugin-file-editor-heading">Plugin File Editor</h1>';
-echo '<p class="plugin-file-editor-description">Select a file to edit:</p>';
-echo '<form method="post" action="" class="plugin-file-editor-form">';
-echo '<select name="plugin_file" class="plugin-file-selector" id="plugin-file-selector">';
+echo '<div class="nfpl_styles_plugin-file-editor-container-total">';
+echo '<div class="nfpl_styles_plugin-file-editor-container">';
+echo '<h1 class="nfpl_styles_plugin-file-editor-heading">Plugin File Editor</h1>';
+echo '<p class="nfpl_styles_plugin-file-editor-description">Select a file to edit:</p>';
+echo '<form method="post" action="" class="nfpl_styles_plugin-file-editor-form">';
+echo '<select name="plugin_file" class="nfpl_styles_js_plugin-file-selector" id="nfpl_styles_js_plugin-file-selector">';
 
 foreach ($plugin_files as $file) {
     // Skip parent directories
@@ -36,10 +36,10 @@ foreach ($plugin_files as $file) {
 }
 
 echo '</select>';
-echo '<input type="submit" name="edit_file" value="Edit File" class="plugin-file-edit-button">';
+echo '<input type="submit" name="nfpl_form_edit_file" value="Edit File" class="nfpl_styles_plugin-file-edit-button">';
 echo '</form>';
 
-if (isset($_POST['edit_file'])) {
+if (isset($_POST['nfpl_form_edit_file'])) {
     $selected_file = $_POST['plugin_file'];
     $file_path = $plugin_dir . $selected_file;
 
@@ -47,12 +47,12 @@ if (isset($_POST['edit_file'])) {
     if (file_exists($file_path)) {
         echo '<h2>Editing: ' . $selected_file . '</h2>';
         echo '<form method="post" action="">';
-        echo '<textarea name="file_content" class="plugin-file-editor-textarea">' . htmlspecialchars(file_get_contents($file_path)) . '</textarea><br>';
+        echo '<textarea name="file_content" class="nfpl_styles_plugin-file-editor-textarea">' . htmlspecialchars(file_get_contents($file_path)) . '</textarea><br>';
         echo '<input type="hidden" name="file_path" value="' . htmlspecialchars($file_path, ENT_QUOTES, 'UTF-8') . '">';
-        echo '<input type="submit" name="save_file" value="Save Changes" class="plugin-file-save-button">';
+        echo '<input type="submit" name="save_file" value="Save Changes" class="nfpl_styles_plugin-file-save-button">';
         echo '</form>';
     } else {
-        echo '<p class="plugin-file-editor-error">File not found.</p>';
+        echo '<p class="nfpl_styles_plugin-file-editor-error">File not found.</p>';
     }
 }
 
@@ -63,9 +63,9 @@ if (isset($_POST['save_file'])) {
     $file_content = htmlspecialchars_decode(stripslashes($_POST['file_content']));
 
     if (file_put_contents($file_path, $file_content)) {
-        echo '<p class="plugin-file-editor-success">File successfully updated.</p>';
+        echo '<p class="nfpl_styles_plugin-file-editor-success">File successfully updated.</p>';
     } else {
-        echo '<p class="plugin-file-editor-error">Failed to update the file.</p>';
+        echo '<p class="nfpl_styles_plugin-file-editor-error">Failed to update the file.</p>';
     }
 
 }
@@ -111,13 +111,13 @@ echo '</div>';
 
 <style>
     
-.plugin-file-editor-container-total {
+.nfpl_styles_plugin-file-editor-container-total {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
 }
 
-.plugin-file-editor-container {
+.nfpl_styles_plugin-file-editor-container {
     width: 75%;
     margin: 20px auto;
     background-color: #f9f9f9;
@@ -165,25 +165,25 @@ echo '</div>';
     color: #45a049;
 }
 
-.plugin-file-editor-heading {
+.nfpl_styles_plugin-file-editor-heading {
     text-align: center;
     font-size: 24px;
     margin-bottom: 15px;
     color: #333;
 }
 
-.plugin-file-editor-description {
+.nfpl_styles_plugin-file-editor-description {
     font-size: 16px;
     margin-bottom: 20px;
 }
 
-.plugin-file-editor-form {
+.nfpl_styles_plugin-file-editor-form {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
 }
 
-.plugin-file-selector {
+.nfpl_styles_js_plugin-file-selector {
     width: 100%;
     padding: 10px;
     margin: 5px 0;
@@ -192,7 +192,7 @@ echo '</div>';
     font-size: 13px;
 }
 
-.plugin-file-edit-button {
+.nfpl_styles_plugin-file-edit-button {
     padding: 10px 20px;
     font-size: 13px;
     cursor: pointer;
@@ -203,11 +203,11 @@ echo '</div>';
     transition: background-color 0.3s ease;
 }
 
-.plugin-file-edit-button:hover {
+.nfpl_styles_plugin-file-edit-button:hover {
     background-color: #45a049;
 }
 
-.plugin-file-editor-textarea {
+.nfpl_styles_plugin-file-editor-textarea {
     width: 100%;
     height: 400px;
     padding: 15px;
@@ -218,7 +218,7 @@ echo '</div>';
     line-height: 1.5;
 }
 
-.plugin-file-save-button {
+.nfpl_styles_plugin-file-save-button {
     padding: 10px 20px;
     font-size: 16px;
     cursor: pointer;
@@ -229,16 +229,16 @@ echo '</div>';
     transition: background-color 0.3s ease;
 }
 
-.plugin-file-save-button:hover {
+.nfpl_styles_plugin-file-save-button:hover {
     background-color: #45a049;
 }
 
-.plugin-file-editor-error {
+.nfpl_styles_plugin-file-editor-error {
     color: red;
     font-size: 16px;
 }
 
-.plugin-file-editor-success {
+.nfpl_styles_plugin-file-editor-success {
     color: green;
     font-size: 16px;
 }
@@ -264,11 +264,11 @@ document.addEventListener('DOMContentLoaded', function () {
             const filePath = fileItem.dataset.path;
 
             // Populate the file selector dropdown to reflect the selected file
-            const dropdown = document.getElementById('plugin-file-selector');
+            const dropdown = document.getElementById('nfpl_styles_js_plugin-file-selector');
             dropdown.value = filePath;
 
             // Optionally, submit the form programmatically to load the file
-            document.querySelector('input[name="edit_file"]').click();
+            document.querySelector('input[name="nfpl_form_edit_file"]').click();
         });
     });
 });

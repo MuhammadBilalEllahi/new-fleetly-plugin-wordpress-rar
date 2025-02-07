@@ -2,7 +2,7 @@
 .nfpl_js_style_input_container {
     display: flex;
     align-items: center;
-    border: 1px solid  var(--var-border-color);
+    border: 1px solid  var(--var-nfpl-border-color);
     border-radius: 0.5rem;
     background: #fff;
 }
@@ -29,7 +29,7 @@
 }
 
 /* Dropdown Styles */
-.custom-dropdown {
+.nfpl_styles_1_custom-dropdown {
     display: flex;
     align-items: center;
     flex-direction: row;
@@ -37,7 +37,7 @@
     max-width: 100px;
     /* margin-right: 10px; */
 }
-.custom-correct {
+.nfpl_styles_1_custom-correct {
     display: flex;
     align-items: center;
     flex-direction: row;
@@ -46,7 +46,7 @@
     /* margin-right: 10px; */
 }
 
-.dropdown-list {
+.nfpl_styles_1_dropdown-list {
     position: absolute;
     top: 100%;
     left: 0;
@@ -60,14 +60,14 @@
     display: none; /* Hidden by default */
 }
 
-.dropdown-list div {
+.nfpl_styles_1_dropdown-list div {
     padding: 10px;
     cursor: pointer;
     display: flex;
     align-items: center;
 }
 
-.dropdown-list div:hover {
+.nfpl_styles_1_dropdown-list div:hover {
     background-color: #f1f1f1;
 }
 
@@ -97,7 +97,7 @@
 }
 
 /* Buttons */
-.btn-primary {
+.nfpl-btn-primary {
     background: #007bff;
     color: white;
     padding: 1rem 2rem;
@@ -109,14 +109,14 @@
     margin-top: 1rem;
 }
 
-.btn-primary:hover {
+.nfpl-btn-primary:hover {
     background: #0056b3;
 }
 
 /* Text Area */
 textarea {
     width: 100%;
-    border: 1px solid  var(--var-border-color);
+    border: 1px solid  var(--var-nfpl-border-color);
     border-radius: 0.5rem;
     resize: vertical;
 }
@@ -134,7 +134,7 @@ p[id$="Success"] {
 
 /* Voucher Section */
 #nfpl_js_style_Apply_voucher_button {
-    background: var(--var-button-color);
+    background: var(--var-nfpl-button-color);
     color: white;
     border: none;
     border-radius: 0.3rem;
@@ -143,7 +143,7 @@ p[id$="Success"] {
 }
 
 #nfpl_js_style_Apply_voucher_button:hover {
-    background: var(--var-button-color);
+    background: var(--var-nfpl-button-color);
 }
 
 /* Booking Details Widget */
@@ -176,7 +176,7 @@ p[id$="Success"] {
     .nfpl_booking_details_widget .col {
         flex: 1 1 100%; /* 1 column on smaller screens */
     }
-    #pickupDetails, #returnDetails {
+    #nfpl_styles_1_pickupDetails, #nfpl_styles_1_returnDetails {
         
         border-left: none !important;
         border-top: 1px solid #b5b5b5 !important;
@@ -203,34 +203,34 @@ p[id$="Success"] {
         margin-bottom: 0.75rem;
     }
 
-    .btn-primary {
+    .nfpl-btn-primary {
         padding: 0.75rem 1.5rem;
     }
 }
 
 /* Custom Scrollbar */
-.dropdown-list::-webkit-scrollbar {
+.nfpl_styles_1_dropdown-list::-webkit-scrollbar {
     width: 6px;
 }
 
-.dropdown-list::-webkit-scrollbar-track {
+.nfpl_styles_1_dropdown-list::-webkit-scrollbar-track {
     background: #f1f1f1;
 }
 
-.dropdown-list::-webkit-scrollbar-thumb {
+.nfpl_styles_1_dropdown-list::-webkit-scrollbar-thumb {
     background: #888;
     border-radius: 3px;
 }
 
 /* Dropdown Menu */
-.dropdown-menu {
+.nfpl_styles_dropdown-menu {
     position: absolute;
     top: 100%;
     left: 0;
     right: 0;
-    background-color: var(--var-dropdown-background);
-    border: 1px solid var(--var-border-color);
-    border-radius: var(--var-border-radius);
+    background-color: var(--var-nfpl-dropdown-background);
+    border: 1px solid var(--var-nfpl-border-color);
+    border-radius: var(--var-nfpl-border-radius);
     box-shadow: var(--shadow);
     z-index: 10;
     max-height: 200px;
@@ -243,9 +243,9 @@ p[id$="Success"] {
     top: 100%;
     left: 0;
     right: 0;
-    background-color: var(--var-dropdown-background);
-    border: 1px solid var(--var-border-color);
-    border-radius: var(--var-border-radius);
+    background-color: var(--var-nfpl-dropdown-background);
+    border: 1px solid var(--var-nfpl-border-color);
+    border-radius: var(--var-nfpl-border-radius);
     box-shadow: var(--shadow);
     z-index: 10;
     max-height: 200px;
@@ -272,24 +272,24 @@ p[id$="Success"] {
     height: min-content;
 } */
 
-.form-group {
+.nfpl_styles_form-group {
     display: flex;
     flex-direction: column;
     margin-bottom: 0.5rem;
 
 }
 
-.form-group label {
+.nfpl_styles_form-group label {
     /* margin-bottom: 8px; */
     /* font-weight: bold; */
     color: #555;
 }
-.form-grid {
+.nfpl_styles_form-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 16px;
 }
-.form-container {
+.nfpl_styles_1_form-container {
     max-width: 1200px;
     margin: 0 auto;
 }
@@ -300,7 +300,7 @@ p[id$="Success"] {
   }
   
   
-  .form-group p{
+  .nfpl_styles_form-group p{
     font-size: medium;
   }
 
@@ -351,14 +351,14 @@ p[id$="Success"] {
     color: #333;
     margin: 20px auto;
     max-width: 700px;
-    border: 1px solid var(--var-border-color);
-    background-color: var(--var-dropdown-background);
+    border: 1px solid var(--var-nfpl-border-color);
+    background-color: var(--var-nfpl-dropdown-background);
     display: flex;
     flex-direction: column;
     font-size: medium;
   }
   
-  .map-image {
+  .nfpl_styles_1_map-image {
     width: 100%;
     max-height: 20rem;
     /* border-radius: 8px; */
@@ -373,7 +373,7 @@ p[id$="Success"] {
     margin: 5px 0;
   }
   
-  .booking_details_div{
+  .nfpl_styles_1_booking_details_div{
     border-top: 1px solid #ddd;
 
     width: 100%;
@@ -382,13 +382,13 @@ p[id$="Success"] {
     flex-direction: row;
   }
   @media screen and (max-width: 768px) {
-    .booking_details_div{
+    .nfpl_styles_1_booking_details_div{
       flex-direction: column;
     }
     
   }
 
-  #pickupDetails, #returnDetails {
+  #nfpl_styles_1_pickupDetails, #nfpl_styles_1_returnDetails {
     width: 100%;
     border: 1px solid #b5b5b5;
     padding: 0.6rem 0.3rem;

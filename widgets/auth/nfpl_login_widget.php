@@ -30,7 +30,7 @@
      <!-- Sign Out Button (Hidden initially) -->
      <div id="sign-out-btn" style="display: none; padding: 3% 5%;">
         <h5 style="margin: 3% 0; font-weight:700;">You're Logged In <span style="font-weight: 300; ">Do you want to Logout?</span></h5>
-        <button class="btn" onclick="signOut()">Sign Out</button>
+        <button class="nfpl-btn" onclick="signOut()">Sign Out</button>
     </div>
   </div>
 
@@ -164,9 +164,9 @@
 
 
 <script>
-    const apiUrlPrefixs = "<?php echo nfpl_function_get_api_url_prefix(); ?>";
+    const nfpl_API_apiUrlPrefixs = "<?php echo nfpl_function_get_api_url_prefix(); ?>";
     const apikey = "<?php echo nfpl_function_get_api_key(); ?>";
-    const req_POST_login = `${apiUrlPrefixs}/plugin/dispatcher/widget/login`;
+    const req_POST_login = `${nfpl_API_apiUrlPrefixs}/plugin/dispatcher/widget/login`;
     const tenantId = "<?php echo nfpl_function_get_tenant_owner_id(); ?>";
     const nfpl_quotationPageUrlAndPageNumber = '<?php echo esc_url(nfpl_function_get_navigation_url(INSTANT_QUOTE_WIDGET)); ?>';
     const nfpl_loginPageURlAndNumber = '<?php echo esc_url(nfpl_function_get_navigation_url(LOGIN_WIDGET)); ?>';

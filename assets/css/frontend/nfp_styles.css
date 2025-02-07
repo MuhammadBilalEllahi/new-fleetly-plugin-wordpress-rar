@@ -12,38 +12,41 @@
   }
 
   :root{
-    --var-quote-card-color: #f7f7f7;
-    --var-quote-h3-color: #121212;
-    --var-quote-p-color: #121212;
-    --var-quote-border-color: #121212;
-    --var-heading-color: #121212;
-    --var-box-bg: #ffffff;
-    --var-button-color: #1380f5;
-    /* --var-border-color: #1380f5; */
-    --var-border-color: #d1d1d1;
+    --var-nfpl-quote-card-color: #f7f7f7;
+    --var-nfpl-quote-h3-color: #121212;
+    --var-nfpl-quote-p-color: #121212;
+    --var-nfpl-quote-border-color: #121212;
+    --var-nfpl-heading-color: #121212;
+    --var-nfpl-box-bg: #ffffff;
+    --var-nfpl-button-color: #1380f5;
+    /* --var-nfpl-border-color: #1380f5; */
+    --var-nfpl-border-color: #d1d1d1;
 
-    --var-button-text: #ffff;
+    --var-nfpl-button-text: #ffff;
 
 
-    --var-primary-color: #2563eb;
-    --var-primary-hover: #e3ecff;
-    --var-dropdown-background: #ffffff;
-    --var-text-primary: #1f2937;
-    --var-text-secondary: #6b7280;
-    --var-border-radius: 0.5rem;
-    --var-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1);
-    --var-transition: all 0.3s ease;
+    --var-nfpl-primary-color: #2563eb;
+    --var-nfpl-primary-hover: #e3ecff;
+    --var-nfpl-dropdown-background: #ffffff;
+    --var-nfpl-text-primary: #1f2937;
+    --var-nfpl-text-secondary: #6b7280;
+    --var-nfpl-border-radius: 0.5rem;
+    --var-nfpl-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1);
+    --var-nfpl-transition: all 0.3s ease;
     
 
   }
 
-  .btn{
-    color: var(--var-button-text);
-    background-color: var(--var-button-color);
+  .nfpl-btn{
+    color: var(--var-nfpl-button-text);
+    background-color: var(--var-nfpl-button-color);
     border: none;
     padding: 0.6rem 0.5rem;
     width: 100%;
     border-radius: 0.4rem;
+}
+.nfpl-btn:hover{
+  cursor: pointer;
 }
 
   /* :root {
@@ -52,14 +55,14 @@
     --var-purple-hover-bg-color:#e6e6ff; 
     --var-body-color: #f5f5f5;
     --var-testimonial-bg: #58b49d6f;
-    --var-primary-color: #439d87;
-    --var-primary-hover-btn-color: #56cdaf;
-    --var-primary-hover-bg-color: #58b49d6f;
+    --var-nfpl-primary-color: #439d87;
+    --var-nfpl-primary-hover-btn-color: #56cdaf;
+    --var-nfpl-primary-hover-bg-color: #58b49d6f;
     --var-primary-box-shadow-color: #58b49d49;
-    --var-secondary-color: #bbc9c6;
+    --var-nfpl-secondary-color: #bbc9c6;
     --var-secondary-second-color: #727272;
-    --var-dark-text: #121212;
-    --var-light-text: #ffff;
+    --var-nfpl-dark-text: #121212;
+    --var-nfpl-light-text: #ffff;
     --var-light-grey: #d2d2d2;
     --var-dark-grey: #9a9a9a;
     --var-cc-h3: #2c3e50;
@@ -71,32 +74,32 @@
   } */
 
   .text-light {
-    color: var(--var-light-text) !important;
+    color: var(--var-nfpl-light-text) !important;
   }
 
   .text-dark {
-    color: var(--var-dark-text) !important;
+    color: var(--var-nfpl-dark-text) !important;
   }
 
   .bg-secondary {
-    background: var(--var-secondary-color) !important;
+    background: var(--var-nfpl-secondary-color) !important;
   }
 
   .bg-primary {
-    background: var(--var-primary-color) !important;
+    background: var(--var-nfpl-primary-color) !important;
   }
 
-  .btn-primary {
-    background: var(--var-primary-color) !important;
+  .nfpl-btn-primary {
+    background: var(--var-nfpl-primary-color) !important;
     border: none;
   }
 
   .text-primary {
-    color: var(--var-primary-color) !important;
+    color: var(--var-nfpl-primary-color) !important;
   }
 
   p {
-    color: var(--var-text-primary);
+    color: var(--var-nfpl-text-primary);
     margin: 0 !important;
   }
 
@@ -129,7 +132,7 @@
 
 
 /* LOADING STARTS HERE */
-#loadingOverlay {
+#nfpl_styles_loadingOverlay {
   position: absolute;
   top: 0;
   left: 0;
@@ -143,16 +146,16 @@
   z-index: 9999;
 }
 
-.loadingText {
+.nfpl_styles_loadingText {
   font-weight: 100;
   line-height: 0;
-  color: var(--var-secondary-color);
+  color: var(--var-nfpl-secondary-color);
 }
 
-#loadingSpinner-2 {
+#nfpl_styles_loadingSpinner-2 {
   width: 60px;
   aspect-ratio: 2;
-  --_g: no-repeat radial-gradient(circle closest-side, var(--var-primary-color) 90%, #39a07a00);
+  --_g: no-repeat radial-gradient(circle closest-side, var(--var-nfpl-primary-color) 90%, #39a07a00);
   background:
     var(--_g) 0% 50%,
     var(--_g) 50% 50%,

@@ -14,7 +14,7 @@ add_action('wp_enqueue_scripts', 'enqueue_custom_plugin_assets_FOR_PAYMENT_DETAI
 
 
 <script>
-    const apiUrlPrefixs = "<?php echo nfpl_function_get_api_url_prefix(); ?>";
+    const nfpl_API_apiUrlPrefixs = "<?php echo nfpl_function_get_api_url_prefix(); ?>";
     const rawSearch = window.location.search;
     // console.log("Raw search string:", rawSearch);
     const cleanedSearch = rawSearch.replace(/\?([^?]*)\?/, "?$1&");
@@ -28,9 +28,9 @@ add_action('wp_enqueue_scripts', 'enqueue_custom_plugin_assets_FOR_PAYMENT_DETAI
     const bookingPageUrl = '<?php echo esc_url(nfpl_function_get_navigation_url(SUCCESS_WIDGET)); ?>';
     const cancelPageUrl = '<?php echo esc_url(nfpl_function_get_navigation_url(PAYMENT_DETAILS_WIDGET)); ?>'; // Cancel URL
 
-    const req_GET_price = `${apiUrlPrefixs}/plugin/dispatcher/widget-booking/${bookingId}/price`
-    const req_POST_payment_cash = `${apiUrlPrefixs}/plugin/dispatcher/widget-paywithcash/${bookingId}`
-    const req_POST_payment_card = `${apiUrlPrefixs}/plugin/dispatcher/widget-paywithcard/${bookingId}`
+    const req_GET_price = `${nfpl_API_apiUrlPrefixs}/plugin/dispatcher/widget-booking/${bookingId}/price`
+    const req_POST_payment_cash = `${nfpl_API_apiUrlPrefixs}/plugin/dispatcher/widget-paywithcash/${bookingId}`
+    const req_POST_payment_card = `${nfpl_API_apiUrlPrefixs}/plugin/dispatcher/widget-paywithcard/${bookingId}`
 
     const tenantId = "<?php echo nfpl_function_get_tenant_owner_id(); ?>";
 
@@ -68,7 +68,7 @@ add_action('wp_enqueue_scripts', 'enqueue_custom_plugin_assets_FOR_PAYMENT_DETAI
                 <input name="paymentMethod" value="card" type="radio"> <span>Pay with Card</span>
             </div>
         </div>
-        <button id="nfpl_js_submit_button" class="btn">Continue</button>
+        <button id="nfpl_js_submit_button" class="nfpl-btn">Continue</button>
 
         <!-- Spinner -->
         <div id="nfpl_js_style_loading_spinner" style="display: none;">

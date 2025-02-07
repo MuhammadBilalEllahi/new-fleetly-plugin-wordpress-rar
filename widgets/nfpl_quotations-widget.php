@@ -11,7 +11,7 @@ add_action('wp_enqueue_scripts', 'enqueue_custom_plugin_assets_FOR_QUOTATIONS_WI
 ?>
 
 <script>
-    const apiUrlPrefixs = "<?php echo nfpl_function_get_api_url_prefix(); ?>";
+    const nfpl_API_apiUrlPrefixs = "<?php echo nfpl_function_get_api_url_prefix(); ?>";
     const rawSearch = window.location.search;
     // console.log("Raw search string:", rawSearch);
     const cleanedSearch = rawSearch.replace(/\?([^?]*)\?/, "?$1&");
@@ -23,8 +23,8 @@ add_action('wp_enqueue_scripts', 'enqueue_custom_plugin_assets_FOR_QUOTATIONS_WI
 
 
 
-    const req_GET_quotations = `${apiUrlPrefixs}/plugin/dispatcher/widget-quotations/${bookingId}`
-    const req_POST_quotations = `${apiUrlPrefixs}/plugin/dispatcher/widget-passenger-information/${bookingId}`;
+    const req_GET_quotations = `${nfpl_API_apiUrlPrefixs}/plugin/dispatcher/widget-quotations/${bookingId}`
+    const req_POST_quotations = `${nfpl_API_apiUrlPrefixs}/plugin/dispatcher/widget-passenger-information/${bookingId}`;
     const bookingPageUrl = "<?php echo esc_url(nfpl_function_get_navigation_url(BOOKING_DETAILS_WIDGET)); ?>";
 
     const tenantId = "<?php echo nfpl_function_get_tenant_owner_id(); ?>";
@@ -52,14 +52,14 @@ add_action('wp_enqueue_scripts', 'enqueue_custom_plugin_assets_FOR_QUOTATIONS_WI
                     <h4 style="width: 100%; text-align: center; font-size: 1.5rem;">Forward Booking</h4>
                    <div style="display: flex; flex-direction: row; border-top: 1px solid #b5b5b5;">
                    <div class="nfpl_styles_detail2">
-                        <!-- <p style="font-weight:600;">Reference #:</p> -->
-                        <p style="font-weight:600;">Pickup Location:</p>
-                        <p style="font-weight:600;">Dropoff Location:</p>
+                        <!-- <p style="font-weight:600;" class="nfpl_no_wrap_prop">Reference #:</p> -->
+                        <p style="font-weight:600;" class="nfpl_no_wrap_prop">Pickup Location:</p>
+                        <p style="font-weight:600;" class="nfpl_no_wrap_prop">Dropoff Location:</p>
 
-                        <p style="font-weight:600;">Pickup Time:</p>
-                        <p style="font-weight:600;">Booked At:</p>
-                        <p style="font-weight:600;">Duration:</p>
-                        <p style="font-weight:600;">Via:</p>
+                        <p style="font-weight:600;" class="nfpl_no_wrap_prop">Pickup Time:</p>
+                        <p style="font-weight:600;" class="nfpl_no_wrap_prop">Booked At:</p>
+                        <p style="font-weight:600;" class="nfpl_no_wrap_prop">Duration:</p>
+                        <p style="font-weight:600;" class="nfpl_no_wrap_prop">Via:</p>
                     </div>
 
                     <div class="nfpl_styles_detail2">
@@ -91,12 +91,12 @@ add_action('wp_enqueue_scripts', 'enqueue_custom_plugin_assets_FOR_QUOTATIONS_WI
                         <div style="display: flex; flex-direction: row; border-top: 1px solid #b5b5b5;">
 
                             <div class="nfpl_styles_detail2">
-                                <!-- <p style="font-weight:600;">Reference #:</p> -->
-                                <p style="font-weight:600;">Pickup Location:</p>
-                                <p style="font-weight:600;">Dropoff Location:</p>
+                                <!-- <p style="font-weight:600;" class="nfpl_no_wrap_prop">Reference #:</p> -->
+                                <p style="font-weight:600;" class="nfpl_no_wrap_prop">Pickup Location:</p>
+                                <p style="font-weight:600;" class="nfpl_no_wrap_prop">Dropoff Location:</p>
 
-                                <p style="font-weight:600;">Pickup Time:</p>
-                                <p style="font-weight:600;">Via:</p>
+                                <p style="font-weight:600;" class="nfpl_no_wrap_prop">Pickup Time:</p>
+                                <p style="font-weight:600;" class="nfpl_no_wrap_prop">Via:</p>
                             </div>
 
                             <div class="nfpl_styles_detail2">

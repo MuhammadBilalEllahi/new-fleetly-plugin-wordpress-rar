@@ -16,7 +16,18 @@ Author: Cogentro
 
 
 
-echo '<div class="nfp-toast-container" id="nfp-toastContainer"></div>';
+add_action('wp_footer', function () {
+    ob_start();
+    echo '<div class="nfp-toast-container" id="nfp-toastContainer"></div>';
+    ob_end_flush();
+});
+
+add_action('admin_footer', function () {
+    ob_start();
+    echo '<div class="nfp-toast-container" id="nfp-toastContainer"></div>';
+    ob_end_flush();
+});
+
 
 if (!defined('NFP_PLUGIN_DIR_PATH')) {
     define('NFP_PLUGIN_DIR_PATH', plugin_dir_path(__FILE__));
@@ -63,7 +74,7 @@ add_action('wp_enqueue_scripts', 'enqueue_custom_plugin_assets_FOR_FRONTEND');
 
 
 
-function display_instant_quote_widget()
+function nfpl_display_instant_quote_widget()
 {
     ob_start();
 
@@ -74,7 +85,7 @@ function display_instant_quote_widget()
     return $content; // Return the content.
 }
 
-function display_quotations_widget()
+function nfpl_display_quotations_widget()
 {
     ob_start();
     include(NFP_PLUGIN_DIR_PATH . 'widgets/nfpl_quotations-widget.php');
@@ -83,7 +94,7 @@ function display_quotations_widget()
     return $content; // Return the content.
 }
 
-function display_booking_deatils_widget()
+function nfpl_display_booking_deatils_widget()
 {
     ob_start();
     include(NFP_PLUGIN_DIR_PATH . 'widgets/nfpl_booking-details-widget.php');
@@ -91,7 +102,7 @@ function display_booking_deatils_widget()
     return $content; // Return the content.
 }
 
-function display_payment_details_widget()
+function nfpl_display_payment_details_widget()
 {
     ob_start();
     include(NFP_PLUGIN_DIR_PATH . 'widgets/nfpl_payment-details-widget.php');
@@ -100,7 +111,7 @@ function display_payment_details_widget()
     return $content; // Return the content.
 }
 
-function display_success_widget()
+function nfpl_display_success_widget()
 {
     ob_start();
     include(NFP_PLUGIN_DIR_PATH . 'widgets/nfpl_success-widget.php');
@@ -109,7 +120,7 @@ function display_success_widget()
     return $content; // Return the content.
 }
 
-function display_login_widget()
+function nfpl_display_login_widget()
 {
     ob_start();
     include(NFP_PLUGIN_DIR_PATH . 'widgets/auth/nfpl_login_widget.php');
@@ -118,7 +129,7 @@ function display_login_widget()
     return $content; // Return the content.
 }
 
-function display_register_widget()
+function nfpl_display_register_widget()
 {
     ob_start();
     include(NFP_PLUGIN_DIR_PATH . 'widgets/auth/nfpl_register_widget.php');
@@ -127,7 +138,7 @@ function display_register_widget()
     return $content; // Return the content.
 }
 
-function display_user_booking_widget()
+function nfpl_display_user_booking_widget()
 {
     ob_start();
     include(NFP_PLUGIN_DIR_PATH . 'widgets/auth/nfpl_user_bookings.php');
@@ -170,15 +181,15 @@ if (!defined('USER_BOOKING_WIDGET')) {
 
 
 // p1 means page-1. To be displayed on first page
-add_shortcode(INSTANT_QUOTE_WIDGET, 'display_instant_quote_widget');
-add_shortcode(QUOTATIONS_WIDGET, 'display_quotations_widget');
-add_shortcode(BOOKING_DETAILS_WIDGET, 'display_booking_deatils_widget');
-add_shortcode(PAYMENT_DETAILS_WIDGET, 'display_payment_details_widget');
-add_shortcode(SUCCESS_WIDGET, 'display_success_widget');
+add_shortcode(INSTANT_QUOTE_WIDGET, 'nfpl_display_instant_quote_widget');
+add_shortcode(QUOTATIONS_WIDGET, 'nfpl_display_quotations_widget');
+add_shortcode(BOOKING_DETAILS_WIDGET, 'nfpl_display_booking_deatils_widget');
+add_shortcode(PAYMENT_DETAILS_WIDGET, 'nfpl_display_payment_details_widget');
+add_shortcode(SUCCESS_WIDGET, 'nfpl_display_success_widget');
 
-add_shortcode(LOGIN_WIDGET, 'display_login_widget');
-add_shortcode(REGISTER_WIDGET, 'display_register_widget');
-add_shortcode(USER_BOOKING_WIDGET, 'display_user_booking_widget');
+add_shortcode(LOGIN_WIDGET, 'nfpl_display_login_widget');
+add_shortcode(REGISTER_WIDGET, 'nfpl_display_register_widget');
+add_shortcode(USER_BOOKING_WIDGET, 'nfpl_display_user_booking_widget');
 
 
 if (!defined('NFP_MAIN_QOUTE_PAGE_SLUG')) {
@@ -388,10 +399,6 @@ function nfpl_function_sanitize_quotation_plugin_settings($input)
     return $sanitized;
 }
 
-?>
-
-
-<?php
 
 
 
@@ -451,9 +458,7 @@ if (!function_exists('nfpl_function_get_terms_and_conditions_url')) {
 }
 
 
-?>
 
-<?php
 // // Function to render the custom plugin file editor page
 function fleetly_plugin_file_editor()
 {

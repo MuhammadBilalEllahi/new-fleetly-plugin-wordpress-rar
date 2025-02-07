@@ -160,27 +160,27 @@ const getAllDataFromBookingId = async () => {
 
 
         // Populate booking details
-        document.getElementById("referenceNumber").textContent = data.booking.reference;
+        document.getElementById("nfpl_styles_1_referenceNumber").textContent = data.booking.reference;
 
-        const pickupDetails = `
+        const nfpl_styles_1_pickupDetails = `
   <h3 class="nfpl_styles_booking_h3">Pickup Booking</h3>
   <p> <strong>Pickup Time:</strong> ${data.booking.startDate}</p>
   <p> <strong>Pickup Location:</strong> ${data.booking.from_desc}</p>
   <p> <strong>Dropoff Location:</strong> ${data.booking.to_desc}</p>
 `;
 
-        document.getElementById("pickupDetails").innerHTML = pickupDetails;
+        document.getElementById("nfpl_styles_1_pickupDetails").innerHTML = nfpl_styles_1_pickupDetails;
 
         if (data.returnBooking) {
 
-            const returnDetails = `
+            const nfpl_styles_1_returnDetails = `
         <h3 class="nfpl_styles_booking_h3">Return Booking</h3>
         <p> <strong> Return Pickup Time: </strong> ${data.returnBooking.startDate}</p>
         <p> <strong> Return Pickup Location: </strong> ${data.returnBooking.from_desc}</p>
         <p> <strong> Return Dropoff Location: </strong> ${data.returnBooking.to_desc}</p>
       `;
 
-            document.getElementById("returnDetails").innerHTML = returnDetails;
+            document.getElementById("nfpl_styles_1_returnDetails").innerHTML = nfpl_styles_1_returnDetails;
         }
 
 
@@ -201,9 +201,9 @@ const getAllDataFromBookingId = async () => {
  * @param {Object} returnBooking - Return booking details.
  */
 function displayBookingDetails(booking, returnBooking) {
-    const forwardBookingDetails = document.getElementById('forwardBookingDetails');
-    const returnBookingDetails = document.getElementById('returnBookingDetails');
-    const totalPriceDiv = document.getElementById('totalPriceBookingDetails');
+    const nfpl_styles_1_forwardBookingDetails = document.getElementById('nfpl_styles_1_forwardBookingDetails');
+    const nfpl_styles_1_returnBookingDetails = document.getElementById('nfpl_styles_1_returnBookingDetails');
+    const totalPriceDiv = document.getElementById('nfpl_styles_1_totalPriceBookingDetails');
 
 
     console.log("displayBookingDetails", booking, returnBooking);
@@ -237,15 +237,15 @@ function displayBookingDetails(booking, returnBooking) {
     };
 
     // Populate forward booking details
-    forwardBookingDetails.innerHTML = `
+    nfpl_styles_1_forwardBookingDetails.innerHTML = `
         <tr><th colspan="2">Forward Booking</th></tr>
         ${generateBookingRows(booking)}
     `;
 
     // Populate return booking details if present
     if (returnBooking) {
-        returnBookingDetails.style.display = 'table';
-        returnBookingDetails.innerHTML = `
+        nfpl_styles_1_returnBookingDetails.style.display = 'table';
+        nfpl_styles_1_returnBookingDetails.innerHTML = `
             <tr><th colspan="2">Return Booking</th></tr>
             ${generateBookingRows(returnBooking)}
         `;
@@ -299,7 +299,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // voucher
     const voucherInput = document.getElementById("voucher");
     const voucherBtn = document.getElementById("nfpl_js_style_Apply_voucher_button");
-    const voucherError = document.getElementById("voucherError");
+    const nfpl_styles_1_voucherError = document.getElementById("nfpl_styles_1_voucherError");
 
 
     document.addEventListener("click", function (e) {
@@ -320,11 +320,11 @@ document.addEventListener("DOMContentLoaded", function () {
                     e.target.disabled = false;
 
                     // Update the booking pricing wrapper with the new pricing content
-                    const bookingPricingWrapper = document.getElementById(
-                        "bookingPricingWrapper"
+                    const nfpl_styles_1_bookingPricingWrapper = document.getElementById(
+                        "nfpl_styles_1_bookingPricingWrapper"
                     );
-                    if (bookingPricingWrapper) {
-                        bookingPricingWrapper.innerHTML = data.pricingContent;
+                    if (nfpl_styles_1_bookingPricingWrapper) {
+                        nfpl_styles_1_bookingPricingWrapper.innerHTML = data.pricingContent;
                     }
 
                     // Display success toast
@@ -355,13 +355,13 @@ document.addEventListener("DOMContentLoaded", function () {
     voucherBtn.addEventListener("click", function (e) {
         const voucherValue = voucherInput.value;
         console.log("VOUCHER VALUE CHANGED", voucherValue, voucherValue.length);
-        const loadingSpinner = document.getElementById("loadingSpinner-2");
+        const loadingSpinner = document.getElementById("nfpl_styles_loadingSpinner-2");
 
 
         if (!voucherInput.value || !bookingId) return;
 
         if (voucherValue.length === 0) {
-            voucherError.style.display = "none";
+            nfpl_styles_1_voucherError.style.display = "none";
         } else {
             console.log("Val", voucherValue);
 
@@ -377,13 +377,13 @@ document.addEventListener("DOMContentLoaded", function () {
                 .then((data) => {
                     e.target.disabled = false;
                     if (loadingSpinner) loadingSpinner.style.display = "none";
-                    document.getElementById("bookingPricingWrapper").innerHTML =
+                    document.getElementById("nfpl_styles_1_bookingPricingWrapper").innerHTML =
                         data.pricingContent;
                     console.log("HEre");
                     console.log("RESPONSE: ", data);
-                    voucherError.style.display = "none";
-                    voucherSuccess.style.display = "block";
-                    voucherSuccess.innerText = "Successfully Applied";
+                    nfpl_styles_1_voucherError.style.display = "none";
+                    nfpl_styles_1_voucherSuccess.style.display = "block";
+                    nfpl_styles_1_voucherSuccess.innerText = "Successfully Applied";
 
 
                     showToast({
@@ -396,11 +396,11 @@ document.addEventListener("DOMContentLoaded", function () {
                 .catch((err) => {
                     console.error("Error: ", err);
                     e.target.disabled = false;
-                    voucherError.style.display = "block";
-                    voucherSuccess.style.display = "none";
+                    nfpl_styles_1_voucherError.style.display = "block";
+                    nfpl_styles_1_voucherSuccess.style.display = "none";
 
-                    // voucherError.innerText = err.message || "Invalid voucher";
-                    voucherError.innerText = "Invalid voucher";
+                    // nfpl_styles_1_voucherError.innerText = err.message || "Invalid voucher";
+                    nfpl_styles_1_voucherError.innerText = "Invalid voucher";
                     showToast({
                         message: "Invalid Voucher!",
                         type: "error",
@@ -414,8 +414,8 @@ document.addEventListener("DOMContentLoaded", function () {
     document
         .getElementById("nfpl_js_style_bookingForSomeoneElse_Checkbox")
         .addEventListener("change", function () {
-            const bookingForSomeoneElse_Div = document.getElementById(
-                "bookingForSomeoneElse_Div"
+            const nfpl_styles_1_bookingForSomeoneElse_Div = document.getElementById(
+                "nfpl_styles_1_bookingForSomeoneElse_Div"
             );
 
             const name = document.getElementById("nfpl_js_style_bookingForSomeoneElse_Name");
@@ -425,9 +425,9 @@ document.addEventListener("DOMContentLoaded", function () {
             );
 
             if (this.checked) {
-                bookingForSomeoneElse_Div.classList.remove("nfpl_js_styles_d_none");
+                nfpl_styles_1_bookingForSomeoneElse_Div.classList.remove("nfpl_js_styles_d_none");
             } else {
-                bookingForSomeoneElse_Div.classList.add("nfpl_js_styles_d_none");
+                nfpl_styles_1_bookingForSomeoneElse_Div.classList.add("nfpl_js_styles_d_none");
                 name.value = "";
                 email.value = "";
                 phoneNumber.value = "";
@@ -592,7 +592,7 @@ document.addEventListener("DOMContentLoaded", function () {
             data.custPhone = phonePassenger
         }
 
-        showLoadingOverlay("Processing your Information");
+        shownfpl_styles_loadingOverlay("Processing your Information");
 
 
 
@@ -609,7 +609,7 @@ document.addEventListener("DOMContentLoaded", function () {
             .then((response) => response.json())
             .then((response) => {
                 console.table(response);
-                hideLoadingOverlay();
+                hidenfpl_styles_loadingOverlay();
 
 
                 window.location.href = `${paymentPageUrlAndPageNumber}?id=${response.bookingId}`;
@@ -621,7 +621,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 document.querySelector(
                     ".error-message-notification"
                 ).innerHTML = `<h3>${err.message || "An error occurred"}</h3>`;
-                hideLoadingOverlay();
+                hidenfpl_styles_loadingOverlay();
 
             });
     }
@@ -812,7 +812,7 @@ async function loadCountryCodesWithSearch(inputId, dropdownId, flagImgId) {
 
         // Hide dropdown on outside click
         document.addEventListener("click", (e) => {
-            if (!e.target.closest(".custom-dropdown")) {
+            if (!e.target.closest("nfpl_styles_1_custom-dropdown")) {
                 dropdownList.style.display = "none !important";
             }
         });
@@ -822,16 +822,16 @@ async function loadCountryCodesWithSearch(inputId, dropdownId, flagImgId) {
 }
 
 // Initialize on page load
-loadCountryCodesWithSearch("nfpl_js_style_searchCountryCode_passenger", "dropdownList-passenger", "flag-img-passenger");
-loadCountryCodesWithSearch("nfpl_js_style_searchCountryCode_customer", "dropdownList-customer", "flag-img-customer");
+loadCountryCodesWithSearch("nfpl_js_style_searchCountryCode_passenger", "nfpl_styles_1_dropdownList-passenger", "nfpl_styles_1_flag-img-passenger");
+loadCountryCodesWithSearch("nfpl_js_style_searchCountryCode_customer", "nfpl_styles_1_dropdownList-customer", "nfpl_styles_1_flag-img-customer");
 
 
 
 const searchInputCustomer = document.getElementById("nfpl_js_style_searchCountryCode_customer");
 const searchInputPassenger = document.getElementById("nfpl_js_style_searchCountryCode_passenger");
 
-const dropdownListCustomer = document.getElementById("dropdownList-customer");
-const dropdownListPassenger = document.getElementById("dropdownList-passenger");
+const dropdownListCustomer = document.getElementById("nfpl_styles_1_dropdownList-customer");
+const dropdownListPassenger = document.getElementById("nfpl_styles_1_dropdownList-passenger");
 
 
 searchInputCustomer.addEventListener("click", () => {

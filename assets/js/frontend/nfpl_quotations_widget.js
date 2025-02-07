@@ -378,7 +378,7 @@ function addEventToRadio() {
     function handleCardClick(card, radioInput) {
         // Unhighlight all cards
         quotationCards.forEach((card) => {
-            card.style.borderColor = "var(--var-border-color)";
+            card.style.borderColor = "var(--var-nfpl-border-color)";
             card.classList.remove("selected");
         });
 
@@ -390,7 +390,7 @@ function addEventToRadio() {
     function handleCardClickReturn(card, radioInput) {
         // Unhighlight all cards
         returnQuotationCards.forEach((card) => {
-            card.style.borderColor = "var(--var-border-color)";
+            card.style.borderColor = "var(--var-nfpl-border-color)";
             card.classList.remove("selected");
         });
 

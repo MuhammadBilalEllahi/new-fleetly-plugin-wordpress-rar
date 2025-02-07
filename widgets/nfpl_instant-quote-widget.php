@@ -23,9 +23,9 @@ add_action('wp_enqueue_scripts', 'enqueue_custom_plugin_assets_FOR_INSTANT_QUOTE
 <script>
 
   // Be sure to have these functions in index.php file otherwise code UI and functionality will break!
-  const nfpl_var_apiUrlPrefixs = '<?php echo nfpl_function_get_api_url_prefix(); ?>';
-  const nfpl_var_apiUrl = `${nfpl_var_apiUrlPrefixs}/api/public/google/autocomplete`;
-  const nfpl_var_quoteUrl = `${nfpl_var_apiUrlPrefixs}/plugin/dispatcher/widget-get-quotations`;
+  const nfpl_var_nfpl_API_apiUrlPrefixs = '<?php echo nfpl_function_get_api_url_prefix(); ?>';
+  const nfpl_var_apiUrl = `${nfpl_var_nfpl_API_apiUrlPrefixs}/api/public/google/autocomplete`;
+  const nfpl_var_quoteUrl = `${nfpl_var_nfpl_API_apiUrlPrefixs}/plugin/dispatcher/widget-get-quotations`;
   const nfpl_var_apikey = '<?php echo nfpl_function_get_api_key(); ?>'
   const quotationPageUrlAndPageNumber = '<?php echo esc_url(nfpl_function_get_navigation_url(QUOTATIONS_WIDGET)); ?>';
 
@@ -51,29 +51,29 @@ add_action('wp_enqueue_scripts', 'enqueue_custom_plugin_assets_FOR_INSTANT_QUOTE
 
 <!-- HTML -->
 <div class="nfpl_styles_widget-container" style="position: relative;">
-  <div id="loadingOverlay" style="display: none;">
+  <div id="nfpl_styles_loadingOverlay" style="display: none;">
     <div
       style=" padding: 20px; border-radius: 1rem; display: flex; flex-direction: column; text-align: center; justify-content: center; align-items: center;">
-      <div id="loadingSpinner-2" class="spinner-2"></div>
-      <h2 id="overlay-message" class="loadingText" style="color: var(--var-primary-color); padding: 45px 0;">
+      <div id="nfpl_styles_loadingSpinner-2" class="nfpl_styles_spinner-2"></div>
+      <h2 id="nfpl_styles_overlay-message" class="nfpl_styles_loadingText" style="color: var(--var-nfpl-primary-color); padding: 45px 0;">
         Submitting Your Details ...
       </h2>
     </div>
   </div>
 
 
-  <div class="booking-container">
-    <div class="booking-header">
-      <p class="booking-label">online booking</p>
-      <h1 class="booking-title">Confirm your booking now!</h1>
+  <div class="nfpl_styles_booking-container">
+    <div class="nfpl_styles_booking-header">
+      <p class="nfpl_styles_booking-label">online booking</p>
+      <h1 class="nfpl_styles_booking-title">Confirm your booking now!</h1>
     </div>
 
-    <div class="form-grid">
+    <div class="nfpl_styles_form-grid">
       <!-- From Location -->
-      <div class="form-group">
-        <label class="input-label">From</label>
-        <div class="nfpl_js_styles_places input-wrapper">
-          <div class="input-icon">
+      <div class="nfpl_styles_form-group">
+        <label class="nfpl_styles_input-label">From</label>
+        <div class="nfpl_js_styles_places nfpl_styles_input-wrapper">
+          <div class="nfpl_styles_input-icon">
             <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" stroke="currentColor"
               stroke-width="2" width="24" height="24">
               <path stroke-linecap="round" stroke-linejoin="round"
@@ -84,15 +84,15 @@ add_action('wp_enqueue_scripts', 'enqueue_custom_plugin_assets_FOR_INSTANT_QUOTE
           <input id="nfpl_form_style_js_from" name="nfpl_form_start-dest" type="text"
             class="nfpl_js_styles_input_field nfpl_js_styles_place_input" placeholder="Enter pickup location" required
             autocomplete="off" />
-          <div class="nfpl_js_styles_dropdown_menu nfpl_js_styles_drop-set dropdown-menu"></div>
+          <div class="nfpl_js_styles_dropdown_menu nfpl_js_styles_drop-set nfpl_styles_dropdown-menu"></div>
         </div>
       </div>
 
       <!-- To Location -->
-      <div class="form-group">
-        <label class="input-label">To</label>
-        <div class="nfpl_js_styles_places input-wrapper">
-          <div class="input-icon">
+      <div class="nfpl_styles_form-group">
+        <label class="nfpl_styles_input-label">To</label>
+        <div class="nfpl_js_styles_places nfpl_styles_input-wrapper">
+          <div class="nfpl_styles_input-icon">
             <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" stroke="currentColor"
               stroke-width="2" width="24" height="24">
               <path stroke-linecap="round" stroke-linejoin="round"
@@ -104,23 +104,23 @@ add_action('wp_enqueue_scripts', 'enqueue_custom_plugin_assets_FOR_INSTANT_QUOTE
           <input required id="nfpl_form_style_js_to" name="nfpl_form_end_dest" type="text"
             class="nfpl_js_styles_input_field nfpl_js_styles_place_input" placeholder="Enter drop-off location"
             autocomplete="off" />
-          <div class="nfpl_js_styles_dropdown_menu nfpl_js_styles_drop-set dropdown-menu"></div>
+          <div class="nfpl_js_styles_dropdown_menu nfpl_js_styles_drop-set nfpl_styles_dropdown-menu"></div>
         </div>
       </div>
     </div>
 
-    <button id="nfpl_add_stop_btn" class="form-grid add-stop-btn">
+    <button id="nfpl_add_stop_btn" class="nfpl_styles_form-grid nfpl_styles_1_add-stop-btn">
       <i class="fa-solid fa-plus"></i> Add Stop
     </button>
 
-    <div id="nfpl_js_styles_ViaStop_oneWay" class="form-grid via-stops"></div>
+    <div id="nfpl_js_styles_ViaStop_oneWay" class="nfpl_styles_form-grid nfpl_styles_1_via-stops"></div>
 
-    <div class="form-grid">
+    <div class="nfpl_styles_form-grid">
       <!-- Forward Date/Time -->
-      <div class="form-group" style="position: relative;">
-        <label class="input-label">Forward Date/Time</label>
-        <div class="input-wrapper">
-          <div class="input-icon">
+      <div class="nfpl_styles_form-group" style="position: relative;">
+        <label class="nfpl_styles_input-label">Forward Date/Time</label>
+        <div class="nfpl_styles_input-wrapper">
+          <div class="nfpl_styles_input-icon">
             <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" stroke="currentColor"
               stroke-width="2" width="24" height="24">
               <rect x="3" y="4" width="18" height="16" rx="2" />
@@ -136,11 +136,11 @@ add_action('wp_enqueue_scripts', 'enqueue_custom_plugin_assets_FOR_INSTANT_QUOTE
       </div>
 
       <!-- Return Date/Time -->
-      <div class="form-group">
-        <div id="nfpl_js_styles_end_date_two_way_parent" class="nfpl_js_styles_d_none form-group">
-          <label class="input-label">Return Date/Time</label>
-          <div class="input-wrapper" style="position: relative !important;" >
-            <div class="input-icon">
+      <div class="nfpl_styles_form-group">
+        <div id="nfpl_js_styles_end_date_two_way_parent" class="nfpl_js_styles_d_none nfpl_styles_form-group">
+          <label class="nfpl_styles_input-label">Return Date/Time</label>
+          <div class="nfpl_styles_input-wrapper" style="position: relative !important;" >
+            <div class="nfpl_styles_input-icon">
               <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" stroke="currentColor"
                 stroke-width="2" width="24" height="24">
                 <rect x="3" y="4" width="18" height="16" rx="2" />
@@ -160,26 +160,26 @@ add_action('wp_enqueue_scripts', 'enqueue_custom_plugin_assets_FOR_INSTANT_QUOTE
     </div>
 
 
-    <div class="form-grid">
-      <div class="form-group">
-          <div class="toggle-container">
-          <label class="toggle">
-            <span class="toggle-label">One way?</span>
+    <div class="nfpl_styles_form-grid">
+      <div class="nfpl_styles_form-group">
+          <div class="nfpl_styles_1_toggle-container">
+          <label class="nfpl_styles_1_toggle">
+            <span class="nfpl_styles_1_toggle-label">One way?</span>
             <input style="display: none;" type="checkbox" id="nfpl_js_styles_OneWayCheckBox" checked="checked" />
-            <span class="toggle-slider"></span>
+            <span class="nfpl_styles_1_toggle-slider"></span>
           </label>
         </div>
       </div>
     </div>
 
-    <button id="add-return-btn" class="nfpl_js_styles_d_none add-stop-btn">
+    <button id="nfpl_styles_1_add-return-btn" class="nfpl_js_styles_d_none nfpl_styles_1_add-stop-btn">
       <i class="fa-solid fa-plus"></i> Add Return Stop
     </button>
 
-    <div id="nfpl_js_styles_iaRetrun_twoWay" class="form-grid via-stops"></div>
+    <div id="nfpl_js_styles_iaRetrun_twoWay" class="nfpl_styles_form-grid nfpl_styles_1_via-stops"></div>
 
     <div class="">
-      <button id="nfpl_js_styles_submit_btn_widget" class="btn">Calculate Price</button>
+      <button id="nfpl_js_styles_submit_btn_widget" class="nfpl-btn">Calculate Price</button>
     </div>
   </div>
 </div>

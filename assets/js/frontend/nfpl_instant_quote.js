@@ -9,7 +9,7 @@ document
         const nfpl_js_ViaReturnTwoWay = document.getElementById(
             "nfpl_js_styles_iaRetrun_twoWay"
         );
-        const addReturnBtn = document.getElementById("add-return-btn");
+        const addReturnBtn = document.getElementById("nfpl_styles_1_add-return-btn");
         const endDateTwoWay = document.getElementById(
             "nfpl_js_styles_end_date_two_way_parent"
         );
@@ -243,13 +243,13 @@ document
 
         // Create a new input container
         const viaInputContainer = document.createElement("div");
-        viaInputContainer.classList.add("form-group");
+        viaInputContainer.classList.add("nfpl_styles_form-group");
         viaInputContainer.innerHTML = `
-        <p class="input-label">Via Forward </p>
+        <p class="nfpl_styles_input-label">Via Forward </p>
       <div class="nfpl_js_styles_places nfpl_js_styles_input_container">
-        <div class="nfpl_styles_input_label input-wrapper" style="position: relative;">
+        <div class="nfpl_styles_input_label nfpl_styles_input-wrapper" style="position: relative;">
           
-                            <div class="input-icon">
+                            <div class="nfpl_styles_input-icon">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" stroke="currentColor"
                                 stroke-width="2" width="24" height="24">
                                 <path stroke-linecap="round" stroke-linejoin="round"
@@ -275,7 +275,7 @@ document
             
 
 
-                    <div class="nfpl_js_styles_dropdown_menu nfpl_js_styles_drop-set dropdown-menu"></div>
+                    <div class="nfpl_js_styles_dropdown_menu nfpl_js_styles_drop-set nfpl_styles_dropdown-menu"></div>
 
             </div>
       `;
@@ -296,7 +296,7 @@ document
 
 // Function to add via return location input in nfpl_js_styles_iaRetrun_twoWay (for round trip)
 document
-    .getElementById("add-return-btn")
+    .getElementById("nfpl_styles_1_add-return-btn")
     .addEventListener("click", function () {
         const nfpl_js_ViaReturnTwoWay = document.getElementById(
             "nfpl_js_styles_iaRetrun_twoWay"
@@ -304,13 +304,13 @@ document
 
         // Create a new input container
         const returnInputContainer = document.createElement("div");
-        returnInputContainer.classList.add("form-group");
+        returnInputContainer.classList.add("nfpl_styles_form-group");
         returnInputContainer.innerHTML = `
-      <p class="input-label">Via Return </p>
+      <p class="nfpl_styles_input-label">Via Return </p>
       <div class="nfpl_js_styles_places nfpl_js_styles_input_container">
-               <div class="nfpl_styles_input_label input-wrapper">
+               <div class="nfpl_styles_input_label nfpl_styles_input-wrapper">
 
-                                                                        <div class="input-icon" style="top: 7; bottom: 0;">
+                                                                        <div class="nfpl_styles_input-icon" style="top: 7; bottom: 0;">
                                                                             <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" stroke="currentColor"
                                                                             stroke-width="2" width="24" height="24">
                                                                             <path stroke-linecap="round" stroke-linejoin="round"
@@ -490,7 +490,7 @@ function submitBookingForm() {
     submitButton.disabled = true;
     submitButton.innerHTML = `<span id="loadingSpinner" style="width: 100%; position: absolute; top:0; left:0; min-height: 100vh; "><i class="fa-solid fa-spinner fa-spin"></i></span> Calculating...`;
 
-    showLoadingOverlay("Processing your Information");
+    shownfpl_styles_loadingOverlay("Processing your Information");
     // "/api/public/cabify/get-quotations"
     fetch(nfpl_var_quoteUrl, {
         method: "POST",
@@ -525,7 +525,7 @@ function submitBookingForm() {
             // Reset the submit button state after completion
             submitButton.disabled = false;
             submitButton.innerHTML = "Calculate Price";
-            hideLoadingOverlay();
+            hidenfpl_styles_loadingOverlay();
         });
 }
 
@@ -560,7 +560,7 @@ function clearBookingFormFields() {
     const nfpl_js_ViaReturnTwoWay = document.getElementById(
         "nfpl_js_styles_iaRetrun_twoWay"
     );
-    const addReturnBtn = document.getElementById("add-return-btn");
+    const addReturnBtn = document.getElementById("nfpl_styles_1_add-return-btn");
 
     nfpl_js_ViaReturnTwoWay.classList.add("nfpl_js_styles_d_none");
     addReturnBtn.classList.add("nfpl_js_styles_d_none");

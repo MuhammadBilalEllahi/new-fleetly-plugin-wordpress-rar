@@ -9,11 +9,11 @@
 
 /* Improved Card Design */
 .nfpl_js_styles_quotation_card {
-  background: var(--var-quote-card-color);
+  background: var(--var-nfpl-quote-card-color);
   
   border-radius: 12px;
   padding: 1.25rem;
-  border: 1px solid var(--var-border-color);;
+  border: 1px solid var(--var-nfpl-border-color);;
   display: grid;
   grid-template-areas:
     "image title price"
@@ -46,7 +46,7 @@
   grid-area: title;
   margin: 0;
   font-size: 1.1rem;
-  color: var(--var-quote-h3-color);
+  color: var(--var-nfpl-quote-h3-color);
 }
 
 /* Details Section */
@@ -60,7 +60,7 @@
 
 .quotation-details p {
   margin: 0;
-  color: var(--var-quote-p-color);
+  color: var(--var-nfpl-quote-p-color);
   font-size: 0.85rem;
   display: inline-flex;
   align-items: center;
@@ -93,7 +93,7 @@
 
 /* Button Styling */
 .nfpl_js_styles_quotation_card button {
-  background: var(--var-button-color);
+  background: var(--var-nfpl-button-color);
   color: white;
   border: none;
   padding: 0.5rem 1rem;
@@ -108,12 +108,17 @@
 }
 
 .nfpl_js_styles_quotation_card button:hover {
-  background: var(--var-button-color);
+  background: var(--var-nfpl-button-color);
   opacity: 0.9;
 }
-
+.nfpl_no_wrap_prop{
+  white-space: nowrap;
+}
 /* Responsive Design */
 @media (max-width: 768px) {
+  .nfpl_no_wrap_prop{
+    white-space: normal;
+  }
   .nfpl_js_styles_quotation_card {
     grid-template-areas:
       "image title title"
@@ -174,7 +179,7 @@
 }
 
 #nfpl_js_btn_onCompelete_return {
-  background: var(--var-button-color);
+  background: var(--var-nfpl-button-color);
   color: white;
   border: none;
   padding: 0.5rem 1rem;
@@ -197,7 +202,7 @@
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
     Ubuntu, sans-serif;
   /* background-color: #1a1a1a; */
-  /* color: var(--var-box-bg); */
+  /* color: var(--var-nfpl-box-bg); */
 }
 #npfl_style_quotation_container_child{
   display: none;
@@ -213,7 +218,7 @@
 /* Title Styles */
 #nfpl_styles_title_quotation,
 #nfpl_js_style_return_quotation_h1 {
-  color: var(--var-heading-color);
+  color: var(--var-nfpl-heading-color);
   font-size: 2rem;
   margin: 0.7rem 0;
   font-weight: 400;
@@ -221,7 +226,7 @@
 }
 
 #nfpl_styles_title2_quotation {
-  color: var(--var-heading-color);
+  color: var(--var-nfpl-heading-color);
   font-size: 1.5rem;
   margin: 2rem 0;
   text-align: center;
@@ -229,12 +234,12 @@
 
 /* Booking Details Section */
 #nfpl_styles_booking_details {
-  background: var(--var-box-bg);
+  background: var(--var-nfpl-box-bg);
   width: 100%;
   border-radius: 12px;
   padding: 2rem;
   margin-bottom: 3rem;
-  /* border: 1px solid var(--var-border-color); */
+  /* border: 1px solid var(--var-nfpl-border-color); */
   display: flex !important;
   flex-direction: column !important;
 }
@@ -256,14 +261,14 @@
 }
 
 .nfpl_styles_detail h3 {
-  color: var(--var-quote-h3-color);
+  color: var(--var-nfpl-quote-h3-color);
   font-size: 1rem;
   padding-right: 1%;
   font-weight: 600;
 }
 
 .nfpl_styles_detail2 p {
-  color: var(--var-quote-p-color);
+  color: var(--var-nfpl-quote-p-color);
   margin: 0;
   font-size: 1.1rem;
 }
@@ -304,7 +309,7 @@
 
 /* Default styles */
 #nfpl_styles_booking_details {
-  width: 70%;
+  width: 90%;
 }
 
 /* When screen width is below 900px */
