@@ -366,7 +366,26 @@ function isWidgetFormValid() {
     const toInput = document.getElementById("nfpl_form_style_js_to").value.trim();
 
     // Check if both From and To fields are filled out
-    return fromInput !== "" && toInput !== "";
+    if (fromInput === "" || toInput === "") {
+        return false;
+    }
+
+    // Check if start date/time is selected
+    const startDateTime = getDateTimeValue("nfpl_form_js_StartDateTime");
+    if (!startDateTime) {
+        return false;
+    }
+
+    // Check if return date/time is selected for two-way trips
+    const oneWayBool = document.getElementById("nfpl_js_styles_OneWayCheckBox").checked;
+    if (!oneWayBool) {
+        const endDateTime = getDateTimeValue("nfpl_form_js_EndDateTime");
+        if (!endDateTime) {
+            return false;
+        }
+    }
+
+    return true;
 }
 
 // Function to collect data for submission nfpl_form_style_js_from elements
@@ -385,7 +404,17 @@ function getDataToSubmit() {
     // Collect base data
 
     function formatDateInput(dateInputId) {
-        const dateValue = document.getElementById(dateInputId).value;
+        // Get the ISO datetime value from the custom calendar input
+        const dateValue = getDateTimeValue(dateInputId);
+        if (!dateValue) {
+            showToast({
+                message: "Please select a date and time.",
+                type: "error",
+                duration: 3000,
+            });
+            return null;
+        }
+        
         const date = new Date(dateValue);
         let formated = formatDateTime(date);
         formated = formated.replace("at ", "").replace(",", "");
@@ -393,12 +422,17 @@ function getDataToSubmit() {
         return formated;
     }
 
+    const startTime = formatDateInput("nfpl_form_js_StartDateTime");
+    if (!startTime) {
+        return null; // Return null if date formatting fails
+    }
+
     const booking = {
         from_desc: document.getElementById("nfpl_form_style_js_from").value,
         from_place_id: document
             .getElementById("nfpl_form_style_js_from")
             .getAttribute("nfpl_js_place_id"),
-        startTime: formatDateInput("nfpl_form_js_StartDateTime"),
+        startTime: startTime,
         to_place_id: document
             .getElementById("nfpl_form_style_js_to")
             .getAttribute("nfpl_js_place_id"),
@@ -422,8 +456,13 @@ function getDataToSubmit() {
 
     // If two way is selected, collect return via stops
     if (!oneWayBool) {
+        const returnStartTime = formatDateInput("nfpl_form_js_EndDateTime");
+        if (!returnStartTime) {
+            return null; // Return null if return date formatting fails
+        }
+
         returnBooking = {
-            startTime: formatDateInput("nfpl_form_js_EndDateTime"),
+            startTime: returnStartTime,
             from_desc: document.getElementById("nfpl_form_style_js_to").value,
             from_place_id: document
                 .getElementById("nfpl_form_style_js_to")
@@ -470,8 +509,24 @@ function submitBookingForm() {
 
     // Validate form fields
     if (!isWidgetFormValid()) {
+        const fromInput = document.getElementById("nfpl_form_style_js_from").value.trim();
+        const toInput = document.getElementById("nfpl_form_style_js_to").value.trim();
+        const startDateTime = getDateTimeValue("nfpl_form_js_StartDateTime");
+        const oneWayBool = document.getElementById("nfpl_js_styles_OneWayCheckBox").checked;
+        const endDateTime = !oneWayBool ? getDateTimeValue("nfpl_form_js_EndDateTime") : true;
+
+        let errorMessage = "Please provide: ";
+        let errors = [];
+
+        if (!fromInput) errors.push("pickup location");
+        if (!toInput) errors.push("dropoff location");
+        if (!startDateTime) errors.push("forward date/time");
+        if (!oneWayBool && !endDateTime) errors.push("return date/time");
+
+        errorMessage += errors.join(", ");
+
         showToast({
-            message: "Please provide both Pickup and Dropoff Addresses.",
+            message: errorMessage,
             type: "info",
             duration: 3000,
         });
@@ -481,6 +536,9 @@ function submitBookingForm() {
 
     // Collect data to submit
     const data = getDataToSubmit();
+    if (!data) {
+        return false; // Exit if data collection fails
+    }
     console.log("Data to submit:", data);
 
     // Display loading state
@@ -544,6 +602,12 @@ function clearBookingFormFields() {
 
         // Remove any custom attributes like place_id
         input.removeAttribute("nfpl_js_place_id");
+        
+        // Clear datetime value for custom calendar inputs
+        if (input.hasAttribute("data-calendar")) {
+            input.removeAttribute("data-datetime-value");
+            input.placeholder = "October 16 2024 08:00";
+        }
     });
 
     // Clear dynamically added via stops and return stops

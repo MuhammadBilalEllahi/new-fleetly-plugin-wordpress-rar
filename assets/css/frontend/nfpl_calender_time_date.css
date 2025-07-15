@@ -1,107 +1,359 @@
 
 
+  ._calendar_c_calendarContainer {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    border: 1px solid #444;
+    border-radius: 12px;
+    background: #1a1a1a;
+    color: white;
+    padding: 20px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    display: none;
+    z-index: 9999;
+    font-size: 14px;
+    min-width: 300px;
+    max-width: 90vw;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    margin-top: 5px;
+  }
+
+  /* Alternative positioning if calendar would extend beyond viewport */
+  ._calendar_c_calendarContainer._calendar_c_position-above {
+    top: auto;
+    bottom: 100%;
+    margin-top: 0;
+    margin-bottom: 5px;
+  }
+
   ._calendar_c_header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 8px;
+    margin-bottom: 20px;
+    padding: 0 10px;
   }
 
   ._calendar_c_header button {
-    background: #007bff;
+    background: transparent;
     color: white;
     border: none;
-    padding: 4px 8px;
-    border-radius: 4px;
+    padding: 8px 12px;
+    border-radius: 6px;
     cursor: pointer;
+    font-size: 18px;
+    transition: background-color 0.2s;
   }
 
   ._calendar_c_header button:hover {
-    background: #0056b3;
+    background: #333;
   }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  ._calendar_c_calendarContainer {
-    position: fixed; /* Ensure it appears above all elements */
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    background: #fff;
-    padding: 15px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    display: none;
-    z-index: 1000; /* Ensure it's above other elements */
-    font-size: small;
-    min-width: 250px; /* Adjust width to match input fields */
+  ._calendar_c_currentMonth {
+    font-size: 16px;
+    font-weight: 600;
+    color: white;
   }
-  
+
+  ._calendar_c_weekdays {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+    margin-bottom: 10px;
+    padding: 0 5px;
+  }
+
+  ._calendar_c_weekday {
+    text-align: center;
+    padding: 8px 4px;
+    font-size: 12px;
+    color: #888;
+    font-weight: 500;
+  }
+
   ._calendar_c_days {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
     gap: 5px;
+    margin-bottom: 20px;
+    padding: 0 5px;
   }
-  
+
   ._calendar_c_day {
     text-align: center;
-    padding: 4px;
-    margin: 2px;
+    padding: 12px 8px;
     cursor: pointer;
-    border-radius: 4px;
-    transition: background-color 0.2s;
+    border-radius: 8px;
+    transition: all 0.2s;
+    font-size: 14px;
+    font-weight: 500;
+    min-height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
-  
-  ._calendar_c_day:hover {
-    background-color: #007bff;
-    color: white;
+
+  ._calendar_c_day:hover:not(._calendar_c_disabled) {
+    background-color: #333;
   }
-  
+
+  ._calendar_c_day._calendar_c_disabled {
+    color: #555;
+    cursor: not-allowed;
+  }
+
   ._calendar_c_selected-date {
-    background-color: #007bff;
-    color: white;
+    background-color: #007bff !important;
+    color: white !important;
   }
-  
+
+  ._calendar_c_time-section {
+    border-top: 1px solid #333;
+    padding-top: 15px;
+    margin-top: 15px;
+  }
+
+  ._calendar_c_time-label {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: #ccc;
+  }
+
+  ._calendar_c_time-icon {
+  margin-right: 8px;
+  opacity: 0.7;
+  display: inline-flex;
+  align-items: center;
+}
+
+._calendar_c_time-icon img {
+  filter: invert(0.7);
+}
+
+  ._calendar_c_time-input-container {
+    display: flex;
+    align-items: center;
+    background: #2a2a2a;
+    border-radius: 8px;
+    padding: 12px;
+    margin-bottom: 15px;
+  }
+
   ._calendar_c_time {
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 16px;
+    outline: none;
     width: 100%;
-    padding: 6px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    margin-top: 10px;
+    font-weight: 500;
   }
-  
+
+  ._calendar_c_time::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+    cursor: pointer;
+  }
+
   ._calendar_c_submit {
     width: 100%;
-    padding: 6px;
+    padding: 12px;
     border: none;
     background: #007bff;
     color: white;
     cursor: pointer;
-    border-radius: 4px;
-    margin-top: 10px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    transition: background-color 0.2s;
   }
-  
+
   ._calendar_c_submit:hover {
     background: #0056b3;
   }
+
+  ._calendar_c_submit:active {
+    transform: translateY(1px);
+  }
+
+  /* Previous/Next month days styling */
+  ._calendar_c_day._calendar_c_other-month {
+    color: #555;
+  }
+
+  /* Today's date styling */
+  ._calendar_c_day._calendar_c_today {
+    background-color: #2a2a2a;
+    color: white;
+  }
+
+  ._calendar_c_day._calendar_c_today:hover {
+    background-color: #333;
+  }
+
+/* Custom datetime input styling */
+.nfpl_js_styles_input_field[data-calendar="true"] {
+  background: #1a1a1a !important;
+  border: 1px solid #444 !important;
+  color: white !important;
+  cursor: pointer !important;
+  position: relative;
+  transition: all 0.2s ease;
+}
+
+.nfpl_js_styles_input_field[data-calendar="true"]:hover {
+  border-color: #666 !important;
+}
+
+.nfpl_js_styles_input_field[data-calendar="true"]:focus {
+  outline: none !important;
+  border-color: #007bff !important;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25) !important;
+}
+
+.nfpl_js_styles_input_field[data-calendar="true"]::placeholder {
+  color: #888 !important;
+  opacity: 1 !important;
+  font-size: 13px;
+}
+
+.nfpl_js_styles_input_field[data-calendar="true"]::-webkit-input-placeholder {
+  color: #888 !important;
+  opacity: 1 !important;
+}
+
+.nfpl_js_styles_input_field[data-calendar="true"]::-moz-placeholder {
+  color: #888 !important;
+  opacity: 1 !important;
+}
+
+.nfpl_js_styles_input_field[data-calendar="true"]:-ms-input-placeholder {
+  color: #888 !important;
+  opacity: 1 !important;
+}
+
+/* Hide default datetime picker */
+.nfpl_js_styles_input_field[data-calendar="true"]::-webkit-datetime-edit,
+.nfpl_js_styles_input_field[data-calendar="true"]::-webkit-datetime-edit-fields-wrapper,
+.nfpl_js_styles_input_field[data-calendar="true"]::-webkit-datetime-edit-text,
+.nfpl_js_styles_input_field[data-calendar="true"]::-webkit-datetime-edit-month-field,
+.nfpl_js_styles_input_field[data-calendar="true"]::-webkit-datetime-edit-day-field,
+.nfpl_js_styles_input_field[data-calendar="true"]::-webkit-datetime-edit-year-field,
+.nfpl_js_styles_input_field[data-calendar="true"]::-webkit-datetime-edit-hour-field,
+.nfpl_js_styles_input_field[data-calendar="true"]::-webkit-datetime-edit-minute-field,
+.nfpl_js_styles_input_field[data-calendar="true"]::-webkit-datetime-edit-second-field,
+.nfpl_js_styles_input_field[data-calendar="true"]::-webkit-datetime-edit-millisecond-field,
+.nfpl_js_styles_input_field[data-calendar="true"]::-webkit-datetime-edit-meridiem-field {
+  display: none;
+}
+
+.nfpl_js_styles_input_field[data-calendar="true"]::-webkit-calendar-picker-indicator {
+  background: transparent;
+  bottom: 0;
+  color: transparent;
+  cursor: pointer;
+  height: auto;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: auto;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  ._calendar_c_calendarContainer {
+    min-width: 280px;
+    max-width: 95vw;
+    padding: 15px;
+    font-size: 13px;
+  }
   
+  ._calendar_c_day {
+    padding: 10px 6px;
+    font-size: 13px;
+  }
+  
+  ._calendar_c_weekday {
+    padding: 6px 2px;
+    font-size: 11px;
+  }
+  
+  ._calendar_c_header button {
+    padding: 6px 10px;
+    font-size: 16px;
+  }
+  
+  ._calendar_c_currentMonth {
+    font-size: 14px;
+  }
+  
+  .nfpl_js_styles_input_field[data-calendar="true"]::placeholder {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  ._calendar_c_calendarContainer {
+    min-width: 260px;
+    padding: 12px;
+  }
+  
+  ._calendar_c_day {
+    padding: 8px 4px;
+    font-size: 12px;
+    min-height: 18px;
+  }
+  
+  ._calendar_c_weekday {
+    padding: 5px 2px;
+    font-size: 10px;
+  }
+  
+  ._calendar_c_time-input-container {
+    padding: 10px;
+  }
+  
+  ._calendar_c_time {
+    font-size: 14px;
+  }
+  
+  ._calendar_c_submit {
+    padding: 10px;
+    font-size: 13px;
+  }
+  
+  .nfpl_js_styles_input_field[data-calendar="true"]::placeholder {
+    font-size: 11px;
+  }
+}
+
+/* Ensure calendar appears above other elements - now handled by main rule */
+
+/* Selected date value styling */
+.nfpl_js_styles_input_field[data-calendar="true"]:not(:placeholder-shown) {
+  color: white !important;
+  font-weight: 500;
+}
+
+/* Calendar icon styling for input fields */
+.nfpl_styles_input-icon img {
+  filter: invert(0.5);
+  transition: filter 0.2s ease;
+}
+
+.nfpl_styles_input-icon {
+  z-index: 1;
+  margin-left: 0.3rem ;
+  margin-top: 0.3rem ;
+}
+.nfpl_styles_input-wrapper{
+  position: relative;
+}
+
+.nfpl_styles_input-wrapper:hover .nfpl_styles_input-icon img {
+  filter: invert(0.7);
+}
