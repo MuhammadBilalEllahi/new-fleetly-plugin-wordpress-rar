@@ -39,11 +39,11 @@ if (!defined('NFP_PLUGIN_DIR_URL')) {
 // ### BELOW HOOCK IS USED TO ADD SCRIPTS AND STYLES TO THE BOTH "FRONTEND AND ADMIN PANEL"
 function enqueue_custom_plugin_assets_FOR_BOTH()
 {
-    wp_enqueue_style('nfp_toastify_self_styles', NFP_PLUGIN_DIR_URL . 'assets/css/nfp_toastify.css', array(), '1.0.0');
-    wp_enqueue_script('nfp_toastify_self_scripts', NFP_PLUGIN_DIR_URL . 'assets/js/nfp_toastify.js', array(), '1.0.0', true);
+    wp_enqueue_style('nfp_toastify_self_styles', NFP_PLUGIN_DIR_URL . 'assets/css/nfp_toastify.css', array(), time());
+    wp_enqueue_script('nfp_toastify_self_scripts', NFP_PLUGIN_DIR_URL . 'assets/js/nfp_toastify.js', array(), time(), true);
 
 
-    wp_enqueue_script('nfp_auth_self_scripts', NFP_PLUGIN_DIR_URL . 'assets/js/nfpl_auth.js', array(), '1.0.0', false);
+    wp_enqueue_script('nfp_auth_self_scripts', NFP_PLUGIN_DIR_URL . 'assets/js/nfpl_auth.js', array(), time(), false);
 
 }
 add_action('wp_enqueue_scripts', 'enqueue_custom_plugin_assets_FOR_BOTH');
@@ -52,19 +52,19 @@ add_action('admin_enqueue_scripts', 'enqueue_custom_plugin_assets_FOR_BOTH');
 // ### BELOW HOOCK IS USED TO ADD SCRIPTS AND STYLES TO THE "ADMIN PANEL"
 function enqueue_custom_plugin_assets_FOR_ADMIN()
 {
-    wp_enqueue_style('nfp_FOR_ADMIN_plugin_editor_style', NFP_PLUGIN_DIR_URL . 'assets/css/admin/nfp_plugin_editor.css', array(), '1.0.0');
-    wp_enqueue_script('nfp_FOR_ADMIN_plugin_editor_script', NFP_PLUGIN_DIR_URL . 'assets/js/admin/nfp_plugin_editor.js', array(), '1.0.0', true);
+    wp_enqueue_style('nfp_FOR_ADMIN_plugin_editor_style', NFP_PLUGIN_DIR_URL . 'assets/css/admin/nfp_plugin_editor.css', array(), time());
+    wp_enqueue_script('nfp_FOR_ADMIN_plugin_editor_script', NFP_PLUGIN_DIR_URL . 'assets/js/admin/nfp_plugin_editor.js', array(), time(), true);
 
-    wp_enqueue_style('nfp_FOR_ADMIN_shortcode_copier_styles', NFP_PLUGIN_DIR_URL . 'assets/css/admin/nfp_shortcode_copier.css', array(), '1.0.0');
-    wp_enqueue_script('nfp_FOR_ADMIN_shortcode_copier_scripts', NFP_PLUGIN_DIR_URL . 'assets/js/admin/nfp_shortcode_copier.js', array(), '1.0.0', true);
+    wp_enqueue_style('nfp_FOR_ADMIN_shortcode_copier_styles', NFP_PLUGIN_DIR_URL . 'assets/css/admin/nfp_shortcode_copier.css', array(), time());
+    wp_enqueue_script('nfp_FOR_ADMIN_shortcode_copier_scripts', NFP_PLUGIN_DIR_URL . 'assets/js/admin/nfp_shortcode_copier.js', array(), time(), true);
 }
 add_action('admin_enqueue_scripts', 'enqueue_custom_plugin_assets_FOR_ADMIN');
 
 // ### BELOW HOOCK IS USED TO ADD SCRIPTS AND STYLES TO THE "FRONTEND"
 function enqueue_custom_plugin_assets_FOR_FRONTEND()
 {
-    wp_enqueue_style('nfp_main_root_style', NFP_PLUGIN_DIR_URL . 'assets/css/frontend/nfp_styles.css', array(), '1.0.1');
-    wp_enqueue_script('nfp_main_root_script', NFP_PLUGIN_DIR_URL . 'assets/js/frontend/nfp_scripts.js', array(), '1.0.0', true);
+    wp_enqueue_style('nfp_main_root_style', NFP_PLUGIN_DIR_URL . 'assets/css/frontend/nfp_styles.css', array(), time());
+    wp_enqueue_script('nfp_main_root_script', NFP_PLUGIN_DIR_URL . 'assets/js/frontend/nfp_scripts.js', array(), time(), true);
 
 
 } 

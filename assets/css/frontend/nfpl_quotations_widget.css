@@ -2,18 +2,17 @@
 #nfpl_js_style_quotation_cards,
 #nfpl_js_style_return_quotation_cards {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 1.5rem;
   margin-top: 1.5rem;
 }
 
 /* Improved Card Design */
 .nfpl_js_styles_quotation_card {
-  background: var(--var-nfpl-quote-card-color);
-  
-  border-radius: 12px;
-  padding: 1.25rem;
-  border: 1px solid var(--var-nfpl-border-color);;
+  background: #2a2a2a;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  border: 1px solid #404040;
   display: grid;
   grid-template-areas:
     "image title price"
@@ -23,13 +22,21 @@
   gap: 1rem;
   cursor: pointer;
   transition: all 0.2s ease;
-  min-height: 120px;
+  min-height: 140px;
+  position: relative;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .nfpl_js_styles_quotation_card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  border-color: #ff8c00;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  border-color: #3b82f6;
+}
+
+.nfpl_js_styles_quotation_card.selected {
+  background: #1f2937;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
 }
 
 /* Image Optimization */
@@ -38,15 +45,17 @@
   width: 80px;
   height: 80px;
   object-fit: contain;
-  filter: brightness(0.9) contrast(1.1);
+  filter: brightness(1.1) contrast(1.1);
+  border-radius: 0.5rem;
 }
 
 /* Title Styling */
 .nfpl_js_styles_quotation_card h3 {
   grid-area: title;
   margin: 0;
-  font-size: 1.1rem;
-  color: var(--var-nfpl-quote-h3-color);
+  font-size: 1.2rem;
+  color: #f9fafb;
+  font-weight: 600;
 }
 
 /* Details Section */
@@ -55,30 +64,34 @@
   display: flex;
   flex-wrap: wrap;
   gap: 0.75rem;
-  margin-top: 0.25rem;
+  margin-top: 0.5rem;
 }
 
 .quotation-details p {
   margin: 0;
-  color: var(--var-nfpl-quote-p-color);
-  font-size: 0.85rem;
+  color: #9ca3af;
+  font-size: 0.875rem;
   display: inline-flex;
   align-items: center;
   gap: 0.25rem;
+  background: #1f2937;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.375rem;
+  border: 1px solid #374151;
 }
 
 .quotation-details p:before {
   content: "•";
-  color: #ff8c00;
+  color: #3b82f6;
   font-size: 1rem;
 }
 
 /* Price Styling */
 .quotation-price {
   grid-area: price;
-  color: #ff8c00;
-  font-size: 1.4rem;
-  font-weight: 600;
+  color: #3b82f6;
+  font-size: 1.5rem;
+  font-weight: 700;
   text-align: right;
   margin: 0;
 }
@@ -89,108 +102,67 @@
   position: absolute;
   top: 1rem;
   right: 1rem;
+  width: 20px;
+  height: 20px;
+  accent-color: #3b82f6;
 }
 
 /* Button Styling */
 .nfpl_js_styles_quotation_card button {
-  background: var(--var-nfpl-button-color);
+  background: linear-gradient(135deg, #3b82f6, #1d4ed8);
   color: white;
   border: none;
-  padding: 0.5rem 1rem;
-  border-radius: 6px;
-  font-weight: 500;
-  font-size: 0.9rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.75rem;
+  font-weight: 600;
+  font-size: 0.875rem;
   cursor: pointer;
-  transition: background 0.2s;
+  transition: all 0.2s ease;
   grid-area: submit;
-  justify-self:end;
-  
+  justify-self: end;
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.2);
 }
 
 .nfpl_js_styles_quotation_card button:hover {
-  background: var(--var-nfpl-button-color);
-  opacity: 0.9;
+  background: linear-gradient(135deg, #1d4ed8, #1e40af);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(59, 130, 246, 0.3);
 }
+
 .nfpl_no_wrap_prop{
   white-space: nowrap;
 }
-/* Responsive Design */
-@media (max-width: 768px) {
-  .nfpl_no_wrap_prop{
-    white-space: normal;
-  }
-  .nfpl_js_styles_quotation_card {
-    grid-template-areas:
-      "image title title"
-      "image details details"
-      "price price price";
-    padding: 1rem;
-    gap: 0.75rem;
-  }
 
-  .nfpl_js_styles_quotation_card img {
-    width: 60px;
-    height: 60px;
-  }
-
-  .quotation-price {
-    margin-top: 0.5rem;
-    text-align: left;
-  }
-
-  .quotation-details {
-    margin-top: 0;
-  }
-
-  #nfpl_styles_sub_booking_details{
-    display: flex;
-    flex-direction: column !important;
-  }
-  #nfpl_styles_booking_details {
-    padding: 0.1rem !important;
-  }
-  #npfl_style_quotation_container{
-    padding: 0 !important;
-  }
-  #npfl_style_quotation_container_child{
-    padding: 0 !important;
-  }
-}
-
-/* Compact Design for Smaller Screens */
-@media (max-width: 480px) {
-  #nfpl_js_style_quotation_cards,
-  #nfpl_js_style_return_quotation_cards {
-    grid-template-columns: 1fr;
-  }
-
-  .nfpl_js_styles_quotation_card {
-    min-height: auto;
-  }
-}
-.selected{
-  background-color: #e4e4e4;
-}
-#nfpl_completeButton{
-  color:white;
-}
 .nfpl_book_now_button{
   color: white !important;
 }
 
+/* Complete Button */
 #nfpl_js_btn_onCompelete_return {
-  background: var(--var-nfpl-button-color);
+  background: linear-gradient(135deg, #3b82f6, #1d4ed8);
   color: white;
   border: none;
-  padding: 0.5rem 1rem;
-  border-radius: 6px;
-  margin: 2% 0;
-  font-weight: 500;
-  font-size: 0.9rem;
+  padding: 1rem 2rem;
+  border-radius: 0.75rem;
+  margin: 2rem 0;
+  font-weight: 600;
+  font-size: 1rem;
   cursor: pointer;
-  transition: background 0.2s;
-  grid-area: price;
-  justify-self: end;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.2);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+#nfpl_js_btn_onCompelete_return:hover {
+  background: linear-gradient(135deg, #1d4ed8, #1e40af);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(59, 130, 246, 0.3);
+}
+
+#nfpl_completeButton{
+  color: white;
 }
 
 /* Container Styles */
@@ -198,55 +170,66 @@
   max-width: 100%;
   margin: 0 auto;
   position: relative;
-  padding: 1rem;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-    Ubuntu, sans-serif;
-  /* background-color: #1a1a1a; */
-  /* color: var(--var-nfpl-box-bg); */
-}
-#npfl_style_quotation_container_child{
-  display: none;
-  
+  padding: 2rem;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, sans-serif;
+  background: #1f2937;
+  border-radius: 1rem;
+  border: 1px solid #374151;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
 }
 
+#npfl_style_quotation_container_child{
+  display: none;
+}
 
 .nfpl_styles_div_details{
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 }
+
 /* Title Styles */
 #nfpl_styles_title_quotation,
 #nfpl_js_style_return_quotation_h1 {
-  color: var(--var-nfpl-heading-color);
+  color: #f9fafb;
   font-size: 2rem;
-  margin: 0.7rem 0;
-  font-weight: 400;
+  margin: 1.5rem 0;
+  font-weight: 600;
   text-align: center;
 }
 
 #nfpl_styles_title2_quotation {
-  color: var(--var-nfpl-heading-color);
+  color: #f9fafb;
   font-size: 1.5rem;
   margin: 2rem 0;
   text-align: center;
+  font-weight: 600;
 }
 
 /* Booking Details Section */
 #nfpl_styles_booking_details {
-  background: var(--var-nfpl-box-bg);
+  background: #2a2a2a;
   width: 100%;
-  border-radius: 12px;
+  border-radius: 1rem;
   padding: 2rem;
-  margin-bottom: 3rem;
-  /* border: 1px solid var(--var-nfpl-border-color); */
+  margin-bottom: 2rem;
+  border: 1px solid #404040;
   display: flex !important;
   flex-direction: column !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+#nfpl_styles_booking_details h2 {
+  color: #f9fafb;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  text-align: center;
 }
 
 #nfpl_styles_sub_booking_details{
   display: flex;
   flex-direction: row;
+  gap: 1rem;
 }
 
 .nfpl_styles_detail, .nfpl_styles_detail2 {
@@ -256,45 +239,81 @@
   display: flex;
   flex-direction: column;
   align-items: start;
-  padding: 0 2% !important;
-  gap: 0.2rem;
+  padding: 0 1rem !important;
+  gap: 0.5rem;
+  flex: 1;
 }
 
 .nfpl_styles_detail h3 {
-  color: var(--var-nfpl-quote-h3-color);
+  color: #e5e7eb;
   font-size: 1rem;
   padding-right: 1%;
   font-weight: 600;
+  margin: 0;
 }
 
 .nfpl_styles_detail2 p {
-  color: var(--var-nfpl-quote-p-color);
+  color: #9ca3af;
+  margin: 0.25rem 0;
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+/* Map Image Styling */
+#nfpl_map {
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  max-width: 100%;
+  height: auto;
+}
+
+/* Booking Details Containers */
+#nfpl_js_styles_forward_booking_id,
+#nfpl_js_styles_isReturn {
+  background: #1f2937;
+  border: 1px solid #404040;
+  border-radius: 0.75rem;
+  margin: 1rem 0;
+  overflow: hidden;
+}
+
+#nfpl_js_styles_forward_booking_id h4,
+#nfpl_js_styles_isReturn h4 {
+  background: #374151;
+  color: #f9fafb;
   margin: 0;
-  font-size: 1.1rem;
+  padding: 1rem;
+  font-weight: 600;
+  text-align: center;
+  font-size: 1.25rem;
 }
 
 /* Via Locations Special Styling */
-#nfpl_js_styles_via_locations {
-  color: #ff8c00;
+#nfpl_js_styles_via_locations,
+#nfpl_js_styles_via_locations_return {
+  color: #3b82f6;
   position: relative;
-  padding-left: 0.5rem;
+  padding-left: 1rem;
+  font-weight: 500;
 }
 
-#nfpl_js_styles_via_locations:before {
-  content: "•";
+#nfpl_js_styles_via_locations:before,
+#nfpl_js_styles_via_locations_return:before {
+  content: "📍";
   position: absolute;
-  left: -0rem;
-  color: #ff8c00;
+  left: 0;
+  color: #3b82f6;
 }
 
-
+/* Spinner Styling */
 .nfpl_js_styles_spinner {
   width: 50px;
   height: 50px;
-  border: 5px solid #f3f3f3; /* Light gray */
-  border-top: 5px solid #3498db; /* Blue */
+  border: 4px solid #374151;
+  border-top: 4px solid #3b82f6;
   border-radius: 50%;
   animation: spin 1s linear infinite;
+  margin: 2rem auto;
 }
 
 @keyframes spin {
@@ -306,10 +325,86 @@
   }
 }
 
+/* Responsive Design */
+@media (max-width: 768px) {
+  .nfpl_no_wrap_prop{
+    white-space: normal;
+  }
+  
+  .nfpl_js_styles_quotation_card {
+    grid-template-areas:
+      "image title title"
+      "image details details"
+      "price price price";
+    padding: 1rem;
+    gap: 0.75rem;
+    min-height: auto;
+  }
+
+  .nfpl_js_styles_quotation_card img {
+    width: 60px;
+    height: 60px;
+  }
+
+  .quotation-price {
+    margin-top: 0.75rem;
+    text-align: left;
+    font-size: 1.25rem;
+  }
+
+  .quotation-details {
+    margin-top: 0;
+  }
+
+  #nfpl_styles_sub_booking_details{
+    display: flex;
+    flex-direction: column !important;
+    gap: 0.5rem;
+  }
+  
+  #nfpl_styles_booking_details {
+    padding: 1rem !important;
+  }
+  
+  #npfl_style_quotation_container{
+    padding: 1rem !important;
+  }
+  
+  #npfl_style_quotation_container_child{
+    padding: 0 !important;
+  }
+
+  .nfpl_styles_detail, .nfpl_styles_detail2 {
+    padding: 0.5rem !important;
+  }
+}
+
+/* Compact Design for Smaller Screens */
+@media (max-width: 480px) {
+  #nfpl_js_style_quotation_cards,
+  #nfpl_js_style_return_quotation_cards {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .nfpl_js_styles_quotation_card {
+    min-height: auto;
+    padding: 1rem;
+  }
+
+  #nfpl_styles_title_quotation,
+  #nfpl_js_style_return_quotation_h1 {
+    font-size: 1.5rem;
+  }
+
+  #nfpl_styles_title2_quotation {
+    font-size: 1.25rem;
+  }
+}
 
 /* Default styles */
 #nfpl_styles_booking_details {
-  width: 90%;
+  width: 100%;
 }
 
 /* When screen width is below 900px */
@@ -319,252 +414,40 @@
   }
 }
 
-/* Adjusting the width of #nfpl_styles_booking_details based on visibility of #nfpl_js_styles_isReturn */
-#nfpl_js_styles_isReturn[style*="display: none"] ~ #nfpl_styles_booking_details {
-  width: 70%;
-}
-
-#nfpl_js_styles_isReturn[style*="display: block"] ~ #nfpl_styles_booking_details {
-  width: 100%;
-}
-
-
-
-/* DARKTHEME BELOW  **************************************************************    */
-/* Quotation Cards Container Improvements 
-#nfpl_js_style_quotation_cards,
-#nfpl_js_style_return_quotation_cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 1.5rem;
-  margin-top: 1.5rem;
-}
-
- Improved Card Design 
-.nfpl_js_styles_quotation_card {
-  background: #222;
-  border-radius: 12px;
-  padding: 1.25rem;
-  border: 1px solid #333;
-  display: grid;
-  grid-template-areas:
-    "image title price"
-    "image details details";
-  grid-template-columns: auto 1fr auto;
-  align-items: start;
-  gap: 1rem;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  min-height: 120px;
-}
-
-.nfpl_js_styles_quotation_card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  border-color: #ff8c00;
-}
-
- Image Optimization 
-.nfpl_js_styles_quotation_card img {
-  grid-area: image;
-  width: 80px;
-  height: 80px;
-  object-fit: contain;
-  filter: brightness(0.9) contrast(1.1);
-}
-
- Title Styling 
-.nfpl_js_styles_quotation_card h3 {
-  grid-area: title;
-  margin: 0;
-  font-size: 1.1rem;
-  color: #fff;
-}
-
- Details Section 
-.quotation-details {
-  grid-area: details;
+/* Loading States */
+#nfpl_js_styles_spinner {
   display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem;
-  margin-top: 0.25rem;
-}
-
-.quotation-details p {
-  margin: 0;
-  color: #999;
-  font-size: 0.85rem;
-  display: inline-flex;
+  justify-content: center;
   align-items: center;
-  gap: 0.25rem;
-}
-
-.quotation-details p:before {
-  content: "•";
-  color: #ff8c00;
-  font-size: 1rem;
-}
-
- Price Styling 
-.quotation-price {
-  grid-area: price;
-  color: #ff8c00;
-  font-size: 1.4rem;
-  font-weight: 600;
-  text-align: right;
-  margin: 0;
-}
-
- Radio Button Styling 
-.nfpl_styles_select_radio,
-.nfpl_styles_select_return_radio {
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-}
-
- Button Styling 
-.nfpl_js_styles_quotation_card button {
-  background: #ff8c00;
-  color: white;
-  border: none;
-  padding: 0.5rem 1rem;
-  border-radius: 6px;
-  font-weight: 500;
-  font-size: 0.9rem;
-  cursor: pointer;
-  transition: background 0.2s;
-  grid-area: price;
-  justify-self: end;
-}
-
-.nfpl_js_styles_quotation_card button:hover {
-  background: #e67e00;
-}
-
- Responsive Design 
-@media (max-width: 768px) {
-  .nfpl_js_styles_quotation_card {
-    grid-template-areas:
-      "image title title"
-      "image details details"
-      "price price price";
-    padding: 1rem;
-    gap: 0.75rem;
-  }
-
-  .nfpl_js_styles_quotation_card img {
-    width: 60px;
-    height: 60px;
-  }
-
-  .quotation-price {
-    margin-top: 0.5rem;
-    text-align: left;
-  }
-
-  .quotation-details {
-    margin-top: 0;
-  }
-}
-
- Compact Design for Smaller Screens 
-@media (max-width: 480px) {
-  #nfpl_js_style_quotation_cards,
-  #nfpl_js_style_return_quotation_cards {
-    grid-template-columns: 1fr;
-  }
-
-  .nfpl_js_styles_quotation_card {
-    min-height: auto;
-  }
-}
-
-#nfpl_js_btn_onCompelete_return {
-  background: #ff8c00;
-  color: white;
-  border: none;
-  padding: 0.5rem 1rem;
-  border-radius: 6px;
-  font-weight: 500;
-  font-size: 0.9rem;
-  cursor: pointer;
-  transition: background 0.2s;
-  grid-area: price;
-  justify-self: end;
-}
-
- Container Styles 
-#npfl_style_quotation_container {
-  max-width: 100%;
-  margin: 0 auto;
-  padding: 1rem;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-    Ubuntu, sans-serif;
-  background-color: #1a1a1a;
-  color: white;
-}
-
- Title Styles 
-#nfpl_styles_title_quotation,
-#nfpl_js_style_return_quotation_h1 {
-  color: white;
-  font-size: 2.5rem;
-  margin-bottom: 3rem;
-  font-weight: 700;
-  text-align: center;
-}
-
-#nfpl_styles_title2_quotation {
-  color: white;
-  font-size: 2rem;
-  margin: 2rem 0;
-  text-align: center;
-}
-
- Booking Details Section 
-#nfpl_styles_booking_details {
-  background: #2a2a2a;
-  border-radius: 12px;
   padding: 2rem;
-  margin-bottom: 3rem;
-  border: 1px solid #333;
 }
 
-.nfpl_styles_detail {
-  background: transparent;
-   padding: 0; 
-  border: none;
-  border-radius: 0;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-   gap: 0.5rem; 
+/* Focus States for Accessibility */
+.nfpl_js_styles_quotation_card:focus {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
 }
 
-.nfpl_styles_detail h3 {
-  color: #999;
-  font-size: 1rem;
-  padding-right: 1%;
-  font-weight: 600;
+#nfpl_js_btn_onCompelete_return:focus {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
 }
 
-.nfpl_styles_detail p {
-  color: white;
-  margin: 0;
-  font-size: 1.1rem;
+/* Custom Scrollbar */
+#npfl_style_quotation_container::-webkit-scrollbar {
+  width: 8px;
 }
 
- Via Locations Special Styling 
-.nfpl_styles_detail:last-child p {
-  color: #ff8c00;
-  position: relative;
-  padding-left: 0.5rem;
+#npfl_style_quotation_container::-webkit-scrollbar-track {
+  background: #374151;
+  border-radius: 4px;
 }
 
-.nfpl_styles_detail:last-child p:before {
-  content: "•";
-  position: absolute;
-  left: -0rem;
-  color: #ff8c00;
-} */
+#npfl_style_quotation_container::-webkit-scrollbar-thumb {
+  background: #6b7280;
+  border-radius: 4px;
+}
+
+#npfl_style_quotation_container::-webkit-scrollbar-thumb:hover {
+  background: #9ca3af;
+}

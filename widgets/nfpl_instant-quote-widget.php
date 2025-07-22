@@ -74,11 +74,9 @@ add_action('wp_enqueue_scripts', 'enqueue_custom_plugin_assets_FOR_INSTANT_QUOTE
         <label class="nfpl_styles_input-label">From</label>
         <div class="nfpl_js_styles_places nfpl_styles_input-wrapper">
           <div class="nfpl_styles_input-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" stroke="currentColor"
-              stroke-width="2" width="24" height="24">
-              <path stroke-linecap="round" stroke-linejoin="round"
-                d="M12 2c3.866 0 7 3.134 7 7 0 5.25-7 13-7 13S5 14.25 5 9c0-3.866 3.134-7 7-7z" />
-              <circle cx="12" cy="9" r="2.5" fill="none" />
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+              <circle cx="12" cy="10" r="3"/>
             </svg>
           </div>
           <input id="nfpl_form_style_js_from" name="nfpl_form_start-dest" type="text"
@@ -93,11 +91,9 @@ add_action('wp_enqueue_scripts', 'enqueue_custom_plugin_assets_FOR_INSTANT_QUOTE
         <label class="nfpl_styles_input-label">To</label>
         <div class="nfpl_js_styles_places nfpl_styles_input-wrapper">
           <div class="nfpl_styles_input-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" stroke="currentColor"
-              stroke-width="2" width="24" height="24">
-              <path stroke-linecap="round" stroke-linejoin="round"
-                d="M12 2c3.866 0 7 3.134 7 7 0 5.25-7 13-7 13S5 14.25 5 9c0-3.866 3.134-7 7-7z" />
-              <circle cx="12" cy="9" r="2.5" fill="none" />
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+              <circle cx="12" cy="10" r="3"/>
             </svg>
           </div>
 
@@ -110,7 +106,10 @@ add_action('wp_enqueue_scripts', 'enqueue_custom_plugin_assets_FOR_INSTANT_QUOTE
     </div>
 
     <button id="nfpl_add_stop_btn" class="nfpl_styles_form-grid nfpl_styles_1_add-stop-btn">
-      <i class="fa-solid fa-plus"></i> Add Stop
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="12" y1="5" x2="12" y2="19"/>
+        <line x1="5" y1="12" x2="19" y2="12"/>
+      </svg> Add Stop
     </button>
 
     <div id="nfpl_js_styles_ViaStop_oneWay" class="nfpl_styles_form-grid nfpl_styles_1_via-stops"></div>
@@ -121,7 +120,12 @@ add_action('wp_enqueue_scripts', 'enqueue_custom_plugin_assets_FOR_INSTANT_QUOTE
         <label class="nfpl_styles_input-label">Forward Date/Time</label>
         <div class="nfpl_styles_input-wrapper">
           <div class="nfpl_styles_input-icon">
-            <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLWNhbGVuZGFyLWljb24gbHVjaWRlLWNhbGVuZGFyIj48cGF0aCBkPSJNOCAydjQiLz48cGF0aCBkPSJNMTYgMnY0Ii8+PHJlY3Qgd2lkdGg9IjE4IiBoZWlnaHQ9IjE4IiB4PSIzIiB5PSI0IiByeD0iMiIvPjxwYXRoIGQ9Ik0zIDEwaDE4Ii8+PC9zdmc+" alt="Calendar" width="24" height="24" />
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+              <line x1="16" y1="2" x2="16" y2="6"/>
+              <line x1="8" y1="2" x2="8" y2="6"/>
+              <line x1="3" y1="10" x2="21" y2="10"/>
+            </svg>
           </div>
 
           <input type="text" required data-calendar="true" class="nfpl_js_styles_input_field" id="nfpl_form_js_StartDateTime"
@@ -137,7 +141,12 @@ add_action('wp_enqueue_scripts', 'enqueue_custom_plugin_assets_FOR_INSTANT_QUOTE
           <label class="nfpl_styles_input-label">Return Date/Time</label>
           <div class="nfpl_styles_input-wrapper" style="position: relative !important;" >
             <div class="nfpl_styles_input-icon">
-              <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLWNhbGVuZGFyLWljb24gbHVjaWRlLWNhbGVuZGFyIj48cGF0aCBkPSJNOCAydjQiLz48cGF0aCBkPSJNMTYgMnY0Ii8+PHJlY3Qgd2lkdGg9IjE4IiBoZWlnaHQ9IjE4IiB4PSIzIiB5PSI0IiByeD0iMiIvPjxwYXRoIGQ9Ik0zIDEwaDE4Ii8+PC9zdmc+" alt="Calendar" width="24" height="24" />
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                <line x1="16" y1="2" x2="16" y2="6"/>
+                <line x1="8" y1="2" x2="8" y2="6"/>
+                <line x1="3" y1="10" x2="21" y2="10"/>
+              </svg>
             </div>
 
             <input type="text" required data-calendar="true" class="nfpl_js_styles_input_field" id="nfpl_form_js_EndDateTime"
@@ -165,7 +174,10 @@ add_action('wp_enqueue_scripts', 'enqueue_custom_plugin_assets_FOR_INSTANT_QUOTE
     </div>
 
     <button id="nfpl_styles_1_add-return-btn" class="nfpl_js_styles_d_none nfpl_styles_1_add-stop-btn">
-      <i class="fa-solid fa-plus"></i> Add Return Stop
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="12" y1="5" x2="12" y2="19"/>
+        <line x1="5" y1="12" x2="19" y2="12"/>
+      </svg> Add Return Stop
     </button>
 
     <div id="nfpl_js_styles_iaRetrun_twoWay" class="nfpl_styles_form-grid nfpl_styles_1_via-stops"></div>
